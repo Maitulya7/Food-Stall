@@ -1,4 +1,3 @@
-import { TextField } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,25 +11,7 @@ const page = () => {
                         <div className='flex flex-col items-center'>
                             <h1 className='text-3xl font-semibold mb-10'>Admin Registration  </h1>
 
-                            <TextField
-                                className='mb-5 w-full'
-                                id="outlined-basic"
-                                label="Email"
-                                variant="outlined"
-                                type='email' />
-                            <TextField
-                                className='mb-5 w-full'
-                                id="outlined-basic"
-                                label="Mobile Number"
-                                variant="outlined"
-                                type='number'
-                            />
-                            <TextField
-                                className='mb-5 w-full'
-                                id="outlined-basic"
-                                label="Stall Name"
-                                variant="outlined" 
-                                type='text'/>
+                         
 
                             <button className='bg-green-900 h-12 rounded-lg text-white font-medium w-full'>Login</button>
 
@@ -64,8 +45,7 @@ const page = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* Image Section (Hidden on Small Screens) */}
+                
                 <div className='hidden md:block h-screen w-1/2 relative'>
                     <Image
                         src="/images/bg-admin-registration.jpg"
