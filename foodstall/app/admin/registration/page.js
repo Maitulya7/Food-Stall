@@ -33,7 +33,7 @@ const page = () => {
                                 variant="bordered"
                                 type="text"
                                 label="Stall Name"
-                                className="w-full mb-6"
+                                className="w-full mb-10"
                             />
 
 
