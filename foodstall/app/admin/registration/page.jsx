@@ -10,7 +10,7 @@ const page = () => {
           <div className="flex justify-center mt-12 md:mt-32 w-full">
             <div className="flex flex-col  w-1/2">
               <h1 className="text-3xl font-semibold mb-10 ml-2">
-                Admin Registration{" "}
+                Admin Registration
               </h1>
               <p className="ml-2 mb-1 font-medium text-sm">Email Address</p>
               <Input

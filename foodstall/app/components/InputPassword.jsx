@@ -26,7 +26,7 @@ export default function InputPassword() {
                 </button>
             }
             type={isVisible ? "text" : "password"}
-            className="w-full mb-6 "
+            className="w-full mb-10 "
         />
     );
 }
