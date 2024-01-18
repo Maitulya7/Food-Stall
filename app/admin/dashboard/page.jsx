@@ -1,12 +1,12 @@
-import LeftNavbar from "@/app/components/LeftNavbar";
+import TopAndLeftNavbar from "@/app/components/TopAndLeftNavbar";
 import Image from "next/image";
 import React from "react";
 
 function Dashboard() {
   return (
-    <div className="bg-green-50 h-screen w-full flex">
+    <div className="h-screen w-full flex">
       
-      <LeftNavbar/>
+      <TopAndLeftNavbar/>
       <div>
 
       </div>

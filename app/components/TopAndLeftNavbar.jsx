@@ -1,11 +1,14 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
+import { Avatar } from "@nextui-org/react";
+import { Badge, Button } from "@nextui-org/react";
+import { NotificationIcon } from "./NotificationIcon";
+import Link from "next/link";
 
 function LeftNavbar() {
   return (
-    <div className='h-screen w-full flex'>
-      
-        <div className="bg-white w-unit-64">
+    <div className="h-screen w-full flex bg-green-50">
+      <div className="bg-white w-unit-64">
         <div className="flex gap-2 items-center ml-8 mt-10 mb-14">
           <Image
             src="/images/admin-logo.png"
@@ -30,7 +33,7 @@ function LeftNavbar() {
               width={34}
               height={34}
             />
-            <h1 className="text-xl font-medium text-green-600">Food Order</h1>
+            <Link href="/admin/foodOrder" className="text-xl font-medium text-green-600">Food Order</Link>
           </div>
           <div className="flex gap-4 items-center ml-8 pl-4">
             <Image src="/images/menu.png" alt="logo" width={30} height={30} />
@@ -61,14 +64,46 @@ function LeftNavbar() {
         </div>
       </div>
 
+      <div className="flex justify-between w-full m-10 h-10 items-center ">
+        <div className="flex gap-3 items-center">
+          <h1 className="text-2xl font-bold">Home </h1>
+          <h1 className="text-2xl">🏠</h1>
+        </div>
 
-      <div>
-        <h1>hello</h1>
-      </div>
-
+        <div className="h-10 w-1/3 justify-center flex">
+          <input
+            className="p-5 pl-8 w-full rounded-2xl border-2 border-slate-200 focus:outline-none focus:border-green-200"
+            type="text"
+            placeholder="Search"
+          />
+        </div>
+        <div className="flex items-center gap-6 ">
+          <Badge className="hover:cursor-pointer" content="99+" shape="circle" color="danger">
+            <Button
+              radius="full"
+              isIconOnly
+              aria-label="more than 99 notifications"
+              variant="light"
+            >
+              <NotificationIcon size={32} />
+            </Button>
+          </Badge>
+          <div className="flex gap-3">
+          <Avatar
+            className="hover:cursor-pointer"
+            src="https://i.pinimg.com/564x/20/4e/f2/204ef20bf4bf64f992391c0c52fcdf29.jpg"
+            size="lg"
+          />
+          <div className="w-auto">
+            <h1 className="text-base font-bold">Maitulya Vaghela</h1>
+            <h1>Admin</h1>
+          </div>
+          </div>
       
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default LeftNavbar
+export default LeftNavbar;
