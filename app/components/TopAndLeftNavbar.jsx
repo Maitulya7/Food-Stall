@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Avatar } from "@nextui-org/react";
+import {User} from "@nextui-org/react";
 import { Badge, Button } from "@nextui-org/react";
 import { NotificationIcon } from "./NotificationIcon";
 import Link from "next/link";
@@ -33,7 +33,12 @@ function LeftNavbar() {
               width={34}
               height={34}
             />
-            <Link href="/admin/foodOrder" className="text-xl font-medium text-green-600">Food Order</Link>
+            <Link
+              href="/admin/foodOrder"
+              className="text-xl font-medium text-green-600"
+            >
+              Food Order
+            </Link>
           </div>
           <div className="flex gap-4 items-center ml-8 pl-4">
             <Image src="/images/menu.png" alt="logo" width={30} height={30} />
@@ -78,28 +83,34 @@ function LeftNavbar() {
           />
         </div>
         <div className="flex items-center gap-6 ">
-          <Badge className="hover:cursor-pointer" content="99+" shape="circle" color="danger">
+          <Badge
+            className="hover:cursor-pointer w-7 h-7"
+            content="5"
+            shape="circle"
+            color="danger"
+          >
             <Button
               radius="full"
               isIconOnly
               aria-label="more than 99 notifications"
-              variant="light"
+              variant="bordered"
+              className="w-12 h-12"
             >
-              <NotificationIcon size={32} />
+              <NotificationIcon size={28} />
             </Button>
           </Badge>
-          <div className="flex gap-3">
-          <Avatar
-            className="hover:cursor-pointer"
-            src="https://i.pinimg.com/564x/20/4e/f2/204ef20bf4bf64f992391c0c52fcdf29.jpg"
-            size="lg"
-          />
-          <div className="w-auto">
-            <h1 className="text-base font-bold">Maitulya Vaghela</h1>
-            <h1>Admin</h1>
-          </div>
-          </div>
-      
+          <User   
+      name="Junior Garcia"
+      description={(
+        <Link href="https://twitter.com/jrgarciadev" size="sm" isExternal>
+          @jrgarciadev
+        </Link>
+      )}
+      avatarProps={{
+        src: "https://avatars.githubusercontent.com/u/30373425?v=4",
+        size:"lg"
+      }}
+    />
         </div>
       </div>
     </div>
