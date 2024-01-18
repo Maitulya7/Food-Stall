@@ -4,6 +4,7 @@ import Image from 'next/image'
 function LeftNavbar() {
   return (
     <div className='h-screen w-full flex'>
+      
         <div className="bg-white w-unit-64">
         <div className="flex gap-2 items-center ml-8 mt-10 mb-14">
           <Image
@@ -59,6 +60,13 @@ function LeftNavbar() {
           </div>
         </div>
       </div>
+
+
+      <div>
+        <h1>hello</h1>
+      </div>
+
+      
     </div>
   )
 }
