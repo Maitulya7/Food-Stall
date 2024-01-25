@@ -8,7 +8,7 @@ import Link from "next/link";
 function LeftNavbar() {
   return (
     <div className="h-screen w-full flex bg-green-50">
-      <div className="bg-white w-unit-64">
+      <div className="bg-white w-unit-72">
         <div className="flex gap-2 items-center ml-8 mt-10 mb-14">
           <Image
             src="/images/admin-logo.png"
@@ -21,8 +21,8 @@ function LeftNavbar() {
 
         <div className="flex flex-col gap-10 ">
           <div className="flex gap-4 items-center ml-8 border-l-5 border-green-600 pl-4">
-            <Image src="/images/home.png" alt="logo" width={30} height={30} />
-            <h1 className="text-base font-medium text-green-600 lg:text-xl">
+            <Image src="/images/home.png" alt="logo" width={28} height={28} />
+            <h1 className="text-base font-medium text-green-600 lg:text-lg ">
               Home
             </h1>
           </div>
@@ -30,41 +30,41 @@ function LeftNavbar() {
             <Image
               src="/images/food-order.png"
               alt="logo"
-              width={34}
-              height={34}
+              width={28}
+              height={28}
             />
             <Link
               href="/admin/foodOrder"
-              className="text-xl font-medium text-green-600"
+              className="text-base font-medium text-green-600 lg:text-lg "
             >
               Food Order
             </Link>
           </div>
           <div className="flex gap-4 items-center ml-8 pl-4">
-            <Image src="/images/menu.png" alt="logo" width={30} height={30} />
-            <h1 className="text-xl font-medium text-green-600">Menu</h1>
+            <Image src="/images/menu.png" alt="logo" width={28} height={28} />
+            <h1 className="text-base font-medium text-green-600 lg:text-lg ">Menu</h1>
           </div>
           <div className="flex gap-4 items-center ml-8 pl-4">
-            <Image src="/images/bills.png" alt="logo" width={30} height={30} />
-            <h1 className="text-xl font-medium text-green-600">Bills</h1>
+            <Image src="/images/bills.png" alt="logo" width={28} height={28} />
+            <h1 className="text-base font-medium text-green-600 lg:text-lg ">Bills</h1>
           </div>
           <div className="flex gap-4 items-center ml-8 pl-4">
             <Image
               src="/images/settings.png"
               alt="logo"
-              width={30}
-              height={30}
+              width={28}
+              height={28}
             />
-            <h1 className="text-xl font-medium text-green-600">Settings</h1>
+            <h1 className="text-base font-medium text-green-600 lg:text-lg ">Settings</h1>
           </div>
           <div className="flex gap-4 items-center ml-8 pl-4">
             <Image
               src="/images/edit-profile.png"
               alt="logo"
-              width={30}
-              height={30}
+              width={28}
+              height={28}
             />
-            <h1 className="text-xl font-medium text-green-600">Edit Profile</h1>
+            <h1 className="text-base font-medium text-green-600 lg:text-lg ">Edit Profile</h1>
           </div>
         </div>
       </div>
