@@ -42,11 +42,21 @@ function LeftNavbar() {
           </div>
           <div className="flex gap-4 items-center ml-8 pl-4">
             <Image src="/images/menu.png" alt="logo" width={28} height={28} />
-            <h1 className="text-base font-medium text-green-600 lg:text-lg ">Menu</h1>
+            <Link
+              href="/admin/menu"
+              className="text-base font-medium text-green-600 lg:text-lg "
+            >
+              Menu
+            </Link>
           </div>
           <div className="flex gap-4 items-center ml-8 pl-4">
             <Image src="/images/bills.png" alt="logo" width={28} height={28} />
-            <h1 className="text-base font-medium text-green-600 lg:text-lg ">Bills</h1>
+            <Link
+              href="/admin/bills"
+              className="text-base font-medium text-green-600 lg:text-lg "
+            >
+              Bills
+            </Link>
           </div>
           <div className="flex gap-4 items-center ml-8 pl-4">
             <Image
@@ -55,7 +65,12 @@ function LeftNavbar() {
               width={28}
               height={28}
             />
-            <h1 className="text-base font-medium text-green-600 lg:text-lg ">Settings</h1>
+              <Link
+              href="/admin/setting"
+              className="text-base font-medium text-green-600 lg:text-lg "
+            >
+              Setting
+            </Link>
           </div>
           <div className="flex gap-4 items-center ml-8 pl-4">
             <Image
@@ -64,7 +79,12 @@ function LeftNavbar() {
               width={28}
               height={28}
             />
-            <h1 className="text-base font-medium text-green-600 lg:text-lg ">Edit Profile</h1>
+              <Link
+              href="/admin/editProfile"
+              className="text-base font-medium text-green-600 lg:text-lg "
+            >
+              Edit Profile
+            </Link>
           </div>
         </div>
       </div>
