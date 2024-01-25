@@ -7,7 +7,7 @@ const page = () => {
     <>
       <div className="flex flex-col-reverse md:flex-row justify-between h-screen">
         <div className="md:h-screen md:w-1/2">
-          <div className="flex justify-center mt-12 md:mt-32 w-full">
+          <div className="flex justify-center xl:mt-32 lg:mt-24 w-full">
             <div className="flex flex-col  w-1/2">
               <h1 className="text-3xl font-semibold mb-10 ml-2">
                 Admin Registration
