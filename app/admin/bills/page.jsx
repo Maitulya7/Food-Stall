@@ -3,7 +3,7 @@ import TopAndLeftNavbar from "@/app/components/TopAndLeftNavbar"
 const Bills = () => {
   return (
     <div>
-        <TopAndLeftNavbar pageTitle="Bills" pageEmoji="🧾"/>
+        <TopAndLeftNavbar pageTitle="Bills" pageEmoji="🧾" />
     </div>
   )
 }
