@@ -5,7 +5,8 @@ import { Badge, Button } from "@nextui-org/react";
 import { NotificationIcon } from "./NotificationIcon";
 import Link from "next/link";
 
-function LeftNavbar() {
+
+function LeftNavbar({pageTitle , pageEmoji}) {
   return (
     <div className="h-screen w-full flex bg-green-50">
       <div className="bg-white w-unit-72">
@@ -22,9 +23,12 @@ function LeftNavbar() {
         <div className="flex flex-col gap-10 ">
           <div className="flex gap-4 items-center ml-8 border-l-5 border-green-600 pl-4">
             <Image src="/images/home.png" alt="logo" width={28} height={28} />
-            <h1 className="text-base font-medium text-green-600 lg:text-lg ">
+            <Link
+              href="/admin/dashboard"
+              className="text-base font-medium text-green-600 lg:text-lg "
+            >
               Home
-            </h1>
+            </Link>
           </div>
           <div className="flex gap-4 items-center ml-8 pl-4">
             <Image
@@ -91,17 +95,11 @@ function LeftNavbar() {
 
       <div className="flex justify-between w-full m-10 h-10 items-center ">
         <div className="flex gap-3 items-center">
-          <h1 className="text-2xl font-bold">Home </h1>
-          <h1 className="text-2xl">🏠</h1>
+          <h1 className="text-2xl font-bold">{pageTitle} </h1>
+          <h1 className="text-2xl">{pageEmoji}</h1>
         </div>
 
-        <div className="h-10 w-1/3 justify-center flex">
-          <input
-            className="p-5 pl-8 w-full rounded-2xl border-2 border-slate-200 focus:outline-none focus:border-green-200"
-            type="text"
-            placeholder="Search"
-          />
-        </div>
+       
         <div className="flex items-center gap-6 ">
           <Badge
             className="hover:cursor-pointer w-7 h-7"

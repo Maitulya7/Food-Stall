@@ -3,7 +3,7 @@ import TopAndLeftNavbar from "@/app/components/TopAndLeftNavbar"
 const Menu = () => {
   return (
     <div>
-        <TopAndLeftNavbar/>
+        <TopAndLeftNavbar pageTitle="Menu" pageEmoji="📋"/>
     </div>
   )
 }

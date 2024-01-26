@@ -3,7 +3,7 @@ import TopAndLeftNavbar from "@/app/components/TopAndLeftNavbar"
 const EditProfile = () => {
   return (
     <div>
-        <TopAndLeftNavbar/>
+        <TopAndLeftNavbar pageTitle="Edit Profile" pageEmoji="✏️"/>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import TopAndLeftNavbar from "@/app/components/TopAndLeftNavbar"
 const Setting = () => {
   return (
     <div>
-        <TopAndLeftNavbar/>
+        <TopAndLeftNavbar pageTitle="Settings" pageEmoji="⚙️"/>
     </div>
   )
 }

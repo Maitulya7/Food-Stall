@@ -3,7 +3,7 @@ import TopAndLeftNavbar from "@/app/components/TopAndLeftNavbar"
 const FoodOrder = () => {
   return (
     <div>
-        <TopAndLeftNavbar/>
+        <TopAndLeftNavbar pageTitle="Food Order" pageEmoji="🍔"/>
     </div>
   )
 }

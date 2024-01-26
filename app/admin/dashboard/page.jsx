@@ -4,7 +4,7 @@ import React from "react";
 function Dashboard() {
   return (
     <div className=" h-screen w-full flex">
-      <TopAndLeftNavbar />
+      <TopAndLeftNavbar pageTitle="Home" pageEmoji="🏠" />
       <div>
 
       </div>
