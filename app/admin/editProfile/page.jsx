@@ -1,6 +1,6 @@
-import React from 'react'
-import LeftNavbar from "@/app/components/LeftNavbar";
-import TopNavbar from "@/app/components/TopNavbar";
+import React from "react";
+import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
+import TopNavbar from "@/app/components/Navbar/TopNavbar";
 const EditProfile = () => {
   return (
     <div className="h-screen flex bg-green-50">
@@ -9,12 +9,10 @@ const EditProfile = () => {
       </div>
       <div className="flex flex-col w-full">
         <TopNavbar pageTitle="Edit Profile" pageEmoji="✏️" />
-        <div className="flex-grow bg-green-50">
-          hello
-        </div>
+        <div className="flex-grow bg-green-50">hello</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EditProfile
+export default EditProfile;

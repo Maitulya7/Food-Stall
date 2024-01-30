@@ -1,6 +1,6 @@
 import React from "react";
-import LeftNavbar from "@/app/components/LeftNavbar";
-import TopNavbar from "@/app/components/TopNavbar";
+import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
+import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import FoodTableList from "@/app/components/TableFood";
 
 const FoodOrder = () => {
@@ -12,7 +12,7 @@ const FoodOrder = () => {
       <div className="flex flex-col w-full">
         <TopNavbar pageTitle="Food Order" pageEmoji=" 🍔" />
         <div className="flex-grow bg-green-50 pl-12 pr-12">
-          <FoodTableList/>
+          <FoodTableList />
         </div>
       </div>
     </div>

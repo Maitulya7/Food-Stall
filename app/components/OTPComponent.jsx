@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { Input } from "@nextui-org/react";
-import { EyeFilledIcon } from "./EyeFilledIcon";
-import { EyeSlashFilledIcon } from "./EyeSlashFilledIcon";
+import { EyeFilledIcon } from "./EyeIcons/EyeFilledIcon";
+import { EyeSlashFilledIcon } from "./EyeIcons/EyeSlashFilledIcon";
 
 import { useRef, useState } from "react";
 
