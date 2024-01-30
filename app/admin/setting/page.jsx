@@ -1,9 +1,7 @@
 import React from "react";
 import LeftNavbar from "@/app/components/LeftNavbar";
 import TopNavbar from "@/app/components/TopNavbar";
-
-
-const FoodOrder = () => {
+const Setting = () => {
   return (
     <div>
       <div className=" h-screen  bg-green-50">
@@ -12,7 +10,7 @@ const FoodOrder = () => {
             <LeftNavbar />
           </div>
           <div className="flex w-full">
-            <TopNavbar pageTitle="Food Order" pageEmoji=" 🍔" />
+            <TopNavbar pageTitle="Setting" pageEmoji=" ⚙️" />
           </div>
         </div>
       </div>
@@ -20,4 +18,4 @@ const FoodOrder = () => {
   );
 };
 
-export default FoodOrder;
+export default Setting;
