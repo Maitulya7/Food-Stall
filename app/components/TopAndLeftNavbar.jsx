@@ -21,7 +21,7 @@ function LeftNavbar({pageTitle , pageEmoji}) {
         </div>
 
         <div className="flex flex-col gap-10 ">
-          <div className="flex gap-4 items-center ml-8  pl-4">
+          <div className="flex gap-4 items-center ml-8 border-l-5 border-green-600 pl-4">
             <Image src="/images/home.png" alt="logo" width={28} height={28} />
             <Link
               href="/admin/dashboard"
@@ -101,7 +101,7 @@ function LeftNavbar({pageTitle , pageEmoji}) {
 
         <div className="h-10 w-1/3 justify-center flex">
           <input
-            className="p-5 pl-8 w-full  rounded-2xl border-2 border-slate-200 focus:outline-none focus:border-green-200"
+            className="p-5 pl-8 w-full rounded-2xl border-2 border-slate-200 focus:outline-none focus:border-green-200"
             type="text"
             placeholder="Search"
           />
