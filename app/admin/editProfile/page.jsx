@@ -1,9 +1,19 @@
 import React from 'react'
-import TopAndLeftNavbar from "@/app/components/TopAndLeftNavbar"
+import LeftNavbar from "@/app/components/LeftNavbar";
+import TopNavbar from "@/app/components/TopNavbar";
 const EditProfile = () => {
   return (
     <div>
-        <TopAndLeftNavbar pageTitle="Edit Profile" pageEmoji="✏️"/>
+        <div className=" h-screen  bg-green-50">
+        <div className="flex ">
+          <div className="w-64">
+            <LeftNavbar />
+          </div>
+          <div className="flex w-full">
+            <TopNavbar pageTitle="Edit Profile" pageEmoji="✏️" />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
