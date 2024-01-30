@@ -80,8 +80,7 @@ function Dashboard() {
 
         <div className="flex justify-between w-full m-10 h-10 items-center ">
           <div className="flex gap-3 items-center">
-            <h1 className="text-2xl font-bold">Home </h1>
-            <h1 className="text-2xl">🏠</h1>
+            <h1 className="text-2xl font-bold">Stalls </h1>
           </div>
 
           <div className="h-10 w-1/3 justify-center flex">
