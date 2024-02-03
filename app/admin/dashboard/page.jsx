@@ -1,6 +1,6 @@
 import LeftNavbar from "@/app/components/LeftNavbar";
 import TopNavbar from "@/app/components/TopNavbar";
-
+import LatestOrders from "@/app/components/LatestOrders";
 import React from "react";
 
 function Dashboard() {
@@ -10,8 +10,9 @@ function Dashboard() {
         <div className="w-64">
           <LeftNavbar />
         </div>
-        <div className="flex w-full">
+        <div className="flex-col w-full">
           <TopNavbar pageTitle="Home" pageEmoji="🏠" />
+          <LatestOrders />
         </div>
       </div>
     </div>
