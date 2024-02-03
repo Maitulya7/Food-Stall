@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 
-export default function App() {
+export default function StallCard() {
   return (
     <Card className="py-4 m-2">
       <CardBody className="overflow-visible py-2">

@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 
-export default function App() {
+export default function MenuItemCard({ Category, AvailableItems, TotalItems }) {
   return (
-    <Card className="py-4">
+    <Card className="py-4 ml-2">
       <CardBody className="overflow-visible py-2">
         <Image
           alt="Card background"
@@ -13,9 +13,11 @@ export default function App() {
         />
       </CardBody>
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-      
-        <button className="bg-green-900 h-8 rounded-lg text-white font-medium w-full">
-          View
+        <p className="pb-2">{Category} Food Menu</p>
+        <p className="pb-2">Total Food items: {TotalItems}</p>
+        <p className="pb-2">AVailable items:{AvailableItems}</p>
+        <button className="bg-green-600 h-8 rounded-lg text-white font-medium w-40">
+          Open
         </button>
       </CardHeader>
     </Card>

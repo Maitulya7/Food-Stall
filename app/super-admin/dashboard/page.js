@@ -6,10 +6,12 @@ import { Badge, Button } from "@nextui-org/react";
 import { NotificationIcon } from "../../components/NotificationIcon";
 import { User } from "@nextui-org/react";
 import StallCard from "../../components/StallCard";
+import MenuItemCard from "@/app/components/MenuItemCard";
+import Punjabi from "../../../public/images/Punjabi.png";
 
 function Dashboard() {
   return (
-    <div className=" h-screen w-full flex">
+    <div className=" h-screen w-full flex ">
       <div className="h-screen w-full flex bg-green-50">
         <div className="bg-white w-unit-64">
           <div className="flex gap-2 items-center ml-8 mt-10 mb-14">
@@ -36,7 +38,7 @@ function Dashboard() {
               </div>
               <div className="flex gap-4 items-center ml-8 pl-4">
                 <Image
-                  src="/images/food-order.png"
+                  src="/images/material-symbols_notification-add.png"
                   alt="logo"
                   width={34}
                   height={34}
@@ -48,15 +50,7 @@ function Dashboard() {
                   Request{" "}
                 </Link>
               </div>
-              <div className="flex gap-4 items-center ml-8 pl-4">
-                <Image
-                  src="/images/menu.png"
-                  alt="logo"
-                  width={30}
-                  height={30}
-                />
-                <h1 className="text-xl font-medium text-green-600">Menu</h1>
-              </div>
+
               <div className="flex gap-4 items-center ml-8 pl-4">
                 <Image
                   src="/images/bills.png"
@@ -139,8 +133,12 @@ function Dashboard() {
             </div>
           </div>
           <div className="flex">
-            <StallCard />
-            <StallCard />
+            <MenuItemCard
+              Category="Punjabi"
+              AvailableItems="40"
+              TotalItems="50"
+              Img={Punjabi}
+            />
           </div>
         </div>
       </div>

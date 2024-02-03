@@ -1,7 +1,7 @@
 import React from "react";
 import LeftNavbar from "@/app/components/LeftNavbar";
 import TopNavbar from "@/app/components/TopNavbar";
-const EditProfile = () => {
+const Setting = () => {
   return (
     <div>
       <div className=" h-screen  bg-green-50">
@@ -10,7 +10,7 @@ const EditProfile = () => {
             <LeftNavbar />
           </div>
           <div className="flex w-full">
-            <TopNavbar pageTitle="Edit Profile" pageEmoji="✏️" />
+            <TopNavbar pageTitle="Setting" pageEmoji=" ⚙️" />
           </div>
         </div>
       </div>
@@ -18,4 +18,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default Setting;
