@@ -68,6 +68,7 @@ export default function App() {
             Date
           </TableColumn>
         </TableHeader>
+
         <TableBody
           items={list.items}
           isLoading={isLoading}
