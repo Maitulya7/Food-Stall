@@ -1,11 +1,28 @@
-"use client"
+"use client";
 import React from "react";
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Pagination, getKeyValue} from "@nextui-org/react";
-import {users} from "./data";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCoffee,
+  faCheckCircle,
+  faCalendar,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+
+import {
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+  Pagination,
+  getKeyValue,
+} from "@nextui-org/react";
+import { users } from "./data";
 
 export default function LatestOrder() {
   const [page, setPage] = React.useState(1);
-  const rowsPerPage = 15;
+  const rowsPerPage = 10;
 
   const pages = Math.ceil(users.length / rowsPerPage);
 
@@ -17,7 +34,7 @@ export default function LatestOrder() {
   }, [page, users]);
 
   return (
-    <Table 
+    <Table
       aria-label="Example table with client side pagination"
       bottomContent={
         <div className="flex w-full justify-center">
@@ -25,7 +42,7 @@ export default function LatestOrder() {
             isCompact
             showControls
             showShadow
-            color="secondary"
+            color="success"
             page={page}
             total={pages}
             onChange={(page) => setPage(page)}
@@ -37,14 +54,34 @@ export default function LatestOrder() {
       }}
     >
       <TableHeader>
-        <TableColumn key="name">NAME</TableColumn>
-        <TableColumn key="role">ROLE</TableColumn>
-        <TableColumn key="status">STATUS</TableColumn>
+        <TableColumn key="name" className="flex gap-2 items-center">
+     
+          <FontAwesomeIcon
+            icon={faUser}
+            style={{ color: "#4caf50" }}
+            size="lg"
+          />
+          Name
+        </TableColumn>
+
+        <TableColumn key="category">Category</TableColumn>
+        <TableColumn key="Item_Information">
+          Item Information <FontAwesomeIcon icon={faCoffee} />
+        </TableColumn>
+        <TableColumn key="payment">
+          Payment <FontAwesomeIcon icon={faCheckCircle} />
+        </TableColumn>
+        <TableColumn key="status">Status</TableColumn>
+        <TableColumn key="date">
+          Date <FontAwesomeIcon icon={faCalendar} />
+        </TableColumn>
       </TableHeader>
       <TableBody items={items}>
         {(item) => (
           <TableRow key={item.name}>
-            {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
+            {(columnKey) => (
+              <TableCell>{getKeyValue(item, columnKey)}</TableCell>
+            )}
           </TableRow>
         )}
       </TableBody>
