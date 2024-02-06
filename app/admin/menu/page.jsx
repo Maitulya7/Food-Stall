@@ -1,10 +1,10 @@
-import React from 'react'
-import LeftNavbar from "@/app/components/LeftNavbar";
-import TopNavbar from "@/app/components/TopNavbar";
+import React from "react";
+import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
+import TopNavbar from "@/app/components/Navbar/TopNavbar";
 const Menu = () => {
   return (
     <div>
-         <div className=" h-screen  bg-green-50">
+      <div className=" h-screen  bg-green-50">
         <div className="flex ">
           <div className="w-64">
             <LeftNavbar />
@@ -15,7 +15,7 @@ const Menu = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;

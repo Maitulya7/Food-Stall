@@ -1,5 +1,5 @@
-import LeftNavbar from "@/app/components/LeftNavbar";
-import TopNavbar from "@/app/components/TopNavbar";
+import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
+import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import LatestOrders from "@/app/components/LatestOrders";
 import React from "react";
 

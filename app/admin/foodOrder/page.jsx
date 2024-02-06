@@ -1,7 +1,6 @@
 import React from "react";
-import LeftNavbar from "@/app/components/LeftNavbar";
-import TopNavbar from "@/app/components/TopNavbar";
-
+import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
+import TopNavbar from "@/app/components/Navbar/TopNavbar";
 
 const FoodOrder = () => {
   return (
