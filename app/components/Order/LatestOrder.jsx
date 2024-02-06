@@ -78,7 +78,7 @@ export default function LatestOrder() {
       </TableHeader>
       <TableBody items={items}>
         {(item) => (
-          <TableRow key={item.name}>
+          <TableRow  key={item.name}>
             {(columnKey) => (
               <TableCell>{getKeyValue(item, columnKey)}</TableCell>
             )}

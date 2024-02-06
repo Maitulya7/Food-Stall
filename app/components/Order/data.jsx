@@ -4,7 +4,7 @@ export const users = [
     name: "Tony Reichert",
     category: "Punjabi",
     Item_Information: (
-      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 bg-[#4CAF50]">View</button>
+      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 text-white font-medium bg-[#4CAF50]">View Order</button>
     ),
     payment: "Done",
     status: "Done",
@@ -15,7 +15,7 @@ export const users = [
     name: "Tony Reichert",
     category: "Punjabi",
     Item_Information: (
-      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 bg-[#4CAF50]">View</button>
+      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 text-white font-medium bg-[#4CAF50]">View Order</button>
     ),
     payment: "Done",
     status: "Done",
@@ -26,7 +26,7 @@ export const users = [
     name: "Tony Reichert",
     category: "Punjabi",
     Item_Information: (
-      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 bg-[#4CAF50]">View</button>
+      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 text-white font-medium bg-[#4CAF50]">View Order</button>
     ),
     payment: "Done",
     status: "Done",
@@ -37,7 +37,7 @@ export const users = [
     name: "Tony Reichert",
     category: "Punjabi",
     Item_Information: (
-      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 bg-[#4CAF50]">View</button>
+      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 text-white font-medium bg-[#4CAF50]">View Order</button>
     ),
     payment: "Done",
     status: "Done",
@@ -48,7 +48,7 @@ export const users = [
     name: "Tony Reichert",
     category: "Punjabi",
     Item_Information: (
-      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 bg-[#4CAF50]">View</button>
+      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 text-white font-medium bg-[#4CAF50]">View Order</button>
     ),
     payment: "Done",
     status: "Done",
@@ -59,7 +59,7 @@ export const users = [
     name: "Tony Reichert",
     category: "Punjabi",
     Item_Information: (
-      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 bg-[#4CAF50]">View</button>
+      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 text-white font-medium bg-[#4CAF50]">View Order</button>
     ),
     payment: "Done",
     status: "Done",
@@ -70,7 +70,7 @@ export const users = [
     name: "Tony Reichert",
     category: "Punjabi",
     Item_Information: (
-      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 bg-[#4CAF50]">View</button>
+      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 text-white font-medium bg-[#4CAF50]">View Order</button>
     ),
     payment: "Done",
     status: "Done",
@@ -81,7 +81,7 @@ export const users = [
     name: "Tony Reichert",
     category: "Punjabi",
     Item_Information: (
-      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 bg-[#4CAF50]">View</button>
+      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 text-white font-medium bg-[#4CAF50]">View Order</button>
     ),
     payment: "Done",
     status: "Done",
@@ -92,7 +92,7 @@ export const users = [
     name: "Tony Reichert",
     category: "Punjabi",
     Item_Information: (
-      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 bg-[#4CAF50]">View</button>
+      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 text-white font-medium bg-[#4CAF50]">View Order</button>
     ),
     payment: "Done",
     status: "Done",
@@ -103,7 +103,29 @@ export const users = [
     name: "Tony Reichert",
     category: "Punjabi",
     Item_Information: (
-      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 bg-[#4CAF50]">View</button>
+      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 text-white font-medium bg-[#4CAF50]">View Order</button>
+    ),
+    payment: "Done",
+    status: "Done",
+    date: "11:11 PM 06-02-2024",
+  },
+  {
+    key: "11",
+    name: "Tony Reichert",
+    category: "Punjabi",
+    Item_Information: (
+      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 text-white font-medium bg-[#4CAF50]">View Order</button>
+    ),
+    payment: "Done",
+    status: "Done",
+    date: "11:11 PM 06-02-2024",
+  },
+  {
+    key: "12",
+    name: "Tony Reichert",
+    category: "Punjabi",
+    Item_Information: (
+      <button className="w-auto rounded-lg pl-5 pr-5 pt-2 pb-2 text-white font-medium bg-[#4CAF50]">View Order</button>
     ),
     payment: "Done",
     status: "Done",
