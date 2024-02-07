@@ -4,7 +4,7 @@ import MenuItem from "./MenuItem";
 
 const LeftNavbarSuperAdmin = () => {
   return (
-    <div className="bg-white w-full pt-1 h-auto rounded-xl">
+    <div className="bg-white w-full pt-1 h-screen rounded-xl">
       <div className="flex items-center ml-8 mt-10 mb-14">
         <Image src="/images/admin-logo.png" alt="logo" width={36} height={36} />
         <h1 className="text-2xl font-semibold text-green-600">FoodM</h1>
@@ -22,9 +22,6 @@ const LeftNavbarSuperAdmin = () => {
         </MenuItem>
         <MenuItem icon="/images/settings.png" href="/super-admin/settings">
           Setting
-        </MenuItem>
-        <MenuItem icon="/images/edit-profile.png" href="/super-admin/editProfile">
-          Edit Profile
         </MenuItem>
       </div>
     </div>

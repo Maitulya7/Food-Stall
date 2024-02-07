@@ -91,7 +91,7 @@ const Admin = () => {
 
         <div className="hidden md:block h-screen w-1/2 relative">
           <Image
-            src="/images/superAdmin.png"
+            src="/images/superAdmin.jpg"
             alt="Description of the image"
             layout="fill"
             objectFit="cover"
