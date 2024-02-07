@@ -1,31 +1,33 @@
 "use client"
 import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Input } from '@nextui-org/react';
-import InputPassword from '../components/InputPassword';
+import InputPassword from '../../components/InputPassword';
+import axios from 'axios';
 
 const Admin = () => {
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  console.log|(password)
 
   const handleLogin = async () => {
     try {
-
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        console.log('Login successful!');
-      } else {
-        setError('Invalid email or password');
-      }
+      axios.post("https://food-court-api.as.r.appspot.com/api/v1/admin/sign_up",
+      {
+        admin:{
+        email:email,
+        password:password
+      },
+      client_id: "GXXpMxkC4J2QXhDOcKFoWP3OJpusA-CnSkKX_O4twrM"
+    }
+      
+      ).then((res)=>{
+        console.log(res)
+      }).catch((err)=>{
+        console.log(err)
+      })
     } catch (error) {
       console.error('Error logging in:', error);
     }
@@ -37,7 +39,7 @@ const Admin = () => {
         <div className="md:h-screen md:w-1/2">
           <div className="flex justify-center mt-12  w-full">
             <div className="flex flex-col">
-              <h1 className="text-3xl font-semibold mb-1 ml-2">Welcome back!</h1>
+              <h1 className="text-3xl font-semibold mb-1 ml-2">Admin SingUp!</h1>
               <p className="text-base mb-8 ml-2">Enter your credentials to access your account</p>
               <p className="ml-2 mb-1 font-medium text-sm">Email Address</p>
               <Input
@@ -52,7 +54,7 @@ const Admin = () => {
               <p className="ml-2 mb-1 font-medium text-sm">Password</p>
               <InputPassword
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChangeFunction={(e) => setPassword(e.target.value)}
               />
 
               {error && <p className="text-red-500 ml-2 mt-2">{error}</p>}
@@ -82,19 +84,14 @@ const Admin = () => {
                 </div>
               </div>
 
-              <p className="flex items-center justify-center mt-10 text-base">
-                Don’t have an account?
-                <Link href="/admin/registration" className="ml-1 text-blue-700 font-medium cursor-pointer hover:underline">
-                  Sign Up
-                </Link>
-              </p>
+            
             </div>
           </div>
         </div>
 
         <div className="hidden md:block h-screen w-1/2 relative">
           <Image
-            src="/images/bg-admin.jpg"
+            src="/images/superAdmin.png"
             alt="Description of the image"
             layout="fill"
             objectFit="cover"

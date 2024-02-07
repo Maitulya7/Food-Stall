@@ -6,6 +6,10 @@ import {
   faCheckCircle,
   faCalendar,
   faUser,
+  faList,
+  faInfoCircle,
+  faMoneyBill,
+  faHourglass
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -53,28 +57,70 @@ export default function LatestOrder() {
         wrapper: "min-h-[222px]",
       }}
     >
-      <TableHeader>
-        <TableColumn key="name" className="flex gap-2 items-center">
+      <TableHeader >
+        <TableColumn key="name">
      
           <FontAwesomeIcon
+          className="pl-2"
             icon={faUser}
-            style={{ color: "#4caf50" }}
+            style={{ color: "#3A5B22" }}
             size="lg"
           />
-          Name
+          <span className="pl-2">Name</span>
         </TableColumn>
 
-        <TableColumn key="category">Category</TableColumn>
-        <TableColumn key="Item_Information">
-          Item Information <FontAwesomeIcon icon={faCoffee} />
-        </TableColumn>
-        <TableColumn key="payment">
-          Payment <FontAwesomeIcon icon={faCheckCircle} />
-        </TableColumn>
-        <TableColumn key="status">Status</TableColumn>
-        <TableColumn key="date">
-          Date <FontAwesomeIcon icon={faCalendar} />
-        </TableColumn>
+        <TableColumn key="category">
+     
+     <FontAwesomeIcon
+     className="pl-2"
+       icon={faList}
+       style={{ color: "#3A5B22" }}
+       size="lg"
+     />
+     <span className="pl-2">category</span>
+   </TableColumn>
+   <TableColumn key="Item_Information">
+     
+     <FontAwesomeIcon
+     className="pl-2"
+       icon={faInfoCircle}
+       style={{ color: "#3A5B22" }}
+       size="lg"
+     />
+     <span className="pl-2">Item_Information</span>
+   </TableColumn>
+   <TableColumn key="payment">
+     
+     <FontAwesomeIcon
+     className="pl-2"
+       icon={faMoneyBill}
+       style={{ color: "#3A5B22" }}
+       size="lg"
+     />
+     <span className="pl-2">payment</span>
+   </TableColumn>
+   <TableColumn key="status">
+     
+     <FontAwesomeIcon
+     className="pl-2"
+       icon={faHourglass}
+       style={{ color: "#3A5B22" }}
+       size="lg"
+     />
+     <span className="pl-2">status</span>
+   </TableColumn>
+
+   <TableColumn key="date">
+     
+     <FontAwesomeIcon
+     className="pl-2"
+       icon={faCalendar}
+       style={{ color: "#3A5B22" }}
+       size="lg"
+     />
+     <span className="pl-2">Date</span>
+   </TableColumn>
+        
       </TableHeader>
       <TableBody items={items}>
         {(item) => (
