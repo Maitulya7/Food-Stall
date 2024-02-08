@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import {
   Modal,
@@ -62,7 +62,6 @@ export default function AddCategory() {
                   onClick={handleCategory}
                   className="bg-[#3A5B22] text-white font-medium"
                 >
-                  {" "}
                   Submit
                 </Button>
               </ModalBody>
