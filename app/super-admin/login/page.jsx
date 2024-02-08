@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Input } from "@nextui-org/react";
-import InputPassword from "../../components/InputPassword";
+import InputPassword from "../../components/password/InputPassword";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 

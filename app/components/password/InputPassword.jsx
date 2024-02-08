@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { Input } from "@nextui-org/react";
-import { EyeFilledIcon } from "./EyeIcons/EyeFilledIcon";
-import { EyeSlashFilledIcon } from "./EyeIcons/EyeSlashFilledIcon";
+import { EyeFilledIcon } from "../EyeIcons/EyeFilledIcon";
+import { EyeSlashFilledIcon } from "../EyeIcons/EyeSlashFilledIcon";
 
 export default function InputPassword({onChangeFunction}) {
   const [isVisible, setIsVisible] = React.useState(false);
@@ -30,7 +30,7 @@ export default function InputPassword({onChangeFunction}) {
         </button>
       }
       type={isVisible ? "text" : "password"}
-      className="w-full mb-10 "
+      className="w-full"
     />
   );
 }

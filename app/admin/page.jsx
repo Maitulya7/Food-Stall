@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Input } from '@nextui-org/react';
-import InputPassword from '../components/InputPassword';
+import InputPassword from '../components/password/InputPassword';
 
 const Admin = () => {
   const [email, setEmail] = useState('');
