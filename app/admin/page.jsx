@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Input } from '@nextui-org/react';
 import InputPassword from '../components/password/InputPassword';
+import axios from 'axios';
 
 const Admin = () => {
   const [email, setEmail] = useState('');
@@ -12,20 +13,28 @@ const Admin = () => {
 
   const handleLogin = async () => {
     try {
+      const formData = new FormData();
+      formData.append("vendor[email]", email);
+      formData.append("vendor[password]", password);
+      formData.append("client_id", "egp44hMIRaN2k3e6zLlo0svH2HXi944QxHIqLc50CYI")
 
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        console.log('Login successful!');
-      } else {
-        setError('Invalid email or password');
-      }
+      axios
+        .post(
+          "https://food-court-api.as.r.appspot.com/api/v1/vendor/login",
+          formData,
+          
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("access-token"),
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.error("Error in Axios request:", err);
+        });
     } catch (error) {
       console.error('Error logging in:', error);
     }
@@ -57,7 +66,7 @@ const Admin = () => {
 
               {error && <p className="text-red-500 ml-2 mt-2">{error}</p>}
 
-              <button onClick={handleLogin} className="bg-green-900 h-12 rounded-lg text-white font-medium w-full">
+              <button onClick={handleLogin} className="bg-green-900 mt-10 h-12 rounded-lg text-white font-medium w-full">
                 Login
               </button>
 

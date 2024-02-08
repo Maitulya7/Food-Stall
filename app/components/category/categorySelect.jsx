@@ -1,31 +1,47 @@
-import React from "react";
-import {Select, SelectItem} from "@nextui-org/react";
-import {animals} from "./categoryData";
+import React, { useState, useEffect } from "react";
+import { Select, SelectItem } from "@nextui-org/react";
+import axios from "axios";
 
-export default function CategorySelect() {
-  const [values, setValues] = React.useState(new Set([]));
+export default function CategorySelect({ handleSelectionChange }) {
+  const [categories, setCategories] = useState([]);
 
-  const handleSelectionChange = (e) => {
-    setValues(new Set(e.target.value.split(",")));
+  useEffect(() => {
+    fetchCategoryData();
+  }, []);
+
+  const fetchCategoryData = async () => {
+    try {
+      const response = await axios.get(
+        "https://food-court-api.as.r.appspot.com/api/v1/admin/categories",
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("access-token"),
+          },
+        }
+      );
+
+      const fetchedCategories = response.data.categories || [];
+      setCategories(fetchedCategories);
+    } catch (error) {
+      console.error("Error fetching category data:", error);
+    }
   };
 
   return (
     <div className="w-full">
       <Select
-        label="Favorite Animal"
+        label="Category"
         selectionMode="multiple"
         variant="bordered"
-        placeholder="Select an animal"
-        selectedKeys={values}
-        className=""
+        placeholder="Select a category"
         onChange={handleSelectionChange}
       >
-        {animals.map((animal) => (
-          <SelectItem key={animal.value} value={animal.value}>
-            {animal.label}
+        {categories.map((category) => (
+          <SelectItem key={category.id} value={category.id}>
+            {category.name}
           </SelectItem>
         ))}
       </Select>
-    </div>      
+    </div>
   );
 }

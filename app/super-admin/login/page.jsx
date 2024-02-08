@@ -70,7 +70,7 @@ const Admin = () => {
 
               <button
                 onClick={handleLogin}
-                className="bg-green-900 h-12 rounded-lg text-white font-medium w-full"
+                className="bg-green-900 mt-8 h-12 rounded-lg text-white font-medium w-full"
               >
                 Login
               </button>

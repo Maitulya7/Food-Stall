@@ -11,7 +11,7 @@ import {
   Input,
 } from "@nextui-org/react";
 
-export default function AddCategory() {
+export default function AddCategory({fetchData}) {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const [category, setCategory] = useState("");
 
@@ -31,6 +31,7 @@ export default function AddCategory() {
       )
       .then((res) => {
         console.log(res);
+        fetchData();
       })
       .catch((err) => {
         console.log(err);
@@ -40,9 +41,11 @@ export default function AddCategory() {
       });
   };
 
+
+
   return (
     <>
-      <Button onPress={onOpen} className="bg-[#3A5B22] text-white font-medium">
+      <Button onPress={onOpen} className=" bg-[#3A5B22] text-white font-medium">
         Add Category
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">

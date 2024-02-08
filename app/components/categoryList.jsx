@@ -3,37 +3,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 
-export default function CategoryList() {
-  const [categoryData, setCategoryData] = useState([]);
+export default function CategoryList({categoryData , fetchData}) {
+ 
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
-  const fetchData = () => {
-    try {
-      axios.get(
-        "https://food-court-api.as.r.appspot.com/api/v1/admin/categories",
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("access-token"),
-          },
-        }
-      ).then((response) => {
-
-          console.log(response);
-          const categories = response.data.categories || [];
-          console.log(categories);
-    
-          setCategoryData(categories);
-      })
-
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  
 
   const handleDelete = (id) => {
     setSelectedCategoryId(id);
@@ -62,6 +37,8 @@ export default function CategoryList() {
       console.error("Error deleting category:", error);
     }
   };
+
+  
   
 
   return (
@@ -70,9 +47,9 @@ export default function CategoryList() {
       <table className="min-w-full bg-white border border-gray-300 divide-y divide-gray-200">
         <thead>
           <tr>
-            <th className="py-3 px-6 text-left bg-gray-100 border-b">ID</th>
-            <th className="py-3 px-6 text-left bg-gray-100 border-b">Category</th>
-            <th className="py-3 px-6 text-left bg-gray-100 border-b">Actions</th>
+            <th className="py-3 px-6 text-left bg-green-300 border-b">ID</th>
+            <th className="py-3 px-6 text-left bg-green-300 border-b">Category</th>
+            <th className="py-3 px-6 text-left bg-green-300 border-b">Actions</th>
           </tr>
         </thead>
         <tbody>

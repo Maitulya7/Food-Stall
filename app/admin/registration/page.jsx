@@ -2,40 +2,62 @@
 
 import { useState } from "react";
 import { Input } from "@nextui-org/react";
-import { CheckboxGroup, Checkbox } from "@nextui-org/react";
 import Image from "next/image";
 import InputPassword from "@/app/components/password/InputPassword";
 import ConfirmPassword from "@/app/components/password/confirmPassword";
 import CategorySelect from "@/app/components/category/categorySelect";
+import axios from "axios";
 
 const Register = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [stallName, setStallName] = useState("");
-  const [stallLogo, setStallLogo] = useState(null);
-  const [categories, setCategories] = useState(["Punjabi", "Burger"]);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [franchise, setFranchise] = useState(false);
+  const [franchiseDetails, setFranchiseDetails] = useState("");
   const [error, setError] = useState("");
+
+  const handleFranchiseChange = (value) => {
+    setFranchise(value === "Yes");
+  };
 
   const handleSubmit = async () => {
     try {
       const formData = new FormData();
-      formData.append("email", email);
-      formData.append("phoneNumber", phoneNumber);
-      formData.append("stallName", stallName);
-      formData.append("stallLogo", stallLogo);
-      formData.append("categories", JSON.stringify(categories));
+      formData.append("vendor[first_name]", firstName);
+      formData.append("vendor[last_name]", lastName);
+      formData.append("vendor[email]", email);
+      formData.append("vendor[phone_number]", phoneNumber);
+      formData.append("vendor[password]", password);
+      formData.append("vendor[confirm_password]", confirmPassword);
+      formData.append(
+        "vendor[type_of_categories]",
+        JSON.stringify(categories)
+      );
+      formData.append("vendor[franchise]", franchise);
+      formData.append("vendor[franchise_details]", franchiseDetails);
+      formData.append("client_id", "GXXpMxkC4J2QXhDOcKFoWP3OJpusA-CnSkKX_O4twrM");
 
-      const response = await fetch("/api/register", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        console.log("Registration successful!");
-      } else {
-        const data = await response.json();
-        setError(data.message || "Registration failed");
-      }
+      axios
+        .post(
+          "https://food-court-api.as.r.appspot.com/api/v1/vendor/sign_up",
+          formData,
+          
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("access-token"),
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.error("Error in Axios request:", err);
+        });
     } catch (error) {
       console.error("Error registering:", error);
       setError("Registration failed");
@@ -57,7 +79,7 @@ const Register = () => {
         </div>
 
         {/* right part  */}
-        <div className="md:col-span-2 w-full">
+        <div className="md:col-span-2 w-full m-auto">
           <h1 className="text-xl font-medium mt-6 ml-14">
             Vendor Registration
           </h1>
@@ -70,8 +92,8 @@ const Register = () => {
                 type="text"
                 label="First Name"
                 className="w-full mb-3"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
             <div className="w-full">
@@ -81,8 +103,8 @@ const Register = () => {
                 type="text"
                 label="Last Name"
                 className="w-full mb-3"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
               />
             </div>
             <div className="w-full mb-3">
@@ -103,37 +125,73 @@ const Register = () => {
                 type="number"
                 label="Phone Number"
                 className="w-full"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
 
             <div className="w-full mb-3">
-              <InputPassword onChange={(e) => setPassword(e.target.value)} />
+              <InputPassword
+                value={password}
+                onChangeFunction={(e) => setPassword(e.target.value)}
+              />
             </div>
 
             <div className="w-full mb-3">
-              <ConfirmPassword onChange={(e) => setPassword(e.target.value)} />
+              <ConfirmPassword
+                value={confirmPassword}
+                onChangeFunction={(e) => setConfirmPassword(e.target.value)}
+              />
             </div>
 
             <div className="w-full mb-3">
-              <CategorySelect />
+              <CategorySelect
+                handleSelectionChange={(e) => setCategories(e.target.value)}
+              />
             </div>
 
             <div className="w-full mb-3 flex items-center ml-2 gap-6">
               <p>Franchise :</p>
               <div className="flex gap-3">
-                <button className="w-auto pl-10 pr-10 pt-1 pb-1 rounded bg-green-800 text-white font-medium">
+                <button
+                  onClick={() => handleFranchiseChange("Yes")}
+                  className={`w-auto pl-10 pr-10 pt-1 pb-1 rounded ${
+                    franchise ? "bg-green-800" : "bg-gray-500"
+                  } text-white font-medium`}
+                >
                   Yes
                 </button>
-                <button className="w-auto pl-10 pr-10 pt-1 pb-1 rounded bg-gray-800 text-white font-medium">
+                <button
+                  onClick={() => handleFranchiseChange("No")}
+                  className={`w-auto pl-10 pr-10 pt-1 pb-1 rounded ${
+                    !franchise ? "bg-green-800" : "bg-gray-500"
+                  } text-white font-medium`}
+                >
                   No
                 </button>
               </div>
             </div>
           </div>
-          <div className="w-full mt-8 pl-12 pr-12"> 
-            <button className="w-full h-14 bg-green-800 rounded-md text-white font-medium text-xl" >Submit</button>
+          {franchise && (
+            <div className="w-full mt-4 pl-12 pr-12">
+              <Input
+                isRequired
+                variant="bordered"
+                type="text"
+                label="Franchise Details"
+                className="w-full"
+                value={franchiseDetails}
+                onChange={(e) => setFranchiseDetails(e.target.value)}
+              />
+            </div>
+          )}
+          <div className="w-full mt-8 pl-12 pr-12">
+            <button
+              onClick={handleSubmit}
+              className="w-full h-14 bg-green-800 rounded-md text-white font-medium text-xl"
+            >
+              Submit
+            </button>
           </div>
         </div>
       </div>
