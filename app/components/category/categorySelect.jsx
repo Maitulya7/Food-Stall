@@ -9,19 +9,23 @@ export default function CategorySelect({ handleSelectionChange }) {
     fetchCategoryData();
   }, []);
 
-  const fetchCategoryData = async () => {
+  const fetchCategoryData =  () => {
     try {
-      const response = await axios.get(
+     axios.get(
         "https://food-court-api.as.r.appspot.com/api/v1/admin/categories",
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access-token"),
           },
         }
-      );
+      ).then((res)=>{
+        const fetchedCategories = res.data.categories || [];
+        setCategories(fetchedCategories);
+        console.log(setCategories)
+      }).catch((err)=>{
+        console.log(err)
+      });
 
-      const fetchedCategories = response.data.categories || [];
-      setCategories(fetchedCategories);
     } catch (error) {
       console.error("Error fetching category data:", error);
     }
