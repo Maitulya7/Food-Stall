@@ -61,7 +61,7 @@ const Admin = () => {
               <p className="ml-2 mb-1 font-medium text-sm">Password</p>
               <InputPassword
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChangeFunction={(e) => setPassword(e.target.value)}
               />
 
               {error && <p className="text-red-500 ml-2 mt-2">{error}</p>}

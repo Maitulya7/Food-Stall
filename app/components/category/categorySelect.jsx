@@ -41,7 +41,7 @@ export default function CategorySelect({ handleSelectionChange }) {
         onChange={handleSelectionChange}
       >
         {categories.map((category) => (
-          <SelectItem key={category.id} value={category.id}>
+          <SelectItem key={category.name}>
             {category.name}
           </SelectItem>
         ))}

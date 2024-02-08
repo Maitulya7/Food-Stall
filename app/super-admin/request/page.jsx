@@ -20,9 +20,9 @@ const Requests = () => {
   const [requestsData, setRequestsData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const fetchRequestsData = async () => {
+  const fetchRequestsData =  () => {
     try {
-      const response = await axios
+      axios
         .get("https://food-court-api.as.r.appspot.com/api/v1/admin/requests", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access-token"),
