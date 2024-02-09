@@ -5,6 +5,7 @@ import MenuItem from "./MenuItem";
 import { usePathname } from "next/navigation";
 import { link } from "@nextui-org/react";
 import RequestDropDown from "./RequestDropDown";
+import DropDownRequest from "../request/DropDownRequest";
 
 const LeftNavbarSuperAdmin = () => {
   const pathname = usePathname();
@@ -21,16 +22,19 @@ const LeftNavbarSuperAdmin = () => {
         <MenuItem icon="/images/home.png" href="/super-admin/dashboard" active = {pathname.startsWith("/super-admin/dashboard")}>
           Home 
         </MenuItem>
-        <MenuItem icon="/images/request.png" href="/super-admin/request" active = {pathname.startsWith("/super-admin/request")}>
-          Request
-        </MenuItem>
+       
         <MenuItem icon="/images/menu.png" href="/super-admin/category" active = {pathname.startsWith("/super-admin/category")}>
           Category
         </MenuItem>
         <MenuItem icon="/images/settings.png" href="/super-admin/settings" active = {pathname.startsWith("/super-admin/setting")}>
           Setting
         </MenuItem>
+          <div className="pr-10">
+
+        <DropDownRequest/>
+          </div>
       </div>
+     
     </div>
   );
 };
