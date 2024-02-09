@@ -39,29 +39,7 @@ const Requests = () => {
   };
 
 
-  const handleReject = (requestId) => {
-    try {
-      axios
-        .post(
-          `https://food-court-api.as.r.appspot.com/api/v1/admin/approve_request/${requestId}`,
-          {},
-          {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("access-token"),
-            },
-          }
-        )
-        .then((res) => {
-          console.log("Request rejected successfully:", res.data);
-          fetchRequestsData();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } catch (error) {
-      console.error("Error rejecting request:", error);
-    }
-  };
+ 
 
   useEffect(() => {
     fetchRequestsData();
@@ -86,7 +64,7 @@ const Requests = () => {
         
         <RequestsTable
           data={rejectedRequests}
-          handleReject={handleReject}
+         
         />
 
       </div>

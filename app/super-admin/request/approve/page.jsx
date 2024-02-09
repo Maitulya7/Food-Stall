@@ -37,30 +37,7 @@ const Requests = () => {
     }
   };
 
-  const handleApprove = (requestId) => {
-    try {
-      axios
-        .post(
-          "https://food-court-api.as.r.appspot.com/api/v1/admin/requests",
-        
-          {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("access-token"),
-            },
-          }
-        )
-        .then((res) => {
-          console.log("Request approved successfully:", res.data);
-          fetchRequestsData();
-        
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    } catch (error) {
-      console.error("Error approving request:", error);
-    }
-  };
+  
 
   useEffect(() => {
     fetchRequestsData();
@@ -84,7 +61,7 @@ const Requests = () => {
         
         <RequestsTable
           data={approvedRequests}
-          handleApprove={handleApprove}
+         
         />
       </div>
     </div>
