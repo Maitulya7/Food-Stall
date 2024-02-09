@@ -3,24 +3,27 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import LeftNavbarSuperAdmin from "@/app/components/Navbar/LeftNavbarSuperAdmin";
-
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-} from "@nextui-org/react";
 import ApproveButton from "@/app/components/request/Approve"; // Import your ApproveButton component
 import RejectButton from "@/app/components/request/Reject";
+import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
 
 const Requests = () => {
   const [requestsData, setRequestsData] = useState([]);
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const fetchRequestsData =  () => {
+  const getStatusColor = (status) => {
+    switch (status.toLowerCase()) {
+      case "pending":
+        return "orange"; // or any color code you prefer
+      case "approved":
+        return "green";
+      case "rejected":
+        return "red";
+      default:
+        return "black"; // default color
+    }
+  };
+
+  const fetchRequestsData = () => {
     try {
       axios
         .get("https://food-court-api.as.r.appspot.com/api/v1/admin/requests", {
@@ -32,8 +35,9 @@ const Requests = () => {
           console.log(res);
           const requests = res.data.requests || [];
           setRequestsData(requests);
-        }).catch((err)=>{
-          console.log(err)
+        })
+        .catch((err) => {
+          console.log(err);
         });
     } catch (error) {
       console.error("Error fetching requests data:", error);
@@ -100,10 +104,10 @@ const Requests = () => {
       <div className="flex flex-col w-full">
         <TopNavbar pageTitle="Request" pageEmoji="📥" />
         <div className="flex-grow bg-green-100 p-6">
-          <table className="min-w-full bg-white border border-gray-300 divide-y divide-gray-200 text-sm">
+          <table className="min-w-full bg-white border border-gray-300 divide-y divide-gray-200 text-xs">
             <thead>
               <tr>
-                <th className="py-2 px-4 text-left bg-green-300 border-b">
+              <th className="py-2 px-4 text-left bg-green-300 border-b">
                   No
                 </th>
                 <th className="py-2 px-4 text-left bg-green-300 border-b">
@@ -133,46 +137,46 @@ const Requests = () => {
               </tr>
             </thead>
             <tbody>
-              {requestsData.map((request) => (
+              {requestsData.map((request, index) => (
                 <tr
                   key={request.id}
                   className="hover:bg-gray-100 transition-colors"
                 >
-                  <td className="py-2 px-4 border-b">{request.id}</td>
+                  <td className="py-2 px-4 border-b">{index + 1}</td>
                   <td className="py-2 px-4 border-b">{request.email}</td>
                   <td className="py-2 px-4 border-b">
                     {request.first_name} {request.last_name}
                   </td>
                   <td className="py-2 px-4 border-b">{request.phone_number}</td>
-                  <td className="py-2 px-4 border-b">{request.status}</td>
+                  <td
+                    className="py-2 px-4 border-b"
+                    style={{ color: getStatusColor(request.status) }}
+                  >
+                    {request.status}
+                  </td>
                   <td className="py-2 px-4 border-b">
                     {request.type_of_categories.length > 0 && (
-                      <span
-                        className="cursor-pointer inline-block px-2 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300"
-                        onClick={() => onOpen()}
-                      >
-                        View
-                      </span>
+                      <Popover trigger="hover" placement="bottom">
+                        <PopoverTrigger>
+                          <div className="flex flex-wrap gap-1">
+                            <span className="px-2 py-1 bg-green-600 text-white text-xs  rounded-md cursor-pointer transition duration-300">
+                              View
+                            </span>
+                          </div>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <div className="p-2">
+                            {request.type_of_categories.map(
+                              (category, categoryIndex) => (
+                                <div key={categoryIndex} className="mb-2">
+                                  {category}
+                                </div>
+                              )
+                            )}
+                          </div>
+                        </PopoverContent>
+                      </Popover>
                     )}
-                    <Modal isOpen={isOpen} onClose={onClose} size="lg">
-                      <ModalContent className="p-4">
-                        <ModalHeader className="text-lg font-semibold">
-                          Categories
-                        </ModalHeader>
-                        <ModalBody>
-                          {request.type_of_categories.map((category, index) => (
-                            <div key={index} className="mb-2">
-                              {category}
-                            </div>
-                          ))}
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button auto onClick={onClose} color="warning">
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </td>
                   <td className="py-2 px-4 border-b">
                     {request.franchise ? "Yes" : "No"}
@@ -183,9 +187,11 @@ const Requests = () => {
                   <td className="py-2 px-4 border-b">
                     <div className="flex items-center">
                       <ApproveButton
+                        key={`approve_${request.id}`}
                         ApproveRequest={() => handleApprove(request.id)}
                       />
                       <RejectButton
+                        key={`reject_${request.id}`}
                         RejectRequest={() => handleReject(request.id)}
                       />
                     </div>

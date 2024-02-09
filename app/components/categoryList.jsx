@@ -44,7 +44,7 @@ export default function CategoryList({categoryData , fetchData}) {
   return (
     <div className="p-5 rounded-lg">
     <div className="overflow-x-auto rounded">
-      <table className="min-w-full bg-white border border-gray-300 divide-y divide-gray-200">
+      <table className="min-w-1/2 text-sm bg-white border border-gray-300 divide-y divide-gray-200">
         <thead>
           <tr>
             <th className="py-3 px-6 text-left bg-green-300 border-b">ID</th>

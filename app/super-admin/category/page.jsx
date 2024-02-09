@@ -37,7 +37,7 @@ const Category = () => {
 
   return (
     <div className="h-screen flex bg-green-100">
-      <div className="w-52">
+      <div className="w-64">
         <LeftNavbarSuperAdmin />
       </div>
       <div className="flex flex-col w-full">

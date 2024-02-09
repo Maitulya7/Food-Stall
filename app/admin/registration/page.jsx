@@ -24,44 +24,51 @@ const Register = () => {
     setFranchise(value === "Yes");
   };
 
-  const handleSubmit = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("vendor[first_name]", firstName);
-      formData.append("vendor[last_name]", lastName);
-      formData.append("vendor[email]", email);
-      formData.append("vendor[phone_number]", phoneNumber);
-      formData.append("vendor[password]", password);
-      formData.append("vendor[confirm_password]", confirmPassword);
-      formData.append(
-        "vendor[type_of_categories]",
-        JSON.stringify(categories)
-      );
-      formData.append("vendor[franchise]", franchise);
-      formData.append("vendor[franchise_details]", franchiseDetails);
-      formData.append("client_id", "GXXpMxkC4J2QXhDOcKFoWP3OJpusA-CnSkKX_O4twrM");
+  const handleCategoryChange = (e) => {
+    const selectedCategories = e.target.value
+      .split(",") // Split the input string into an array
+      .map((category) => category.trim()) // Remove leading and trailing spaces
+      .filter((category) => category !== ""); // Remove empty categories
 
-      axios
-        .post(
-          "https://food-court-api.as.r.appspot.com/api/v1/vendor/sign_up",
-          formData,
-          
-          {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("access-token"),
-            },
-          }
-        )
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.error("Error in Axios request:", err);
-        });
-    } catch (error) {
-      console.error("Error registering:", error);
-      setError("Registration failed");
-    }
+    // Use a Set to ensure unique categories and then convert it back to an array
+    setCategories((prevCategories) => [
+      ...new Set([...prevCategories, ...selectedCategories]),
+    ]);
+  };
+
+  console.log("Categories Selected: ", categories);
+  const handleSubmit = () => {
+    axios
+      .post(
+        "https://food-court-api.as.r.appspot.com/api/v1/vendor/sign_up",
+
+        {
+          vendor: {
+            first_name: firstName,
+            last_name: lastName,
+            email: email,
+            phone_number: phoneNumber,
+            password: password,
+            confirm_password: confirmPassword,
+            type_of_categories: categories,
+            franchise: franchise,
+            franchise_details: franchiseDetails,
+          },
+          client_id: "GXXpMxkC4J2QXhDOcKFoWP3OJpusA-CnSkKX_O4twrM",
+        },
+
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("access-token"),
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error("Error in Axios request:", err.message);
+      });
   };
 
   return (
@@ -145,9 +152,7 @@ const Register = () => {
             </div>
 
             <div className="w-full mb-3">
-              <CategorySelect
-                handleSelectionChange={(e) => setCategories(e.target.value)}
-              />
+              <CategorySelect handleSelectionChange={handleCategoryChange} />
             </div>
 
             <div className="w-full mb-3 flex items-center ml-2 gap-6">

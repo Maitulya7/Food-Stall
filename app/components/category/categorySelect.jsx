@@ -10,6 +10,7 @@ export default function CategorySelect({ handleSelectionChange }) {
   }, []);
 
   const fetchCategoryData =  () => {
+    
     try {
      axios.get(
         "https://food-court-api.as.r.appspot.com/api/v1/admin/categories",
