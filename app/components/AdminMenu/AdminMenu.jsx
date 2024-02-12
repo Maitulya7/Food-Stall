@@ -302,7 +302,7 @@ const AdminMenuCard = () => {
                 </Button>
                 <Button
                   type="submit"
-                  className="ml-2 bg-green-600 text-white font-medium"
+                  className="ml-2 bg-green-800 text-white font-medium"
                   auto
                 >
                   Add Item
