@@ -1,7 +1,47 @@
 "use client";
 import React, { useState } from "react";
-import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  Input,
+  Button,
+} from "@nextui-org/react";
 import { FaEllipsisV, FaPencilAlt, FaTrash } from "react-icons/fa";
+
+
+import { Select, SelectItem } from "@nextui-org/react";
+
+export const itemType = [
+    {label:"Veg" , value:"veg"},
+    {label:"Non-Veg" , value:"no-veg"},
+]
+
+export const itemSubType = [
+    {label:"Regular" , value:"regular"},
+    {label:"Swaminarayan" , value:"swaminarayan"},
+    {label:"Jain" , value:"jain"},
+]
+
+export const tastes = [
+  { label: "Spicy", value: "spicy" },
+  { label: "Medium", value: "medium" },
+  { label: "Light", value: "light" },
+];
+
+export const tags = [
+  { label: "Best Seller", value: "best_seller" },
+  { label: "Kids", value: "kids" },
+  { label: "Starter", value: "starter" },
+  { label: "Yummy", value: "yummy" },
+  { label: "Healthy", value: "healthy" },
+];
+
+export const FoodCategory = [
+  { label: "Chinese", value: "Chinese" },
+  { label: "Punjabi", value: "Punjabi" },
+  { label: "South Indian", value: "South Indian" },
+];
 
 const AdminMenuCard = () => {
   const initialMenu = {
@@ -17,94 +57,61 @@ const AdminMenuCard = () => {
 
   const [menu, setMenu] = useState(initialMenu);
   const [selectedMenu, setSelectedMenu] = useState(null);
-  const [isSelectOpen, setSelectOpen] = useState(false); // New state for controlling the Select menu visibility
+  const [isSelectOpen, setSelectOpen] = useState(false);
 
-  const handleAddItem = () => {
-    // Implement your logic for adding a new item
-    console.log("Adding item");
+  // Form state
+  const [isFormOpen, setFormOpen] = useState(false);
+  const [formInputs, setFormInputs] = useState({
+    name: "",
+    item_type: "",
+    sub_type: "",
+    taste: "",
+    tags: "",
+    price: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
+    }));
   };
 
-  const handleUpdateItem = () => {
-    // Implement your logic for updating an existing item
-    console.log("Updating item");
-  };
-
-  const handleDeleteItem = () => {
-    // Implement your logic for deleting an existing item
-    console.log("Deleting item");
-  };
-
-  const toggleSelectMenu = () => {
-    setSelectOpen(!isSelectOpen);
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log("Adding item:", formInputs);
+    setFormOpen(false);
   };
 
   return (
     <div className="container mx-auto p-8">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold">All Items</h2>
-        <div className="flex gap-5">
+        <div className="flex w-1/3 gap-5">
           <button
-            onClick={handleAddItem}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            onClick={() => {
+              console.log("Add Item button clicked");
+              setFormOpen(true);
+            }}
+            className="bg-blue-500 text-white w-1/2 font-medium rounded hover:bg-blue-600"
           >
             Add Item
           </button>
-          <div className="relative inline-block text-left">
-            <button
-              type="button"
-              onClick={toggleSelectMenu} // Updated to toggle the Select menu
-              className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              {selectedMenu || "Select Menu"}
-              <svg
-                className="-mr-1 ml-2 h-5 w-5"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
+
+          
+          <Select
+                items={FoodCategory}
+                label="Food Category"
+                className="w-full"
+                variant="faded"
               >
-                <path fillRule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                <path
-                  fillRule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                />
-              </svg>
-            </button>
-            <div
-              className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none ${
-                isSelectOpen ? "visible" : "hidden" // Toggle visibility based on state
-              }`}
-            >
-              <div
-                className="py-1"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="options-menu"
-              >
-                <button
-                  onClick={() => {
-                    setSelectedMenu("Chinese Food Menu");
-                    toggleSelectMenu(); // Close the menu after selecting an option
-                  }}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                  role="menuitem"
-                >
-                  Chinese Food Menu
-                </button>
-                <button
-                  onClick={() => {
-                    setSelectedMenu("Punjabi Food Menu");
-                    toggleSelectMenu(); // Close the menu after selecting an option
-                  }}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                  role="menuitem"
-                >
-                  Punjabi Food Menu
-                </button>
-                {/* Add more menu options as needed */}
-              </div>
-            </div>
-          </div>
+                {(FoodCategory) => (
+                  <SelectItem key={FoodCategory.value}>
+                    {FoodCategory.label}
+                  </SelectItem>
+                )}
+              </Select>
         </div>
       </div>
       <div className="overflow-x-auto">
@@ -133,7 +140,6 @@ const AdminMenuCard = () => {
                 </td>
                 <td className="py-2 px-4 border-b">{subType}</td>
                 <td className="py-2 px-4 border-b">
-                  {/* Taste Popover */}
                   <Popover trigger="hover" placement="bottom">
                     <PopoverTrigger>
                       <div className="flex flex-wrap gap-1">
@@ -154,7 +160,6 @@ const AdminMenuCard = () => {
                   </Popover>
                 </td>
                 <td className="py-2 px-4 border-b">
-                  {/* Tags Popover */}
                   <Popover trigger="hover" placement="bottom">
                     <PopoverTrigger>
                       <div className="flex flex-wrap gap-1">
@@ -176,7 +181,6 @@ const AdminMenuCard = () => {
                 </td>
                 <td className="py-2 px-4 border-b">{menu.food_item.price}</td>
                 <td className="py-2 px-4 border-b">
-                  {/* Actions Popover */}
                   <Popover trigger="click" placement="bottom">
                     <PopoverTrigger>
                       <div className="flex items-center cursor-pointer text-blue-500 hover:text-blue-700">
@@ -202,6 +206,112 @@ const AdminMenuCard = () => {
           </tbody>
         </table>
       </div>
+
+      {isFormOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-10 w-1/2  rounded-md">
+            <h2 className="text-2xl font-bold mb-4">Add New Item</h2>
+            <form className="space-y-4 " onSubmit={handleFormSubmit}>
+              <Input
+                label="Name"
+                name="name"
+                value={formInputs.name}
+                onChange={handleInputChange}
+                placeholder="Enter item name"
+                className="w-full"
+              />
+            <div className="flex gap-5">
+                <Select
+                  items={itemType}
+                  label="Item Type"
+                  placeholder="Select item type"
+                  className="max-w-xs"
+                >
+                  {(itemType) => (
+                    <SelectItem key={itemType.value}>{itemType.label}</SelectItem>
+                  )}
+                </Select>
+
+                <Select
+                  items={itemSubType}
+                  label="Sub Type"
+                  placeholder="Select sub type"
+                  className="max-w-xs"
+                  selectionMode="multiple"
+                >
+                  {(itemSubType) => (
+                    <SelectItem key={itemSubType.value}>{itemSubType.label}</SelectItem>
+                  )}
+                </Select>
+
+              </div>
+              <div className="flex gap-5">
+                <Select
+                  items={tastes}
+                  label="Tastes"
+                  placeholder="Select taste"
+                  className="max-w-xs"
+                >
+                  {(animal) => (
+                    <SelectItem key={animal.value}>{animal.label}</SelectItem>
+                  )}
+                </Select>
+
+                <Select
+                  items={tags}
+                  label="Tastes"
+                  placeholder="Select taste"
+                  className="max-w-xs"
+                  selectionMode="multiple"
+                >
+                  {(tags) => (
+                    <SelectItem key={tags.value}>{tags.label}</SelectItem>
+                  )}
+                </Select>
+
+                <Input
+                  label="Price"
+                  name="price"
+                  type="number"
+                  value={formInputs.price}
+                  onChange={handleInputChange}
+                  placeholder="Enter price"
+                  className="w-full"
+                />
+              </div>
+
+              <Select
+                items={FoodCategory}
+                label="Food Category"
+                placeholder="Select Food Category"
+                className="w-full"
+              >
+                {(FoodCategory) => (
+                  <SelectItem key={FoodCategory.value}>
+                    {FoodCategory.label}
+                  </SelectItem>
+                )}
+              </Select>
+              <div className="flex justify-end">
+                <Button
+                  type="button"
+                  onClick={() => setFormOpen(false)}
+                  variant="text"
+                >
+                  Close
+                </Button>
+                <Button
+                  type="submit"
+                  className="ml-2 bg-green-600 text-white font-medium"
+                  auto
+                >
+                  Add Item
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

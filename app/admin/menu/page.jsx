@@ -1,7 +1,6 @@
 import React from "react";
 import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
 import TopNavbar from "@/app/components/Navbar/TopNavbar";
-import AdminMenu from "@/app/components/menu/menu";
 import AdminMenuCard from "@/app/components/menu/AdminMenu";
 const Menu = () => {
   return (

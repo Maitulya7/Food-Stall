@@ -5,6 +5,7 @@ import LatestOrder from "@/app/components/Order/LatestOrder";
 import React from "react";
 
 function Dashboard() {
+  
   return (
     <div className="h-screen flex bg-green-50">
       <div className="w-64">
