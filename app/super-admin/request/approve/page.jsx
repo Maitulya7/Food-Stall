@@ -56,7 +56,7 @@ const Requests = () => {
     </div>
     <div className="flex flex-col w-full">
       <TopNavbar pageTitle="Request" pageEmoji="📥" />
-      <div className="flex-grow bg-green-100 p-6">
+      <div className="flex-grow bg-green-100 pl-7 pr-6">
         <h2 className="text-lg font-semibold mb-4">Approved Requests</h2>
         
         <RequestsTable

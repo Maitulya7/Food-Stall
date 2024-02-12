@@ -26,9 +26,9 @@ const TopNavbar = ({ pageTitle, pageEmoji }) => {
                 isIconOnly
                 aria-label="more than 99 notifications"
                 variant="bordered"
-                className="w-10 h-10"
+                className="w-8 h-8"
               >
-                <NotificationIcon size={28} />
+                <NotificationIcon size={22} />
               </Button>
           </Badge>
             </Link>

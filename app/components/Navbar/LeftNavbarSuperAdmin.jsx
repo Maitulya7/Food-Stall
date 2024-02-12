@@ -3,8 +3,6 @@ import React from "react";
 import Image from "next/image";
 import MenuItem from "./MenuItem";
 import { usePathname } from "next/navigation";
-import { link } from "@nextui-org/react";
-import RequestDropDown from "./RequestDropDown";
 import DropDownRequest from "../request/DropDownRequest";
 
 const LeftNavbarSuperAdmin = () => {

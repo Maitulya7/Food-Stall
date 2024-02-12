@@ -5,8 +5,10 @@ import Link from 'next/link';
 import { Input } from '@nextui-org/react';
 import InputPassword from '../components/password/InputPassword';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const Admin = () => {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -16,7 +18,7 @@ const Admin = () => {
       const formData = new FormData();
       formData.append("vendor[email]", email);
       formData.append("vendor[password]", password);
-      formData.append("client_id", "egp44hMIRaN2k3e6zLlo0svH2HXi944QxHIqLc50CYI")
+      formData.append("client_id", "GXXpMxkC4J2QXhDOcKFoWP3OJpusA-CnSkKX_O4twrM")
 
       axios
         .post(
@@ -30,7 +32,10 @@ const Admin = () => {
           }
         )
         .then((res) => {
-          console.log(res);
+          if (res.status == 200) {
+            router.push("/admin/dashboard");
+            localStorage.setItem("access-token", res.data.admin.access_token);
+          }
         })
         .catch((err) => {
           console.error("Error in Axios request:", err);

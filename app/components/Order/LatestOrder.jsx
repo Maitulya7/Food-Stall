@@ -39,6 +39,7 @@ export default function LatestOrder() {
 
   return (
     <Table
+    className="text-sm"
       aria-label="Example table with client side pagination"
       bottomContent={
         <div className="flex w-full justify-center">

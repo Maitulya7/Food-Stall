@@ -1,6 +1,8 @@
 import React from "react";
 import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
 import TopNavbar from "@/app/components/Navbar/TopNavbar";
+import AdminMenu from "@/app/components/menu/menu";
+import AdminMenuCard from "@/app/components/menu/AdminMenu";
 const Menu = () => {
   return (
     <div className="h-screen flex bg-green-50">
@@ -9,7 +11,9 @@ const Menu = () => {
       </div>
       <div className="flex flex-col w-full">
         <TopNavbar pageTitle="Menu" pageEmoji="🍽️" />
-        <div className="flex-grow bg-green-50">hello</div>
+        <div className="flex-grow bg-green-50 p-2">
+          <AdminMenuCard/>
+        </div>
       </div>
     </div>
   );
