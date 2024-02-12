@@ -63,7 +63,7 @@ export default function AddCategory({fetchData}) {
                 />
                 <Button
                   onClick={handleCategory}
-                  className="bg-[#3A5B22] text-white font-medium"
+                  className="bg-green-800 text-white font-medium"
                 >
                   Submit
                 </Button>

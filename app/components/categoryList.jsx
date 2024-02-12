@@ -60,7 +60,7 @@ export default function CategoryList({categoryData , fetchData}) {
               <td className="py-4 px-6 border-b">
                 <button
                   onClick={() => handleDelete(item.id)}
-                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors"
+                  className="bg-red-400 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors"
                 >
                   Delete
                 </button>

@@ -50,7 +50,7 @@ const Requests = () => {
   
 
   return (
-    <div className="h-screen flex bg-green-100 font-sans">
+    <div className="h-full flex bg-green-100 font-sans">
     <div>
       <LeftNavbarSuperAdmin />
     </div>
