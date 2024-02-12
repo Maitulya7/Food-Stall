@@ -12,7 +12,7 @@ const TopNavbar = ({ pageTitle, pageEmoji }) => {
           <h1 className="text-2xl">{pageEmoji}</h1>
         </div>
 
-        <div className="flex items-center gap-6 ">
+        <div>
           <Link href="/super-admin/request/pending">
           <Badge
             className="hover:cursor-pointer w-7 h-7"

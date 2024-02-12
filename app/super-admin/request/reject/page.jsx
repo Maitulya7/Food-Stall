@@ -53,7 +53,7 @@ const Requests = () => {
 
   return (
     <div className="h-screen flex bg-green-100 font-sans">
-    <div className="w-64">
+    <div>
       <LeftNavbarSuperAdmin />
     </div>
     <div className="flex flex-col w-full">
