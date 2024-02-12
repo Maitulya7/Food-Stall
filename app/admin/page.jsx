@@ -33,8 +33,10 @@ const Admin = () => {
         )
         .then((res) => {
           if (res.status == 200) {
+            console.log(res)
             router.push("/admin/dashboard");
-            localStorage.setItem("access-token", res.data.admin.access_token);
+            localStorage.setItem("access-token", res.data.vendor.access_token);
+         
           }
         })
         .catch((err) => {
