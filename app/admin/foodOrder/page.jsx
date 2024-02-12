@@ -1,7 +1,6 @@
 import React from "react";
 import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
 import TopNavbar from "@/app/components/Navbar/TopNavbar";
-import FoodTableList from "@/app/components/TableFood";
 import CustomerItemTable from "@/app/components/customerOrders/orderTable";
 
 const FoodOrder = () => {

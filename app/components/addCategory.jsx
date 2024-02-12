@@ -45,7 +45,7 @@ export default function AddCategory({fetchData}) {
 
   return (
     <>
-      <Button onPress={onOpen} className=" bg-[#3A5B22] text-white font-medium">
+      <Button onPress={onOpen} className=" bg-green-800 text-white font-medium">
         Add Category
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">

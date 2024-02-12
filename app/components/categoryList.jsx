@@ -47,9 +47,9 @@ export default function CategoryList({categoryData , fetchData}) {
       <table className="min-w-1/2 text-sm bg-white border border-gray-300 divide-y divide-gray-200">
         <thead>
           <tr>
-            <th className="py-3 px-6 text-left bg-green-300 border-b">ID</th>
-            <th className="py-3 px-6 text-left bg-green-300 border-b">Category</th>
-            <th className="py-3 px-6 text-left bg-green-300 border-b">Actions</th>
+            <th className="py-3 px-6 text-left bg-green-800 text-white border-b">ID</th>
+            <th className="py-3 px-6 text-left bg-green-800 text-white border-b">Category</th>
+            <th className="py-3 px-6 text-left bg-green-800 text-white border-b">Actions</th>
           </tr>
         </thead>
         <tbody>

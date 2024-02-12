@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const MenuItem = ({ icon, href, children, active }) => {
-  const linkColor = active ? "text-blue-500" : "text-green-600";
+  const linkColor = active ? "text-green-600  rounded font-middum bg-white" : "text-white";
 
   return (
-    <div className="flex gap-4 items-center ml-8 pl-2">
+    <div className={`flex gap-4 items-center p-2 ${linkColor}`}>
       <Image src={icon} alt="logo" width={22} height={22} />
       <Link href={href}>
         <span className={`cursor-pointer text-base font-medium lg:text-sm ${linkColor}`}>

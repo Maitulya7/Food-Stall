@@ -117,7 +117,7 @@ const AdminMenuCard = () => {
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-300 divide-y divide-gray-200 text-sm">
           <thead>
-            <tr className="bg-green-300 ">
+            <tr className="bg-green-800 text-white ">
               <th className="py-2 px-4 text-xs text-left border-b">Index</th>
               <th className="py-2 px-4 text-xs text-left border-b">Name</th>
               <th className="py-2 px-4 text-xs text-left border-b">

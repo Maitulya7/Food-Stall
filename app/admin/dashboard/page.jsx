@@ -1,6 +1,6 @@
 import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
 import TopNavbar from "@/app/components/Navbar/TopNavbar";
-import LatestOrder from "@/app/components/Order/LatestOrder";
+import CustomerItemTable from "@/app/components/customerOrders/orderTable";
 
 import React from "react";
 
@@ -14,7 +14,7 @@ function Dashboard() {
       <div className="flex flex-col w-full">
         <TopNavbar pageTitle="Home" pageEmoji="🏠" />
         <div className="flex-grow bg-green-100 pl-10 pr-10">
-          <LatestOrder />
+          <CustomerItemTable/>
         </div>
       </div>
     </div>

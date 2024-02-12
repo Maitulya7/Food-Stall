@@ -7,14 +7,13 @@ import { usePathname } from "next/navigation";
 const LeftNavbar = () => {
   const pathname = usePathname();
   return (
-    <div className="bg-white w-62 pt-1 h-screen rounded-xl">
-      <div className="flex items-center ml-8 mt-10 gap-2 mb-14">
+    <div className="bg-green-800 w-62 pt-1 h-screen">
+      <div className="flex items-center ml-8 mt-6 gap-2 ">
         <Image src="/images/admin-logo.png" alt="logo" width={32} height={32} />
-        <h1 className="text-2xl font-semibold text-green-600">FoodM</h1>
+        <h1 className="text-2xl font-semibold text-white">FoodM</h1>
       </div>
-
-      <div className="flex flex-col gap-10 pb-20">
-        <MenuItem icon="/images/home.png" href="/admin/dashboard" active = {pathname.startsWith("/admin/dashboard")}>
+      <div className="flex flex-col gap-4  p-10" >
+        <MenuItem  icon="/images/home.png" href="/admin/dashboard" active = {pathname.startsWith("/admin/dashboard")}>
           Home
         </MenuItem>
         <MenuItem icon="/images/food-order.png" href="/admin/foodOrder" active = {pathname.startsWith("/admin/foodOrder")}>

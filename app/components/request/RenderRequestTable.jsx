@@ -27,22 +27,22 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
     <table  className="min-w-full bg-white border border-gray-300 divide-y divide-gray-200 text-xs">
       <thead>
         <tr>
-          <th className="py-2 px-4 text-left bg-green-300 border-b">No</th>
-          <th className="py-2 px-4 text-left bg-green-300 border-b">Email</th>
-          <th className="py-2 px-4 text-left bg-green-300 border-b">Name</th>
-          <th className="py-2 px-4 text-left bg-green-300 border-b">Phone</th>
-          <th className="py-2 px-4 text-left bg-green-300 border-b">Status</th>
-          <th className="py-2 px-4 text-left bg-green-300 border-b">
+          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">No</th>
+          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">Email</th>
+          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">Name</th>
+          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">Phone</th>
+          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">Status</th>
+          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">
             Categories
           </th>
-          <th className="py-2 px-4 text-left bg-green-300 border-b">
+          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">
             Franchise
           </th>
-          <th className="py-2 px-4 text-left bg-green-300 border-b">
+          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">
             Franchise Details
           </th>
            {showActionHeader && (
-            <th className="py-2 px-4 text-left bg-green-300 border-b">Action</th>
+            <th className="py-2 px-4 text-left bg-green-800 text-white border-b">Action</th>
           )}
         </tr>
       </thead>

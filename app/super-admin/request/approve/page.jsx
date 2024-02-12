@@ -50,18 +50,18 @@ const Requests = () => {
   
 
   return (
-    <div className="h-screen flex bg-green-100 font-sans">
-    <div className="w-64">
+    <div className="h-full flex bg-green-100 font-sans">
+    <div className="w-64" >
       <LeftNavbarSuperAdmin />
     </div>
     <div className="flex flex-col w-full">
       <TopNavbar pageTitle="Request" pageEmoji="📥" />
-      <div className="flex-grow bg-green-100 pl-7 pr-6">
+      <div className="flex-grow bg-green-100 pl-7 pr-6 pb-10">
         <h2 className="text-lg font-semibold mb-4">Approved Requests</h2>
         
         <RequestsTable
           data={approvedRequests}
-         
+          
         />
       </div>
     </div>
