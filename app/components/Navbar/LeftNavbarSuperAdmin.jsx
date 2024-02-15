@@ -73,13 +73,6 @@ const LeftNavbarSuperAdmin = () => {
         >
           Category
         </MenuItem>
-        <MenuItem
-          icon="/images/settings.png"
-          href="/super-admin/settings"
-          active={pathname.startsWith("/super-admin/setting")}
-        >
-          Setting
-        </MenuItem>
         <div className="pr-10">
           <DropDownRequest />
         </div>

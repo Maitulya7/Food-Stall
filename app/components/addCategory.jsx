@@ -10,6 +10,7 @@ import {
   useDisclosure,
   Input,
 } from "@nextui-org/react";
+import DEFAULT_URL from "@/config";
 
 export default function AddCategory({fetchData}) {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
@@ -21,7 +22,7 @@ export default function AddCategory({fetchData}) {
 
     axios
       .post(
-        "https://food-court-api.as.r.appspot.com/api/v1/admin/categories",
+        `${DEFAULT_URL}/api/v1/admin/categories`,
         formData,
         {
           headers: {

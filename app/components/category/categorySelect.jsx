@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Select, SelectItem } from "@nextui-org/react";
 import axios from "axios";
+import DEFAULT_URL from "@/config";
 
 export default function CategorySelect({ handleSelectionChange }) {
   const [categories, setCategories] = useState([]);
@@ -9,24 +10,24 @@ export default function CategorySelect({ handleSelectionChange }) {
     fetchCategoryData();
   }, []);
 
-  const fetchCategoryData =  () => {
-    
+  const fetchCategoryData = () => {
     try {
-     axios.get(
-        "https://food-court-api.as.r.appspot.com/api/v1/admin/categories",
-        {
+      axios
+        .get(`${DEFAULT_URL}/api/v1/admin/categories`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access-token"),
+            "ngrok-skip-browser-warning": true,
           },
-        }
-      ).then((res)=>{
-        const fetchedCategories = res.data.categories || [];
-        setCategories(fetchedCategories);
-        console.log(setCategories)
-      }).catch((err)=>{
-        console.log(err)
-      });
-
+        })
+        .then((res) => {
+          const fetchedCategories = res.data.categories || [];
+          setCategories(fetchedCategories);
+          console.log(setCategories);
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } catch (error) {
       console.error("Error fetching category data:", error);
     }
@@ -42,9 +43,7 @@ export default function CategorySelect({ handleSelectionChange }) {
         onChange={handleSelectionChange}
       >
         {categories.map((category) => (
-          <SelectItem key={category.name}>
-            {category.name}
-          </SelectItem>
+          <SelectItem key={category.name}>{category.name}</SelectItem>
         ))}
       </Select>
     </div>

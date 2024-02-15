@@ -5,6 +5,7 @@ import { Input } from "@nextui-org/react";
 import InputPassword from "../../components/password/InputPassword";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import DEFAULT_URL from "@/config";
 
 const Admin = () => {
   const router = useRouter();
@@ -17,12 +18,12 @@ const Admin = () => {
 
     try {
       axios
-        .post("https://food-court-api.as.r.appspot.com/api/v1/admin/login", {
+        .post(`${DEFAULT_URL}/api/v1/admin/login`, {
           admin: {
             email: email,
             password: password,
           },
-          client_id: "GXXpMxkC4J2QXhDOcKFoWP3OJpusA-CnSkKX_O4twrM",
+          client_id: "egp44hMIRaN2k3e6zLlo0svH2HXi944QxHIqLc50CYI",
         })
         .then((res) => {
             console.log(res)
@@ -30,6 +31,7 @@ const Admin = () => {
           if (res.status == 200) {
             router.push("/super-admin/dashboard");
             localStorage.setItem("access-token", res.data.admin.access_token);
+            console.log(res.data.admin.access_token)
           }
         })
         .catch((err) => {

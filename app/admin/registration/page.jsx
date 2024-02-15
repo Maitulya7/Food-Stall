@@ -7,6 +7,8 @@ import InputPassword from "@/app/components/password/InputPassword";
 import ConfirmPassword from "@/app/components/password/confirmPassword";
 import CategorySelect from "@/app/components/category/categorySelect";
 import axios from "axios";
+import DEFAULT_URL from "@/config";
+
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -40,7 +42,8 @@ const Register = () => {
   const handleSubmit = () => {
     axios
       .post(
-        "https://food-court-api.as.r.appspot.com/api/v1/vendor/sign_up",
+        `${DEFAULT_URL}/api/v1/vendor/sign_up`,
+        
 
         {
           vendor: {
@@ -54,12 +57,13 @@ const Register = () => {
             franchise: franchise,
             franchise_details: franchiseDetails,
           },
-          client_id: "GXXpMxkC4J2QXhDOcKFoWP3OJpusA-CnSkKX_O4twrM",
+          client_id: "egp44hMIRaN2k3e6zLlo0svH2HXi944QxHIqLc50CYI",
         },
 
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access-token"),
+            "ngrok-skip-browser-warning": true,
           },
         }
       )

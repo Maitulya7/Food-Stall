@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import DEFAULT_URL from "@/config";
 
 export default function CategoryList({categoryData , fetchData}) {
  
@@ -18,16 +19,17 @@ export default function CategoryList({categoryData , fetchData}) {
     try {
       axios
         .delete(
-          `https://food-court-api.as.r.appspot.com/api/v1/admin/categories/${selectedCategoryId}`,
+          `${DEFAULT_URL}/api/v1/admin/categories/${selectedCategoryId}`,
           {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("access-token"),
+              "ngrok-skip-browser-warning": true,
             },
           }
         )
         .then((res) => {
           fetchData();
-          onClose(); // Close the modal after successful deletion
+          onClose(); 
         })
         .catch((error) => {
           console.error("Error deleting category:", error);

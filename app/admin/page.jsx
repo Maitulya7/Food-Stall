@@ -6,6 +6,7 @@ import { Input } from '@nextui-org/react';
 import InputPassword from '../components/password/InputPassword';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import DEFAULT_URL from '@/config';
 
 const Admin = () => {
   const router = useRouter();
@@ -13,21 +14,23 @@ const Admin = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  
   const handleLogin = async () => {
     try {
       const formData = new FormData();
       formData.append("vendor[email]", email);
       formData.append("vendor[password]", password);
-      formData.append("client_id", "GXXpMxkC4J2QXhDOcKFoWP3OJpusA-CnSkKX_O4twrM")
+      formData.append("client_id", "egp44hMIRaN2k3e6zLlo0svH2HXi944QxHIqLc50CYI")
 
       axios
         .post(
-          "https://food-court-api.as.r.appspot.com/api/v1/vendor/login",
+          `${DEFAULT_URL}/api/v1/vendor/login`,
           formData,
           
           {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("access-token"),
+              "ngrok-skip-browser-warning": true,
             },
           }
         )
@@ -36,6 +39,12 @@ const Admin = () => {
             console.log(res)
             router.push("/admin/dashboard");
             localStorage.setItem("access-token", res.data.vendor.access_token);
+
+            console.log(res.data.vendor.categories)
+
+            const categoriesData = res.data.vendor.categories;
+            const jsonString = JSON.stringify(categoriesData)
+            localStorage.setItem('categoriesData', jsonString);
          
           }
         })

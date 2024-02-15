@@ -5,25 +5,24 @@ import LeftNavbarSuperAdmin from "@/app/components/Navbar/LeftNavbarSuperAdmin";
 import AddCategory from "@/app/components/addCategory";
 import CategoryList from "@/app/components/categoryList";
 import axios from "axios";
+import DEFAULT_URL from "@/config";
 
 const Category = () => {
   const [categoryData, setCategoryData] = useState([]);
   const fetchData = () => {
     try {
+     
       axios
-        .get(
-          "https://food-court-api.as.r.appspot.com/api/v1/admin/categories",
-          {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("access-token"),
-            },
-          }
-        )
+        .get(`${DEFAULT_URL}/api/v1/admin/categories`, {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("access-token"),
+            "ngrok-skip-browser-warning": true,
+          },
+        })
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
           const categories = response.data.categories || [];
           console.log(categories);
-
           setCategoryData(categories);
         });
     } catch (error) {

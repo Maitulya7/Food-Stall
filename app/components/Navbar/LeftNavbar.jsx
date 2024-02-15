@@ -25,9 +25,6 @@ const LeftNavbar = () => {
         <MenuItem icon="/images/bills.png" href="/admin/bills" active = {pathname.startsWith("/admin/bills")}>
           Bills
         </MenuItem>
-        <MenuItem icon="/images/settings.png" href="/admin/setting" active = {pathname.startsWith("/admin/setting")}>
-          Setting
-        </MenuItem>
         <MenuItem icon="/images/edit-profile.png" href="/admin/editProfile" active = {pathname.startsWith("/admin/editProfile")}>
           Edit Profile
         </MenuItem>

@@ -4,7 +4,7 @@ import axios from "axios";
 import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import LeftNavbarSuperAdmin from "@/app/components/Navbar/LeftNavbarSuperAdmin";
 import RequestsTable from "@/app/components/request/RenderRequestTable";
-
+import DEFAULT_URL from "@/config";
 
 const Requests = () => {
   const [requestsData, setRequestsData] = useState([]);
@@ -20,9 +20,10 @@ const Requests = () => {
   const fetchRequestsData = () => {
     try {
       axios
-        .get("https://food-court-api.as.r.appspot.com/api/v1/admin/requests", {
+        .get(`${DEFAULT_URL}/api/v1/admin/requests`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access-token"),
+            "ngrok-skip_browser_warning": true,
           },
         })
         .then((res) => {

@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { Input } from '@nextui-org/react';
 import InputPassword from '../../components/password/InputPassword';
 import axios from 'axios';
+import DEFAULT_URL from '@/config';
+
 
 const Admin = () => {
   
@@ -14,13 +16,13 @@ const Admin = () => {
 
   const handleLogin = async () => {
     try {
-      axios.post("https://food-court-api.as.r.appspot.com/api/v1/admin/sign_up",
+      axios.post(`${DEFAULT_URL}/api/v1/admin/sign_up`,
       {
         admin:{
         email:email,
         password:password
       },
-      client_id: "GXXpMxkC4J2QXhDOcKFoWP3OJpusA-CnSkKX_O4twrM"
+      client_id: "egp44hMIRaN2k3e6zLlo0svH2HXi944QxHIqLc50CYI"
     }
       
       ).then((res)=>{

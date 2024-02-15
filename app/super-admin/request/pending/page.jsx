@@ -4,7 +4,7 @@ import axios from "axios";
 import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import LeftNavbarSuperAdmin from "@/app/components/Navbar/LeftNavbarSuperAdmin";
 import RequestsTable from "@/app/components/request/RenderRequestTable";
-import { data } from "autoprefixer";
+import DEFAULT_URL from "@/config";
 
 const Requests = () => {
   const [requestsData, setRequestsData] = useState([]);
@@ -20,9 +20,10 @@ const Requests = () => {
   const fetchRequestsData = () => {
     try {
       axios
-        .get("https://food-court-api.as.r.appspot.com/api/v1/admin/requests", {
+        .get(`${DEFAULT_URL}/api/v1/admin/requests`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access-token"),
+            "ngrok-skip-browser-warning": true,
           },
         })
         .then((res) => {
@@ -42,7 +43,7 @@ const Requests = () => {
     try {
       axios
         .post(
-          `https://food-court-api.as.r.appspot.com/api/v1/admin/approve_request/${requestId}`,
+          `${DEFAULT_URL}/api/v1/admin/approve_request/${requestId}`,
           {},
           {
             headers: {
@@ -53,7 +54,6 @@ const Requests = () => {
         .then((res) => {
           console.log("Request approved successfully:", res.data);
           fetchRequestsData();
-        
         })
         .catch((err) => {
           console.log(err.message);
@@ -67,7 +67,7 @@ const Requests = () => {
     try {
       axios
         .post(
-          `https://food-court-api.as.r.appspot.com/api/v1/admin/reject_request/${requestId}`,
+          `${DEFAULT_URL}/api/v1/admin/reject_request/${requestId}`,
           {},
           {
             headers: {
@@ -87,7 +87,6 @@ const Requests = () => {
     }
   };
 
-
   useEffect(() => {
     fetchRequestsData();
   }, []);
@@ -103,7 +102,7 @@ const Requests = () => {
       </div>
       <div className="flex flex-col w-full">
         <TopNavbar pageTitle="Request" pageEmoji="📥" />
-        <div className="flex-grow bg-green-100 p-6">
+        <div className="flex-grow bg-green-100 pl-6 pr-6">
           <h2 className="text-lg font-semibold mb-4">Pending Requests</h2>
 
           <RequestsTable

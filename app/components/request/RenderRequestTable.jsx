@@ -8,13 +8,13 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
   const getStatusColor = (status) => {
     switch (status.toLowerCase()) {
       case "pending":
-        return "orange"; // or any color code you prefer
+        return "orange"; 
       case "approved":
         return "green";
       case "rejected":
         return "red";
       default:
-        return "black"; // default color
+        return "black";
     }
   };
   const showActionHeader =
