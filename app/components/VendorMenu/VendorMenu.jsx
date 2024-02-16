@@ -8,7 +8,6 @@ import axios from "axios";
 const AdminMenuCard = () => {
   const [isFormOpen, setFormOpen] = useState(false);
 
-
   const itemTypeOptions = [
     { label: "Veg", value: "veg" },
     { label: "Non-Veg", value: "no-veg" },
@@ -49,10 +48,10 @@ const AdminMenuCard = () => {
 
   const [formInputs, setFormInputs] = useState({
     name: "",
-    item_type: "",
-    sub_type: "",
-    taste: "",
-    tags: "",
+    item_type: [],
+    sub_type: [],
+    taste: [],
+    tags: [],
     price: "",
     food_category: "",
   });
@@ -67,7 +66,7 @@ const AdminMenuCard = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const categoryId = formInputs.food_category;
+    const categoryId = Number(formInputs.food_category);
 
     const newItemData = {
       name: formInputs.name,
@@ -107,21 +106,31 @@ const AdminMenuCard = () => {
       console.error("Error adding item:", error.message);
     }
   };
+
   const [foodCategoryData, setFoodCategoryData] = useState([]);
 
   useEffect(() => {
     const storedFoodCategoryData = localStorage.getItem("categoriesData");
-
     if (storedFoodCategoryData) {
-      const parsedData = JSON.parse(storedFoodCategoryData);
-      setFoodCategoryData(parsedData);
+      try {
+        const parsedData = JSON.parse(storedFoodCategoryData);
+
+        setFoodCategoryData(parsedData);
+      } catch (error) {
+        console.error("Error parsing stored data:", error.message);
+      }
+    } else {
+      console.error("No data found in localStorage for categoriesData");
     }
   }, []);
 
-  const handleFoodCategoryChange = (selectedCategory) => {
+  const handleFoodCategoryChange = (event) => {
+    const selectedCategoryId = event.target.value || "";
+    console.log("Selected Category ID:", selectedCategoryId);
+
     setFormInputs((prevInputs) => ({
       ...prevInputs,
-      food_category: selectedCategory.value,
+      food_category: selectedCategoryId,
     }));
   };
 
@@ -145,10 +154,11 @@ const AdminMenuCard = () => {
             label="Food Category"
             placeholder="Select Food Category"
             className="w-full"
+            value={formInputs.food_category}
             onChange={handleFoodCategoryChange}
           >
             {foodCategoryData.map((foodCategory) => (
-              <SelectItem key={foodCategory.value}>
+              <SelectItem key={foodCategory.id} value={foodCategory.id}>
                 {foodCategory.name}
               </SelectItem>
             ))}
@@ -158,7 +168,7 @@ const AdminMenuCard = () => {
       <MenuTable menu={menu} />
       {isFormOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-10 w-1/2  rounded-md">
+          <div className="bg-white p-10 w-1/2 rounded-md">
             <h2 className="text-2xl font-bold mb-4">Add New Item</h2>
             <form className="space-y-4 " onSubmit={handleFormSubmit}>
               <Input
@@ -170,71 +180,99 @@ const AdminMenuCard = () => {
                 className="w-full"
               />
               <div className="flex gap-5">
-                <Select
+              <Select
                   items={itemTypeOptions}
-                  value={formInputs.item_type}
-                  label="Item Type"
-                  placeholder="Select item type"
+                  label="Type"
+                  placeholder="Select  types"
                   className="max-w-xs"
-                  onChange={(selectedOption) =>
-                    handleInputChange("item_type", selectedOption.value)
-                  }
+                  selectionMode="multiple"
+                  onChange={(selectedOption) => {
+                    const selectedTypes = formInputs.item_type || [];
+                    const updatedTypes = [
+                      ...selectedTypes,
+                      selectedOption.target.value,
+                    ];
+                    handleInputChange("item_type", updatedTypes);
+                  }}
                 >
-                  {(itemTypeOptions) => (
-                    <SelectItem key={itemTypeOptions.value}>
-                      {itemTypeOptions.label}
+                  {itemTypeOptions.map((itemType) => (
+                    <SelectItem
+                      key={itemType.value}
+                      value={itemType.value}
+                    >
+                      {itemType.label}
                     </SelectItem>
-                  )}
+                  ))}
                 </Select>
 
                 <Select
                   items={itemSubTypeOptions}
                   label="Sub Type"
-                  placeholder="Select sub type"
+                  placeholder="Select sub types"
                   className="max-w-xs"
-                  onChange={(selectedOption) =>
-                    handleInputChange("sub_type", selectedOption.value)
-                  }
+                  selectionMode="multiple"
+                  onChange={(selectedOption) => {
+                    const selectedSubTypes = formInputs.sub_type || [];
+                    const updatedSubTypes = [
+                      ...selectedSubTypes,
+                      selectedOption.target.value,
+                    ];
+                    handleInputChange("sub_type", updatedSubTypes);
+                  }}
                 >
-                  {(itemSubTypeOptions) => (
-                    <SelectItem key={itemSubTypeOptions.value}>
-                      {itemSubTypeOptions.label}
+                  {itemSubTypeOptions.map((itemSubType) => (
+                    <SelectItem
+                      key={itemSubType.value}
+                      value={itemSubType.value}
+                    >
+                      {itemSubType.label}
                     </SelectItem>
-                  )}
+                  ))}
                 </Select>
               </div>
               <div className="flex gap-5">
                 <Select
                   items={tasteOptions}
                   label="Tastes"
-                  placeholder="Select taste"
+                  placeholder="Select tastes"
                   className="max-w-xs"
-                  onChange={(selectedOption) =>
-                    handleInputChange("taste", selectedOption.value)
-                  }
+                  selectionMode="multiple"
+                  onChange={(selectedOption) => {
+                    const selectedTastes = formInputs.taste || [];
+                    const updatedTastes = [
+                      ...selectedTastes,
+                      selectedOption.target.value,
+                    ];
+                    handleInputChange("taste", updatedTastes);
+                  }}
                 >
-                  {(tasteOptions) => (
-                    <SelectItem key={tasteOptions.value}>
-                      {tasteOptions.label}
+                  {tasteOptions.map((taste) => (
+                    <SelectItem key={taste.value} value={taste.value}>
+                      {taste.label}
                     </SelectItem>
-                  )}
+                  ))}
                 </Select>
 
                 <Select
                   items={tagOptions}
                   label="Tags"
-                  placeholder="Select tag"
+                  placeholder="Select tags"
                   className="max-w-xs"
                   selectionMode="multiple"
-                  onChange={(selectedOption) =>
-                    handleInputChange("tags", selectedOption.value)
-                  }
+                  onChange={(selectedOption) => {
+                    const selectedTags = formInputs.tags || [];
+                    const updatedTags = [
+                      ...selectedTags,
+                      selectedOption.target.value,
+                    ];
+                    handleInputChange("tags", updatedTags);
+                  }}
                 >
-                  {(tagOptions) => (
-                    <SelectItem key={tagOptions.value}>
-                      {tagOptions.label}
+                  {tagOptions.map((tag) => (
+                    <SelectItem key={tag.value} value={tag.value}>
+                      {tag.label}
                     </SelectItem>
-                  )}
+                  ))}
                 </Select>
 
                 <Input
@@ -242,9 +280,7 @@ const AdminMenuCard = () => {
                   name="price"
                   type="number"
                   value={formInputs.price}
-                  onChange={(e) =>
-                    handleInputChange("price", e.target.value)
-                  }
+                  onChange={(e) => handleInputChange("price", e.target.value)}
                   placeholder="Enter price"
                   className="w-full"
                 />
@@ -254,17 +290,16 @@ const AdminMenuCard = () => {
                 label="Food Category"
                 placeholder="Select Food Category"
                 className="w-full"
+                value={formInputs.food_category}
                 onChange={handleFoodCategoryChange}
               >
                 {foodCategoryData.map((foodCategory) => (
-                  <SelectItem
-                    key={foodCategory.value}
-                    value={foodCategory.id}
-                  >
+                  <SelectItem key={foodCategory.id} value={foodCategory.name}>
                     {foodCategory.name}
                   </SelectItem>
                 ))}
               </Select>
+
               <div className="flex justify-end">
                 <Button
                   type="button"

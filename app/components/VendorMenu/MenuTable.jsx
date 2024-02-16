@@ -27,6 +27,7 @@ const MenuTable = ({ menu }) => {
             taste={menu.food_item.taste}
             tags={menu.food_item.tags}
             price={menu.food_item.price}
+            foodCateogry = {menu.food_category}
           />
         ))}
       </tbody>
