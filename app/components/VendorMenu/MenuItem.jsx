@@ -1,29 +1,45 @@
-"use client"
+"use client";
 import React from "react";
 import { useEffect } from "react";
 import { FaEllipsisV, FaPencilAlt, FaTrash } from "react-icons/fa";
 import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
 import axios from "axios";
 import DEFAULT_URL from "@/config";
-const MenuItem = ({ index, id, name, itemType, subType, taste, tags, price, onDelete }) => {
-  console.log("MenuItem received data:", { index, id, name, itemType, subType, taste, tags, price });
+const MenuItem = ({
+  index,
+  id,
+  name,
+  itemType,
+  subType,
+  taste,
+  tags,
+  price,
+  onDelete,
+}) => {
+  console.log("MenuItem received data:", {
+    index,
+    id,
+    name,
+    itemType,
+    subType,
+    taste,
+    tags,
+    price,
+  });
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(
-        `${DEFAULT_URL}/api/v1/vendor/food_items/${id}`,
-        {
+      const response = await axios
+        .delete(`${DEFAULT_URL}/api/v1/vendor/food_items/${id}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access-token"),
             "ngrok-skip-browser-warning": true,
           },
-        }
-      );
-
-      if (response.status === 200) {
-        console.log("Item deleted successfully");
-      } else {
-        console.error("Error deleting item:", response.statusText);
-      }
+        })
+        .then((res) => {
+          console.log(res.message)
+        }).catch((err)=>{
+          console.log(err)
+        });
     } catch (error) {
       console.error("Error deleting item:", error.message);
     }
@@ -34,8 +50,7 @@ const MenuItem = ({ index, id, name, itemType, subType, taste, tags, price, onDe
     onDelete(id);
   };
 
-  useEffect(() => {
-  }, [id, onDelete]);
+
 
   return (
     <tr className="hover:bg-gray-100 transition-colors">

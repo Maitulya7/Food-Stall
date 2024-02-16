@@ -63,8 +63,6 @@ const AdminMenuCard = () => {
     }));
   };
 
-
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -94,22 +92,18 @@ const AdminMenuCard = () => {
           }
         )
         .then((res) => {
-          if (res.status === 200) {
-            console.log("Item added successfully");
-            setFormOpen(false);
-            fetchApiData();
-          } else {
-            console.error("Error adding item:", res.statusText);
-          }
+          console.log("Item added successfully");
+          fetchApiData();
+          setFormOpen(false);
+          console.log(res);
         });
     } catch (error) {
       console.error("Error adding item:", error.message);
     }
   };
 
-
   const [apiData, setApiData] = useState([]);
-  
+
   const fetchApiData = () => {
     try {
       axios
@@ -120,13 +114,9 @@ const AdminMenuCard = () => {
           },
         })
         .then((res) => {
-          if (res.status === 200) {
-            console.log("Fetched data successfully:", res.data);
-            setApiData(res.data);
-            setFormOpen(false)
-          } else {
-            console.error("Error fetching data:", res.statusText);
-          }
+          console.log("Fetched data successfully:", res.data);
+          setApiData(res.data);
+          setFormOpen(false);
         })
         .catch((err) => {
           console.log(err);
@@ -137,8 +127,10 @@ const AdminMenuCard = () => {
   };
 
   useEffect(() => {
-    fetchApiData();
-  }, []);
+    if (!isFormOpen) {
+      fetchApiData();
+    }
+  }, [isFormOpen]);
 
   const [foodCategoryData, setFoodCategoryData] = useState([]);
 
@@ -165,6 +157,10 @@ const AdminMenuCard = () => {
       food_category: selectedCategoryId,
     }));
   };
+
+  useEffect(() => {
+    console.log("isFormOpen value after setFormOpen:", isFormOpen);
+  }, [isFormOpen]);
 
   return (
     <div className="container mx-auto p-8">
