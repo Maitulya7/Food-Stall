@@ -180,26 +180,18 @@ const AdminMenuCard = () => {
                 className="w-full"
               />
               <div className="flex gap-5">
-              <Select
+                <Select
                   items={itemTypeOptions}
                   label="Type"
-                  placeholder="Select  types"
+                  placeholder="Select type"
                   className="max-w-xs"
-                  selectionMode="multiple"
                   onChange={(selectedOption) => {
-                    const selectedTypes = formInputs.item_type || [];
-                    const updatedTypes = [
-                      ...selectedTypes,
-                      selectedOption.target.value,
-                    ];
-                    handleInputChange("item_type", updatedTypes);
+                    const selectedType = selectedOption.target.value;
+                    handleInputChange("item_type", selectedType);
                   }}
                 >
                   {itemTypeOptions.map((itemType) => (
-                    <SelectItem
-                      key={itemType.value}
-                      value={itemType.value}
-                    >
+                    <SelectItem key={itemType.value} value={itemType.value}>
                       {itemType.label}
                     </SelectItem>
                   ))}
@@ -212,11 +204,18 @@ const AdminMenuCard = () => {
                   className="max-w-xs"
                   selectionMode="multiple"
                   onChange={(selectedOption) => {
-                    const selectedSubTypes = formInputs.sub_type || [];
-                    const updatedSubTypes = [
-                      ...selectedSubTypes,
-                      selectedOption.target.value,
-                    ];
+                    const selectedSubTypes = selectedOption.target.value
+                      .split(",")
+                      .map((subType) => subType.trim())
+                      .filter((subType) => subType !== "");
+
+                    const updatedSubTypes = Array.from(
+                      new Set([
+                        ...(formInputs.sub_type || []),
+                        ...selectedSubTypes,
+                      ])
+                    );
+
                     handleInputChange("sub_type", updatedSubTypes);
                   }}
                 >
@@ -238,11 +237,15 @@ const AdminMenuCard = () => {
                   className="max-w-xs"
                   selectionMode="multiple"
                   onChange={(selectedOption) => {
-                    const selectedTastes = formInputs.taste || [];
-                    const updatedTastes = [
-                      ...selectedTastes,
-                      selectedOption.target.value,
-                    ];
+                    const selectedTastes = selectedOption.target.value
+                      .split(",")
+                      .map((taste) => taste.trim())
+                      .filter((taste) => taste !== "");
+
+                    const updatedTastes = Array.from(
+                      new Set([...(formInputs.taste || []), ...selectedTastes])
+                    );
+
                     handleInputChange("taste", updatedTastes);
                   }}
                 >
@@ -260,11 +263,15 @@ const AdminMenuCard = () => {
                   className="max-w-xs"
                   selectionMode="multiple"
                   onChange={(selectedOption) => {
-                    const selectedTags = formInputs.tags || [];
-                    const updatedTags = [
-                      ...selectedTags,
-                      selectedOption.target.value,
-                    ];
+                    const selectedTags = selectedOption.target.value
+                      .split(",")
+                      .map((tag) => tag.trim())
+                      .filter((tag) => tag !== "");
+
+                    const updatedTags = Array.from(
+                      new Set([...(formInputs.tags || []), ...selectedTags])
+                    );
+
                     handleInputChange("tags", updatedTags);
                   }}
                 >
