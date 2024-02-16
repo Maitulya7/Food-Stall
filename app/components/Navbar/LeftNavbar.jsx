@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 const LeftNavbar = () => {
   const pathname = usePathname();
   return (
-    <div className="bg-green-800 w-62 pt-1 h-screen">
+    <div className="bg-green-800 w-62 pt-1 h-full">
       <div className="flex items-center ml-8 mt-6 gap-2 ">
         <Image src="/images/admin-logo.png" alt="logo" width={32} height={32} />
         <h1 className="text-2xl font-semibold text-white">FoodM</h1>

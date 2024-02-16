@@ -3,12 +3,32 @@ import { FaEllipsisV, FaPencilAlt, FaTrash } from "react-icons/fa";
 import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
 
 const MenuItem = ({ index, name, itemType, subType, taste, tags, price }) => {
+  console.log("MenuItem received data:", { index, name, itemType, subType, taste, tags, price });
   return (
     <tr className="hover:bg-gray-100 transition-colors">
       <td className="py-2 px-4 border-b">{index + 1}</td>
       <td className="py-2 px-4 border-b">{name}</td>
       <td className="py-2 px-4 border-b">{itemType}</td>
-      <td className="py-2 px-4 border-b">{subType}</td>
+      <td className="py-2 px-4 border-b">
+        <Popover trigger="hover" placement="bottom">
+          <PopoverTrigger>
+            <div className="flex flex-wrap gap-1">
+              <span className="px-2 py-1 bg-orange-600 font-medium text-white text-xs rounded-md cursor-pointer transition duration-300">
+                SubType
+              </span>
+            </div>
+          </PopoverTrigger>
+          <PopoverContent>
+            <div className="p-2">
+              {subType.map((subTypeItem, index) => (
+                <div key={index} className="mb-2">
+                  {subTypeItem}
+                </div>
+              ))}
+            </div>
+          </PopoverContent>
+        </Popover>
+      </td>
       <td className="py-2 px-4 border-b">
         <Popover trigger="hover" placement="bottom">
           <PopoverTrigger>

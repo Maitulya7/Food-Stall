@@ -107,6 +107,33 @@ const AdminMenuCard = () => {
     }
   };
 
+  const [apiData, setApiData] = useState([]);
+
+  useEffect(() => {
+    try {
+      axios
+        .get(`${DEFAULT_URL}/api/v1/vendor/food_items`, {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("access-token"),
+            "ngrok-skip-browser-warning": true,
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            console.log("Fetched data successfully:", res.data);
+            setApiData(res.data);
+          } else {
+            console.error("Error fetching data:", res.statusText);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
+  }, []);
+
   const [foodCategoryData, setFoodCategoryData] = useState([]);
 
   useEffect(() => {
@@ -165,7 +192,7 @@ const AdminMenuCard = () => {
           </Select>
         </div>
       </div>
-      <MenuTable menu={menu} />
+      <MenuTable menu={apiData} />
       {isFormOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-10 w-1/2 rounded-md">

@@ -2,6 +2,7 @@ import React from "react";
 import MenuItem from "./MenuItem";
 
 const MenuTable = ({ menu }) => {
+  console.log("Received menu data:", menu);
   return (
     <table className="min-w-full bg-white border border-gray-300 divide-y divide-gray-200 text-sm">
       <thead>
@@ -17,19 +18,25 @@ const MenuTable = ({ menu }) => {
         </tr>
       </thead>
       <tbody>
-        {menu.food_item.sub_type.map((subType, index) => (
-          <MenuItem
-            key={index}
-            index={index}
-            name={menu.food_item.name}
-            itemType={menu.food_item.item_type}
-            subType={subType}
-            taste={menu.food_item.taste}
-            tags={menu.food_item.tags}
-            price={menu.food_item.price}
-            foodCateogry = {menu.food_category}
-          />
-        ))}
+        {menu && menu.food_items ? (
+          menu.food_items.map((menuItem, index) => (
+            <MenuItem
+              key={menuItem.id}
+              index={index}
+              name={menuItem.name || ""}
+              itemType={menuItem.item_type || ""}
+              subType={menuItem.sub_type || []}
+              taste={menuItem.taste || []}
+              tags={menuItem.tags || []}
+              price={menuItem.price || ""}
+              foodCategory={menuItem.food_category || ""}
+            />
+          ))
+        ) : (
+          <tr>
+            <td colSpan="8">No menu data available</td>
+          </tr>
+        )}
       </tbody>
     </table>
   );
