@@ -5,8 +5,10 @@ import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import AdminMenuCard from "@/app/components/VendorMenu/VendorMenu";
 const Menu = () => {
 
+
+
   return (
-    <div className="h-full flex bg-green-100">
+    <div className="h-screen flex bg-green-100">
       <div className="w-64">
         <LeftNavbar />
       </div>

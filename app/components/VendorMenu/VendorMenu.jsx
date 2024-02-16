@@ -63,6 +63,8 @@ const AdminMenuCard = () => {
     }));
   };
 
+
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -95,21 +97,20 @@ const AdminMenuCard = () => {
           if (res.status === 200) {
             console.log("Item added successfully");
             setFormOpen(false);
+            fetchApiData();
           } else {
             console.error("Error adding item:", res.statusText);
           }
-        })
-        .catch((err) => {
-          console.log(err);
         });
     } catch (error) {
       console.error("Error adding item:", error.message);
     }
   };
 
-  const [apiData, setApiData] = useState([]);
 
-  useEffect(() => {
+  const [apiData, setApiData] = useState([]);
+  
+  const fetchApiData = () => {
     try {
       axios
         .get(`${DEFAULT_URL}/api/v1/vendor/food_items`, {
@@ -122,6 +123,7 @@ const AdminMenuCard = () => {
           if (res.status === 200) {
             console.log("Fetched data successfully:", res.data);
             setApiData(res.data);
+            setFormOpen(false)
           } else {
             console.error("Error fetching data:", res.statusText);
           }
@@ -132,6 +134,10 @@ const AdminMenuCard = () => {
     } catch (error) {
       console.error("Error fetching data:", error.message);
     }
+  };
+
+  useEffect(() => {
+    fetchApiData();
   }, []);
 
   const [foodCategoryData, setFoodCategoryData] = useState([]);
@@ -141,7 +147,6 @@ const AdminMenuCard = () => {
     if (storedFoodCategoryData) {
       try {
         const parsedData = JSON.parse(storedFoodCategoryData);
-
         setFoodCategoryData(parsedData);
       } catch (error) {
         console.error("Error parsing stored data:", error.message);

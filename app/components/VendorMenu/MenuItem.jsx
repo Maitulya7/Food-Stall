@@ -1,9 +1,42 @@
+"use client"
 import React from "react";
+import { useEffect } from "react";
 import { FaEllipsisV, FaPencilAlt, FaTrash } from "react-icons/fa";
 import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
+import axios from "axios";
+import DEFAULT_URL from "@/config";
+const MenuItem = ({ index, id, name, itemType, subType, taste, tags, price, onDelete }) => {
+  console.log("MenuItem received data:", { index, id, name, itemType, subType, taste, tags, price });
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete(
+        `${DEFAULT_URL}/api/v1/vendor/food_items/${id}`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("access-token"),
+            "ngrok-skip-browser-warning": true,
+          },
+        }
+      );
 
-const MenuItem = ({ index, name, itemType, subType, taste, tags, price }) => {
-  console.log("MenuItem received data:", { index, name, itemType, subType, taste, tags, price });
+      if (response.status === 200) {
+        console.log("Item deleted successfully");
+      } else {
+        console.error("Error deleting item:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting item:", error.message);
+    }
+  };
+
+  const deleteItemAndRefresh = async () => {
+    await handleDelete();
+    onDelete(id);
+  };
+
+  useEffect(() => {
+  }, [id, onDelete]);
+
   return (
     <tr className="hover:bg-gray-100 transition-colors">
       <td className="py-2 px-4 border-b">{index + 1}</td>
@@ -79,11 +112,10 @@ const MenuItem = ({ index, name, itemType, subType, taste, tags, price }) => {
           </PopoverTrigger>
           <PopoverContent className="bg-white border rounded-md p-2 shadow-md">
             <div className="space-y-2">
-              <button className="w-full flex items-center py-2 px-4 hover:bg-gray-100 transition-colors">
-                <FaPencilAlt className="mr-2 text-green-500" />
-                Edit
-              </button>
-              <button className="w-full flex items-center py-2 px-4 hover:bg-gray-100 transition-colors">
+              <button
+                className="w-full flex items-center py-2 px-4 hover:bg-gray-100 transition-colors"
+                onClick={deleteItemAndRefresh}
+              >
                 <FaTrash className="mr-2 text-red-500" />
                 Delete
               </button>
