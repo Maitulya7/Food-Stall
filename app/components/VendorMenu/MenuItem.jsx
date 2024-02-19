@@ -15,6 +15,7 @@ const MenuItem = ({
   tags,
   price,
   onDelete,
+  fetchApiData,
 }) => {
   console.log("MenuItem received data:", {
     index,
@@ -26,9 +27,9 @@ const MenuItem = ({
     tags,
     price,
   });
-  const handleDelete = async () => {
+  const handleDelete = () => {
     try {
-      const response = await axios
+      axios
         .delete(`${DEFAULT_URL}/api/v1/vendor/food_items/${id}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access-token"),
@@ -36,21 +37,22 @@ const MenuItem = ({
           },
         })
         .then((res) => {
-          console.log(res.message)
-        }).catch((err)=>{
-          console.log(err)
+          console.log(res.message);
+          fetchApiData();
+        })
+        .catch((err) => {
+          console.log(err);
         });
     } catch (error) {
       console.error("Error deleting item:", error.message);
     }
   };
 
-  const deleteItemAndRefresh = async () => {
-    await handleDelete();
+  const deleteItemAndRefresh = () => {
+    handleDelete();
     onDelete(id);
+    fetchApiData();
   };
-
-
 
   return (
     <tr className="hover:bg-gray-100 transition-colors">
@@ -125,16 +127,22 @@ const MenuItem = ({
               <FaEllipsisV />
             </div>
           </PopoverTrigger>
-          <PopoverContent className="bg-white border rounded-md p-2 shadow-md">
-            <div className="space-y-2">
-              <button
-                className="w-full flex items-center py-2 px-4 hover:bg-gray-100 transition-colors"
-                onClick={deleteItemAndRefresh}
-              >
-                <FaTrash className="mr-2 text-red-500" />
-                Delete
-              </button>
-            </div>
+          <PopoverContent className="bg-white border rounded-md p-4 shadow-md space-y-4">
+            <button
+              className="w-full flex items-center justify-center py-3 px-6 font-medium bg-red-600 text-white hover:bg-red-700 transition-colors rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              onClick={deleteItemAndRefresh}
+            >
+              <FaTrash className="mr-2 " />
+              Delete Item
+            </button>
+
+            <button
+              className="w-full flex items-center justify-center py-3 px-6 bg-blue-600 text-white hover:bg-blue-700 transition-colors rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              
+            >
+              <FaPencilAlt className="mr-2" />
+              Edit Item
+            </button>
           </PopoverContent>
         </Popover>
       </td>

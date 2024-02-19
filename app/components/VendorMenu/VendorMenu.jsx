@@ -119,7 +119,7 @@ const AdminMenuCard = () => {
           setFormOpen(false);
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err.message);
         });
     } catch (error) {
       console.error("Error fetching data:", error.message);
@@ -193,7 +193,7 @@ const AdminMenuCard = () => {
           </Select>
         </div>
       </div>
-      <MenuTable menu={apiData} />
+      <MenuTable menu={apiData} fetchApiData={fetchApiData} />
       {isFormOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-10 w-1/2 rounded-md">
