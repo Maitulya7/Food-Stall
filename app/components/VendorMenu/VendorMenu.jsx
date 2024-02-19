@@ -133,7 +133,7 @@ const AdminMenuCard = () => {
   }, [isFormOpen]);
 
   const [foodCategoryData, setFoodCategoryData] = useState([]);
-
+  console.log(foodCategoryData)
   useEffect(() => {
     const storedFoodCategoryData = localStorage.getItem("categoriesData");
     if (storedFoodCategoryData) {
