@@ -48,6 +48,28 @@ const MenuItem = ({
     }
   };
 
+  // const handleUpdate = () => {
+  //   try {
+  //     axios
+  //       .put(`${DEFAULT_URL}/api/v1/vendor/food_items/${id}`, {
+  //         headers: {
+  //           Authorization: "Bearer " + localStorage.getItem("access-token"),
+  //           "ngrok-skip-browser-warning": true,
+  //         },
+  //       })
+  //       .then((res) => {
+  //         console.log(res.message);
+  //         fetchApiData();
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   } catch (error) {
+  //     console.error("Error deleting item:", error.message);
+  //   }
+  // };
+
+
   const deleteItemAndRefresh = () => {
     handleDelete();
     onDelete(id);
@@ -138,7 +160,7 @@ const MenuItem = ({
 
             <button
               className="w-full flex items-center justify-center py-3 px-6 bg-blue-600 text-white hover:bg-blue-700 transition-colors rounded-md focus:outline-none focus:ring focus:border-blue-300"
-              
+            
             >
               <FaPencilAlt className="mr-2" />
               Edit Item

@@ -1,6 +1,6 @@
 import React from "react";
 import MenuItem from "./MenuItem";
-import { DEFAULT_URL } from "@/config"; 
+
 
 const MenuTable = ({ menu  , fetchApiData }) => {
   console.log("Received menu data:", menu);
