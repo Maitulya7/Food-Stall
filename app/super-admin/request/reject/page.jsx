@@ -23,7 +23,7 @@ const Requests = () => {
         .get(`${DEFAULT_URL}/api/v1/admin/requests`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access-token"),
-            "ngrok-skip_browser_warning": true,
+            "ngrok-skip-browser-warning": true,
           },
         })
         .then((res) => {

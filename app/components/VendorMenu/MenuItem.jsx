@@ -130,8 +130,11 @@ const handleEditInputChange = (name, value) => {
           Authorization: "Bearer " + localStorage.getItem("access-token"),
           "ngrok-skip-browser-warning": true,
         },
+      }).then((res)=>{
+        console.log(res)
+        fetchApiData();
+        onDelete();
       });
-      onDelete();
     } catch (error) {
       console.error("Error deleting item:", error.message);
     }
@@ -214,7 +217,7 @@ const handleEditInputChange = (name, value) => {
             <PopoverContent className="bg-white border rounded-md p-4 shadow-md space-y-4">
               <button
                 className="w-full flex items-center justify-center py-3 px-6 font-medium bg-red-600 text-white hover:bg-red-700 transition-colors rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                onClick={handleDelete}
+                onClick={() => handleDelete(id)}
               >
                 <FaTrash className="mr-2 " />
                 Delete Item

@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import LeftNavbarSuperAdmin from "@/app/components/Navbar/LeftNavbarSuperAdmin";
 import AddCategory from "@/app/components/addCategory";
 import CategoryList from "@/app/components/categoryList";
