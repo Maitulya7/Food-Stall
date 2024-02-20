@@ -35,16 +35,14 @@ const Category = () => {
   }, []);
 
   return (
-    <div className="h-screen flex bg-green-100">
+    <div className="lg:h-full h-screen flex bg-green-100">
       <div>
         <LeftNavbarSuperAdmin />
       </div>
-      <div className="flex flex-col w-full">
-        <TopNavbar pageTitle="Category" pageEmoji="🍔" />
-
+      <div className="h-full w-full">
         <div className="flex-grow bg-green-100 pl-5 pr-5">
           <div>
-            <div className="pl-5">
+            <div className="pl-5 pt-12">
               <AddCategory fetchData={fetchData} />
             </div>
             <div>

@@ -44,9 +44,9 @@ export default function CategoryList({categoryData , fetchData}) {
   
 
   return (
-    <div className="p-5 rounded-lg">
+    <div className="p-5 rounded-lg ">
     <div className="overflow-x-auto rounded">
-      <table className="min-w-1/2 text-sm bg-white border border-gray-300 divide-y divide-gray-200">
+      <table className="w-1/2 lg:w-full text-sm bg-white border border-gray-300 divide-y divide-gray-200">
         <thead>
           <tr>
             <th className="py-3 px-6 text-left bg-green-800 text-white border-b">ID</th>
@@ -62,7 +62,7 @@ export default function CategoryList({categoryData , fetchData}) {
               <td className="py-4 px-6 border-b">
                 <button
                   onClick={() => handleDelete(item.id)}
-                  className="bg-red-400 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors"
+                  className="bg-red-800 hover:bg-red-900 text-white px-4 py-2 rounded-lg transition-colors"
                 >
                   Delete
                 </button>

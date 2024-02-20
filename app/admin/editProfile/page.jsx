@@ -8,7 +8,6 @@ const EditProfile = () => {
         <LeftNavbar />
       </div>
       <div className="flex flex-col w-full">
-        <TopNavbar pageTitle="Edit Profile" pageEmoji="✏️" />
         <div className="flex-grow bg-green-100">hello</div>
       </div>
     </div>

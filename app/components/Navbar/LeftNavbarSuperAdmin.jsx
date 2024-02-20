@@ -36,17 +36,14 @@ const LeftNavbarSuperAdmin = () => {
             ></path>
           </svg>
         </button>
-        {/* Add your logo or text here if needed */}
       </div>
 
-      {/* Menu Items - Responsive */}
       <div
         className={`${
           isMenuOpen ? "block" : "hidden"
         } lg:flex lg:flex-col gap-4 pl-10 pr-10`}
       >
-        {/* Logo and Text - Hidden on smaller screens */}
-        <div className="lg:flex items-center mt-5 mb-4 gap-2">
+        <div className="lg:flex hidden lg:mt-5  items-center  mb-4 gap-2">
           <Image
             src="/images/admin-logo.png"
             alt="logo"
@@ -58,23 +55,24 @@ const LeftNavbarSuperAdmin = () => {
             FoodM
           </h1>
         </div>
-
-        <MenuItem
-          icon="/images/home.png"
-          href="/super-admin/dashboard"
-          active={pathname.startsWith("/super-admin/dashboard")}
-        >
-          Home
-        </MenuItem>
-        <MenuItem
-          icon="/images/menu.png"
-          href="/super-admin/category"
-          active={pathname.startsWith("/super-admin/category")}
-        >
-          Category
-        </MenuItem>
-        <div className="pr-10">
-          <DropDownRequest />
+        <div className="lg:mt-0 mt-10 flex gap-4 flex-col">
+          <MenuItem
+            icon="/images/home.png"
+            href="/super-admin/dashboard"
+            active={pathname.startsWith("/super-admin/dashboard")}
+          >
+            Home
+          </MenuItem>
+          <MenuItem
+            icon="/images/menu.png"
+            href="/super-admin/category"
+            active={pathname.startsWith("/super-admin/category")}
+          >
+            Category
+          </MenuItem>
+          <div className="pr-10 pt-4">
+            <DropDownRequest />
+          </div>
         </div>
       </div>
     </div>

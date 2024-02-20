@@ -77,134 +77,137 @@ const Register = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 h-screen w-full">
-        {/* left part  */}
-        <div className="md:col-span-1">
-          <Image
-            src="/images/bg-admin.jpg"
-            alt="Description of the image"
-            width={1040}
-            height={2040}
-            className="w-full h-full"
-          />
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-screen w-full lg:p-0 pl-10 pr-10">
+      {/* left part (image) for larger screens */}
+      <div className="hidden md:block md:col-span-1">
+        <Image
+          src="/images/bg-admin.jpg"
+          alt="Description of the image"
+          width={1040}
+          height={2040}
+          className="w-full h-full"
+        />
+      </div>
+  
+      {/* right part  */}
+      <div className="md:col-span-1 lg:col-span-2 w-full m-auto">
+        <h1 className="text-xl font-medium  ml-4 md:ml-14">
+          Vendor Registration
+        </h1>
+  
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pl-4 md:pl-12 pr-4 md:pr-12 pt-5 mt-4">
+          <div className="w-full">
+            <Input
+              isRequired
+              variant="bordered"
+              type="text"
+              label="First Name"
+              className="w-full mb-3"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
+          <div className="w-full">
+            <Input
+              isRequired
+              variant="bordered"
+              type="text"
+              label="Last Name"
+              className="w-full mb-3"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </div>
+          <div className="w-full">
+            <Input
+              isRequired
+              variant="bordered"
+              type="email"
+              label="Email"
+              className="w-full mb-3"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="w-full">
+            <Input
+              isRequired
+              variant="bordered"
+              type="number"
+              label="Phone Number"
+              className="w-full mb-3"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+          </div>
+  
+          <div className="w-full">
+            <InputPassword
+              value={password}
+              onChangeFunction={(e) => setPassword(e.target.value)}
+            />
+          </div>
+  
+          <div className="w-full">
+            <ConfirmPassword
+              value={confirmPassword}
+              onChangeFunction={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
+  
+          <div className="w-full">
+            <CategorySelect handleSelectionChange={handleCategoryChange} />
+          </div>
+  
+          <div className="w-full flex items-center ml-2 gap-6">
+            <p>Franchise :</p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => handleFranchiseChange("Yes")}
+                className={`w-auto pl-4 pr-4 pt-1 pb-1 rounded ${
+                  franchise ? "bg-green-800" : "bg-gray-500"
+                } text-white font-medium`}
+              >
+                Yes
+              </button>
+              <button
+                onClick={() => handleFranchiseChange("No")}
+                className={`w-auto pl-4 pr-4 pt-1 pb-1 rounded ${
+                  !franchise ? "bg-green-800" : "bg-gray-500"
+                } text-white font-medium`}
+              >
+                No
+              </button>
+            </div>
+          </div>
         </div>
-
-        {/* right part  */}
-        <div className="md:col-span-2 w-full m-auto">
-          <h1 className="text-xl font-medium mt-6 ml-14">
-            Vendor Registration
-          </h1>
-
-          <div className="grid grid-cols-2 gap-5 pl-12 pr-12 pt-5 mt-4">
-            <div className="w-full">
-              <Input
-                isRequired
-                variant="bordered"
-                type="text"
-                label="First Name"
-                className="w-full mb-3"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </div>
-            <div className="w-full">
-              <Input
-                isRequired
-                variant="bordered"
-                type="text"
-                label="Last Name"
-                className="w-full mb-3"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </div>
-            <div className="w-full mb-3">
-              <Input
-                isRequired
-                variant="bordered"
-                type="email"
-                label="Email"
-                className="w-full"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="w-full mb-3">
-              <Input
-                isRequired
-                variant="bordered"
-                type="number"
-                label="Phone Number"
-                className="w-full"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
-            </div>
-
-            <div className="w-full mb-3">
-              <InputPassword
-                value={password}
-                onChangeFunction={(e) => setPassword(e.target.value)}
-              />
-            </div>
-
-            <div className="w-full mb-3">
-              <ConfirmPassword
-                value={confirmPassword}
-                onChangeFunction={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
-
-            <div className="w-full mb-3">
-              <CategorySelect handleSelectionChange={handleCategoryChange} />
-            </div>
-
-            <div className="w-full mb-3 flex items-center ml-2 gap-6">
-              <p>Franchise :</p>
-              <div className="flex gap-3">
-                <button
-                  onClick={() => handleFranchiseChange("Yes")}
-                  className={`w-auto pl-10 pr-10 pt-1 pb-1 rounded ${
-                    franchise ? "bg-green-800" : "bg-gray-500"
-                  } text-white font-medium`}
-                >
-                  Yes
-                </button>
-                <button
-                  onClick={() => handleFranchiseChange("No")}
-                  className={`w-auto pl-10 pr-10 pt-1 pb-1 rounded ${
-                    !franchise ? "bg-green-800" : "bg-gray-500"
-                  } text-white font-medium`}
-                >
-                  No
-                </button>
-              </div>
-            </div>
+        {franchise && (
+          <div className="w-full mt-4 pl-4 md:pl-12 pr-4 md:pr-12">
+            <Input
+              isRequired
+              variant="bordered"
+              type="text"
+              label="Franchise Details"
+              className="w-full"
+              value={franchiseDetails}
+              onChange={(e) => setFranchiseDetails(e.target.value)}
+            />
           </div>
-          {franchise && (
-            <div className="w-full mt-4 pl-12 pr-12">
-              <Input
-                isRequired
-                variant="bordered"
-                type="text"
-                label="Franchise Details"
-                className="w-full"
-                value={franchiseDetails}
-                onChange={(e) => setFranchiseDetails(e.target.value)}
-              />
-            </div>
-          )}
-          <div className="w-full mt-8 pl-12 pr-12">
-            <button
-              onClick={handleSubmit}
-              className="w-full h-14 bg-green-800 rounded-md text-white font-medium text-xl"
-            >
-              Submit
-            </button>
-          </div>
+        )}
+        <div className="w-full mt-8 pl-4 md:pl-12 pr-4 md:pr-12">
+          <button
+            onClick={handleSubmit}
+            className="w-full h-14 bg-green-800 rounded-md text-white font-medium text-xl"
+          >
+            Submit
+          </button>
         </div>
       </div>
-    </>
+    </div>
+  </>
+  
+  
+  
   );
 };
 

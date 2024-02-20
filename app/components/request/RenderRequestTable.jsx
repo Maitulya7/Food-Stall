@@ -24,7 +24,7 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
         request.status.toLowerCase() !== "rejected"
     );
   return (
-    <table  className="min-w-full bg-white border border-gray-300 divide-y divide-gray-200 text-xs">
+    <table className="lg:w-full bg-white border border-gray-300 divide-y divide-gray-200 text-xs">
       <thead>
         <tr>
           <th className="py-2 px-4 text-left bg-green-800 text-white border-b">No</th>
@@ -46,7 +46,7 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
           )}
         </tr>
       </thead>
-      <tbody>
+      <tbody >
         {data.map((request, index) => (
           <tr key={request.id} className="hover:bg-gray-100 transition-colors">
             <td className="py-2 px-4 border-b">{index + 1}</td>

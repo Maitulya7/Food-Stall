@@ -12,7 +12,7 @@ const DropDownRequest = () => {
       <DropdownTrigger>
         <Button variant="light" className="text-white font-medium bg-green-500 hover:text-green-500">
       
-        <FontAwesomeIcon size="lg" icon={faBell}  className="mr-2 text-sm" />  Request</Button>
+        <FontAwesomeIcon size="lg" icon={faBell}  className="mr-2" />  Request</Button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
         <DropdownItem key="approve">

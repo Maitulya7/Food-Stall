@@ -12,7 +12,7 @@ function Dashboard() {
         <LeftNavbar />
       </div>
       <div className="flex flex-col w-full">
-        <TopNavbar pageTitle="Home" pageEmoji="🏠" />
+        
         <div className="flex-grow bg-green-100 pl-10 pr-10">
           <CustomerItemTable/>
         </div>

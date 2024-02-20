@@ -58,10 +58,9 @@ const Requests = () => {
       <LeftNavbarSuperAdmin />
     </div>
     <div className="flex flex-col w-full">
-      <TopNavbar pageTitle="Request" pageEmoji="📥" />
-      <div className="flex-grow bg-green-100 p-6">
+      <div className="flex-grow bg-green-100 p-6 pt-12">
     
-        <h2 className="text-lg font-semibold mb-4">Rejected Requests</h2>
+        <h2 className="text-lg font-semibold mb-4 ">Rejected Requests</h2>
         
         <RequestsTable
           data={rejectedRequests}

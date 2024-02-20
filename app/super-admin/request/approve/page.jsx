@@ -57,14 +57,16 @@ const Requests = () => {
       <LeftNavbarSuperAdmin />
     </div>
     <div className="flex flex-col w-full">
-      <TopNavbar pageTitle="Request" pageEmoji="📥" />
-      <div className="flex-grow bg-green-100 pl-7 pr-6 pb-10">
+      
+      <div className="flex-grow bg-green-100 pl-7 pr-6 pb-10 pt-12">
         <h2 className="text-lg font-semibold mb-4">Approved Requests</h2>
-        
+        <div className="lg:w-full w-1/4">
+
         <RequestsTable
           data={approvedRequests}
           
-        />
+          />
+          </div>
       </div>
     </div>
   </div>

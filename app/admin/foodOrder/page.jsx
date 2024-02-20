@@ -10,7 +10,6 @@ const FoodOrder = () => {
         <LeftNavbar />
       </div>
       <div className="flex flex-col w-full">
-        <TopNavbar pageTitle="Food Order" pageEmoji=" 🍔" />
         <div className="flex-grow bg-green-100 pl-12 pr-12">
           <CustomerItemTable/>
         </div>

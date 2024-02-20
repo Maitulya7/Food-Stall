@@ -123,6 +123,20 @@ const handleEditInputChange = (name, value) => {
     }
   };
 
+  const handleDelete = (id) => {
+    try {
+       axios.delete(`${DEFAULT_URL}/api/v1/vendor/food_items/${id}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access-token"),
+          "ngrok-skip-browser-warning": true,
+        },
+      });
+      onDelete();
+    } catch (error) {
+      console.error("Error deleting item:", error.message);
+    }
+  };
+
   return (
     <>
       <tr className="hover:bg-gray-100 transition-colors">
@@ -200,7 +214,7 @@ const handleEditInputChange = (name, value) => {
             <PopoverContent className="bg-white border rounded-md p-4 shadow-md space-y-4">
               <button
                 className="w-full flex items-center justify-center py-3 px-6 font-medium bg-red-600 text-white hover:bg-red-700 transition-colors rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                onClick={onDelete}
+                onClick={handleDelete}
               >
                 <FaTrash className="mr-2 " />
                 Delete Item

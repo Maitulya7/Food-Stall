@@ -101,8 +101,7 @@ const Requests = () => {
         <LeftNavbarSuperAdmin />
       </div>
       <div className="flex flex-col w-full">
-        <TopNavbar pageTitle="Request" pageEmoji="📥" />
-        <div className="flex-grow bg-green-100 pl-6 pr-6">
+        <div className="flex-grow bg-green-100 pl-6 pr-6 pt-12">
           <h2 className="text-lg font-semibold mb-4">Pending Requests</h2>
 
           <RequestsTable

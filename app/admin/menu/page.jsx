@@ -1,7 +1,6 @@
 "use client"
 import React from "react";
 import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
-import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import AdminMenuCard from "@/app/components/VendorMenu/VendorMenu";
 const Menu = () => {
 
@@ -13,7 +12,7 @@ const Menu = () => {
         <LeftNavbar />
       </div>
       <div className="flex flex-col w-full">
-        <TopNavbar pageTitle="Menu" pageEmoji="🍽️" />
+       
         <div className="flex-grow bg-green-100 p-2">
           <AdminMenuCard/>
         </div>
