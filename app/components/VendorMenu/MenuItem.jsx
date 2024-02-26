@@ -12,6 +12,9 @@ import {
 } from "@nextui-org/react";
 import axios from "axios";
 import DEFAULT_URL from "@/config";
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
+
 
 const MenuItem = ({
   index,
@@ -114,30 +117,69 @@ const handleEditInputChange = (name, value) => {
             "ngrok-skip-browser-warning": true,
           },
         }
-      );
+      ).then((res)=>{
+        closeEditForm();
+        fetchApiData();
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Item edited successfully!',
+        });
+      });
 
-      closeEditForm();
-      fetchApiData();
+     
     } catch (error) {
       console.error("Error updating item:", error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to edit item. Please check your input and try again.',
+      });
     }
   };
-
   const handleDelete = (id) => {
-    try {
-       axios.delete(`${DEFAULT_URL}/api/v1/vendor/food_items/${id}`, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("access-token"),
-          "ngrok-skip-browser-warning": true,
-        },
-      }).then((res)=>{
-        console.log(res)
-        fetchApiData();
-        onDelete();
-      });
-    } catch (error) {
-      console.error("Error deleting item:", error.message);
-    }
+    // Show confirmation alert before proceeding with delete
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this item!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User confirmed deletion, proceed with delete operation
+        try {
+          axios.delete(`${DEFAULT_URL}/api/v1/vendor/food_items/${id}`, {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("access-token"),
+              "ngrok-skip-browser-warning": true,
+            },
+          }).then((res) => {
+            console.log(res);
+            fetchApiData();
+            onDelete();
+  
+          
+            Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: 'Item deleted successfully!',
+            });
+          });
+        } catch (error) {
+          console.error("Error deleting item:", error.message);
+  
+          // Show SweetAlert error message for delete
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to delete item. Please try again.',
+          });
+        }
+      }
+    });
   };
 
   return (

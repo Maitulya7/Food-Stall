@@ -4,6 +4,8 @@ import { Input, Button, Select, SelectItem } from "@nextui-org/react";
 import MenuTable from "./MenuTable";
 import DEFAULT_URL from "@/config";
 import axios from "axios";
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
 
 const AdminMenuCard = () => {
   const [isFormOpen, setFormOpen] = useState(false);
@@ -95,6 +97,11 @@ const AdminMenuCard = () => {
           console.log("Item added successfully");
           fetchApiData();
           setFormOpen(false);
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Item added successfully!',
+          });
           console.log(res);
         });
     } catch (error) {

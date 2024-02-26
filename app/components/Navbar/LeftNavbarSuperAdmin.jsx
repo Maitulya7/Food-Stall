@@ -15,7 +15,6 @@ const LeftNavbarSuperAdmin = () => {
 
   return (
     <div className="bg-green-800 w-full pt-1 h-full">
-      {/* Responsive Hamburger Menu */}
       <div className="lg:hidden flex items-center justify-between px-4">
         <button
           onClick={handleToggleMenu}
@@ -49,7 +48,7 @@ const LeftNavbarSuperAdmin = () => {
             alt="logo"
             width={32}
             height={32}
-            className="lg:w-8 lg:h-8" // Make the image smaller on smaller screens
+            className="lg:w-8 lg:h-8" 
           />
           <h1 className="text-xl lg:text-2xl font-semibold text-white">
             FoodM

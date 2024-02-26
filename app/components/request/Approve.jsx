@@ -2,6 +2,8 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ApproveButton = ({ ApproveRequest }) => {
   const handleApprove = () => {
@@ -16,6 +18,7 @@ const ApproveButton = ({ ApproveRequest }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         ApproveRequest();
+        toast.success('Vendor approved successfully!');
       }
     });
   };

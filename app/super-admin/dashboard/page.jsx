@@ -2,8 +2,9 @@
 import LeftNavbarSuperAdmin from "@/app/components/Navbar/LeftNavbarSuperAdmin";
 import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import React from "react";
-import ToastNotification from "@/app/components/ToastNotification";
 function Dashboard() {
+
+
 
   return (
     <div className="h-screen flex bg-green-100">
@@ -16,7 +17,7 @@ function Dashboard() {
          
         </div>
       </div>
-      <ToastNotification />
+   
     </div>
   );
 }

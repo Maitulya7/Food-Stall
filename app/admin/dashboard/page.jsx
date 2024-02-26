@@ -1,6 +1,8 @@
 import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
 import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import CustomerItemTable from "@/app/components/customerOrders/orderTable";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import React from "react";
 
@@ -17,6 +19,7 @@ function Dashboard() {
           <CustomerItemTable/>
         </div>
       </div>
+  
     </div>
   );
 }
