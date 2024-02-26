@@ -33,6 +33,21 @@ const AdminMenuCard = () => {
     }
   };
 
+  useEffect(()=>{
+    axios.get(`${DEFAULT_URL}/api/v1/admin/categories`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("access-token"),
+        "ngrok-skip-browser-warning": true,
+      },
+    })
+    .then((res) => {
+      console.log("all categories",res.data)
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+  },[])
+
   useEffect(() => {
     if (!isFormOpen) {
       fetchApiData();
