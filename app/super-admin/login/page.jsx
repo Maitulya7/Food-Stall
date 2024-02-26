@@ -6,6 +6,8 @@ import InputPassword from "../../components/password/InputPassword";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import DEFAULT_URL from "@/config";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Admin = () => {
   const router = useRouter();
@@ -29,9 +31,13 @@ const Admin = () => {
             console.log(res)
           
           if (res.status == 200) {
-            router.push("/super-admin/dashboard");
+         
             localStorage.setItem("access-token", res.data.admin.access_token);
             console.log(res.data.admin.access_token)
+            toast.success("Login successful!", {
+              position: "top-right",
+            });
+            router.push("/super-admin/dashboard");
           }
         })
         .catch((err) => {
@@ -39,11 +45,16 @@ const Admin = () => {
         });
     } catch (error) {
       console.error("Error logging in:", error);
+      toast.error("Login failed. Please check your credentials.", {
+        position: "top-right",
+        autoClose: 5000, // Close the toast after 5 seconds
+      });
     }
   };
 
   return (
     <>
+     
       <div className="flex  lg:flex-row justify-between h-screen">
         <div className="md:h-screen w-full lg:mt-0  mt-32 lg:w-1/2">
           <div className="flex justify-center mt-12  w-full">
@@ -91,6 +102,7 @@ const Admin = () => {
           />
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

@@ -11,6 +11,7 @@ import {
   Input,
 } from "@nextui-org/react";
 import DEFAULT_URL from "@/config";
+import Swal from 'sweetalert2';
 
 export default function AddCategory({fetchData}) {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
@@ -33,6 +34,12 @@ export default function AddCategory({fetchData}) {
       .then((res) => {
         console.log(res);
         fetchData();
+        Swal.fire({
+          icon: 'success',
+          title: 'Category Added!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((err) => {
         console.log(err);

@@ -59,7 +59,8 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
               className="py-2 px-4 border-b"
               style={{ color: getStatusColor(request.status) }}
             >
-              {request.status}
+            {request.status.charAt(0).toUpperCase() + request.status.slice(1)}
+
             </td>
             <td className="py-2 px-4 border-b">
               {request.type_of_categories.length > 0 && (
