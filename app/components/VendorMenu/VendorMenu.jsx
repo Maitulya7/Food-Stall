@@ -1,11 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Input, Button, Select, SelectItem } from "@nextui-org/react";
 import MenuTable from "./MenuTable";
 import DEFAULT_URL from "@/config";
 import axios from "axios";
-import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.css';
 import AddMenuItemForm from "./AddMenuItemForm";
 
 const AdminMenuCard = () => {
@@ -76,21 +73,6 @@ const AdminMenuCard = () => {
           >
             Add Item
           </button>
-
-          {/* <Select
-            items={foodCategoryData}
-            label="Food Category"
-            placeholder="Select Food Category"
-            className="w-full"
-            value={formInputs.food_category}
-            onChange={handleFoodCategoryChange}
-          >
-            {foodCategoryData.map((foodCategory) => (
-              <SelectItem key={foodCategory.id} value={foodCategory.id}>
-                {foodCategory.name}
-              </SelectItem>
-            ))}
-          </Select> */}
         </div>
       </div>
       <MenuTable menu={apiData} fetchApiData={fetchApiData} />

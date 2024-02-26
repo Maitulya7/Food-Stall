@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "@nextui-org/react";
 import Image from "next/image";
 import InputPassword from "@/app/components/password/InputPassword";
@@ -74,6 +74,22 @@ const Register = () => {
         console.error("Error in Axios request:", err.message);
       });
   };
+
+  // useEffect(()=>{
+
+  //   axios.get(`${DEFAULT_URL}/api/v1/admin/categories`, {
+  //     headers: {
+  //       "ngrok-skip-browser-warning": true,
+  //     },
+  //   })
+  //   .then((res) => {
+  //     console.log("category list",res.data.categories);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+
+  // },[])
 
   return (
     <>

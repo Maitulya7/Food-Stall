@@ -22,8 +22,6 @@ export default function CategorySelect({ handleSelectionChange }) {
         .then((res) => {
           const fetchedCategories = res.data.categories || [];
           setCategories(fetchedCategories);
-          console.log(setCategories);
-          console.log(res)
         })
         .catch((err) => {
           console.log(err);
