@@ -1,6 +1,7 @@
 import LeftNavbarSuperAdmin from "@/app/components/Navbar/LeftNavbarSuperAdmin";
 import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import React from "react";
+import Navbar from "@/app/components/Navbar/Navbar";
 function Dashboard() {
 
   return (
@@ -9,9 +10,8 @@ function Dashboard() {
         <LeftNavbarSuperAdmin/>
       </div>
       <div className="flex flex-col w-full">
-        <TopNavbar pageTitle="Home" pageEmoji="🏠" />
         <div className="flex-grow bg-green-100 pl-10 pr-10">
-         
+         home
         </div>
       </div>
    

@@ -8,11 +8,12 @@ const DropDownRequest = () => {
   return (
     <div className="bg-transparent text-center">
 
-    <Dropdown >
+    <Dropdown  >
       <DropdownTrigger>
-        <Button variant="light" className="text-white font-medium bg-green-500 hover:text-green-500">
       
-        <FontAwesomeIcon size="lg" icon={faBell}  className="mr-2" />  Request</Button>
+        <Button variant="light" className="text-white text-base font-medium bg-[#393e46]  hover:text-white">
+      <FontAwesomeIcon size="1x" icon={faBell}  className="mr-3" />
+       Request</Button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
         <DropdownItem key="approve">

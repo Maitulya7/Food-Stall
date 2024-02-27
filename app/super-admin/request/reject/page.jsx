@@ -53,12 +53,12 @@ const Requests = () => {
   
 
   return (
-    <div className="h-screen flex bg-green-100 font-sans">
+    <div className="h-screen flex bg-[#f7f7f7] font-sans">
     <div>
       <LeftNavbarSuperAdmin />
     </div>
     <div className="flex flex-col w-full">
-      <div className="flex-grow bg-green-100 p-6 pt-12">
+      <div className="flex-grow bg-[#f7f7f7] p-6 pt-12">
     
         <h2 className="text-lg font-semibold mb-4 ">Rejected Requests</h2>
         

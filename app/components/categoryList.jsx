@@ -3,11 +3,23 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 import DEFAULT_URL from "@/config";
+import { Pagination } from "@nextui-org/pagination";
 
 export default function CategoryList({categoryData , fetchData}) {
  
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+
+  const itemsPerPage = 5;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = categoryData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const getOldSerialNumber = (index) => {
+    return index + 1 + indexOfFirstItem;
+  };
 
   
 
@@ -45,19 +57,19 @@ export default function CategoryList({categoryData , fetchData}) {
 
   return (
     <div className="p-5 rounded-lg ">
-    <div className="overflow-x-auto rounded">
-      <table className="w-1/2 lg:w-full text-sm bg-white border border-gray-300 divide-y divide-gray-200">
+    <div className=" rounded">
+      <table className="w-full text-sm bg-white border border-gray-300 divide-y divide-gray-200">
         <thead>
           <tr>
-            <th className="py-3 px-6 text-left bg-green-800 text-white border-b">ID</th>
-            <th className="py-3 px-6 text-left bg-green-800 text-white border-b">Category</th>
-            <th className="py-3 px-6 text-left bg-green-800 text-white border-b">Actions</th>
+            <th className="py-3 px-6 text-left bg-[#1e2022] text-white border-b">ID</th>
+            <th className="py-3 px-6 text-left bg-[#1e2022] text-white border-b">Category</th>
+            <th className="py-3 px-6 text-left bg-[#1e2022] text-white border-b">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {categoryData.map((item, index) => (
+        {currentItems.map((item, index) => (
             <tr key={item.id} className="hover:bg-gray-100 transition-colors">
-              <td className="py-4 px-6 border-b">{index + 1}</td>
+           <td className="py-4 px-6 border-b">{getOldSerialNumber(index)}</td>
               <td className="py-4 px-6 border-b">{item.name}</td>
               <td className="py-4 px-6 border-b">
                 <button
@@ -71,6 +83,19 @@ export default function CategoryList({categoryData , fetchData}) {
           ))}
         </tbody>
       </table>
+      <div className="py-6">
+    {categoryData.length > itemsPerPage && (
+       <Pagination
+       defaultCurrent={currentPage}
+       total={5}
+       pageSize={itemsPerPage}
+       
+       onChange={(page) => setCurrentPage(page)}
+        color="default"
+        loop showControls
+      />
+    )}
+    </div>
     </div>
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false}>
       <ModalContent>

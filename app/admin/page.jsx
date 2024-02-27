@@ -41,12 +41,12 @@ const Admin = () => {
           `${DEFAULT_URL}/api/v1/vendor/login`,
           formData,
 
-          {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("access-token"),
-              "ngrok-skip-browser-warning": true,
-            },
-          }
+          // {
+          //   headers: {
+          //     Authorization: "Bearer " + localStorage.setItem("access-token"),
+          //     "ngrok-skip-browser-warning": true,
+          //   },
+          // }
         )
         
         .then((res) => {

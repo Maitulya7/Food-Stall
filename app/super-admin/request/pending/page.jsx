@@ -9,6 +9,7 @@ import DEFAULT_URL from "@/config";
 const Requests = () => {
   const [requestsData, setRequestsData] = useState([]);
   const [pendingRequests, setPendingRequests] = useState([]);
+  const [loading, setLoading] = useState(true); // Add loading state
 
   const categorizeRequests = (requests) => {
     const pending = requests.filter(
@@ -33,11 +34,22 @@ const Requests = () => {
         })
         .catch((err) => {
           console.log(err);
-        });
+        }).finally(() => {
+          setLoading(false); // Set loading to false after data fetching is complete
+        });;
     } catch (error) {
       console.error("Error fetching requests data:", error);
     }
   };
+
+  useEffect(() => {
+    fetchRequestsData();
+  }, []);
+
+  useEffect(() => {
+    categorizeRequests(requestsData);
+  }, [requestsData]);
+
 
   const handleApprove = (requestId) => {
     try {
@@ -96,23 +108,41 @@ const Requests = () => {
   }, [requestsData]);
 
   return (
-    <div className="h-screen flex bg-green-100 font-sans">
-      <div>
-        <LeftNavbarSuperAdmin />
+    <div className="h-screen flex bg-[#f7f7f7] font-sans">
+    {loading && (
+      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
+        <div class="flex flex-row gap-2">
+          <div class="w-4 h-4 rounded-full bg-[#1e2022] animate-bounce [animation-delay:.7s]"></div>
+          <div class="w-4 h-4 rounded-full bg-[#1e2022] animate-bounce [animation-delay:.3s]"></div>
+          <div class="w-4 h-4 rounded-full bg-[#1e2022] animate-bounce [animation-delay:.7s]"></div>
+        </div>
       </div>
-      <div className="flex flex-col w-full">
-        <div className="flex-grow bg-green-100 pl-6 pr-6 pt-12">
-          <h2 className="text-lg font-semibold mb-4">Pending Requests</h2>
-
-          <RequestsTable
+    )}
+    <div>
+      <LeftNavbarSuperAdmin />
+    </div>
+    <div className="flex flex-col w-full h-full">
+      <div className="flex-grow bg-[#f7f7f7] px-6 py-6">
+        <h2 className="text-lg font-semibold mb-4">Pending Request</h2>
+        <div className="lg:w-full w-1/4">
+          {loading ? (
+            <div className="flex items-center justify-center h-48">
+            
+            </div>
+          ) : (
+            <RequestsTable
             data={pendingRequests}
             handleApprove={handleApprove}
             handleReject={handleReject}
           />
+          )}
         </div>
       </div>
+    </div>
     </div>
   );
 };
 
 export default Requests;
+
+

@@ -1,9 +1,15 @@
+"use client"
 import React from "react";
 import ApproveButton from "@/app/components/request/Approve";
 import RejectButton from "@/app/components/request/Reject";
 import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
+import { Pagination } from "@nextui-org/pagination";
+import { useState } from "react";
 
 const RequestsTable = ({ data, handleApprove, handleReject }) => {
+
+  const itemsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
 
   const getStatusColor = (status) => {
     switch (status.toLowerCase()) {
@@ -23,31 +29,36 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
         request.status.toLowerCase() !== "approved" &&
         request.status.toLowerCase() !== "rejected"
     );
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  
   return (
-    <table className="lg:w-full bg-white border border-gray-300 divide-y divide-gray-200 text-xs">
+    <>
+    <table className="lg:w-full  bg-white border border-gray-300 divide-y divide-gray-200 text-xs">
       <thead>
         <tr>
-          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">No</th>
-          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">Email</th>
-          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">Name</th>
-          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">Phone</th>
-          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">Status</th>
-          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">
+          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">Email</th>
+          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">Name</th>
+          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">No</th>
+          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">Phone</th>
+          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">Status</th>
+          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">
             Categories
           </th>
-          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">
+          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">
             Franchise
           </th>
-          <th className="py-2 px-4 text-left bg-green-800 text-white border-b">
+          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">
             Franchise Details
           </th>
            {showActionHeader && (
-            <th className="py-2 px-4 text-left bg-green-800 text-white border-b">Action</th>
+            <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">Action</th>
           )}
         </tr>
       </thead>
       <tbody >
-        {data.map((request, index) => (
+      {currentItems.map((request, index) => (
           <tr key={request.id} className="hover:bg-gray-100 transition-colors">
             <td className="py-2 px-4 border-b">{index + 1}</td>
             <td className="py-2 px-4 border-b">{request.email}</td>
@@ -57,7 +68,7 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
             <td className="py-2 px-4 border-b">{request.phone_number}</td>
             <td
               className="py-2 px-4 border-b"
-              style={{ color: getStatusColor(request.status) }}
+              style={{ color: getStatusColor(request.status), fontWeight:"bold"}}
             >
             {request.status.charAt(0).toUpperCase() + request.status.slice(1)}
 
@@ -67,7 +78,7 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
                 <Popover trigger="hover" placement="bottom">
                   <PopoverTrigger>
                     <div className="flex flex-wrap gap-1">
-                      <span className="px-2 py-1 bg-green-600 text-white text-xs rounded-md cursor-pointer transition duration-300">
+                      <span className="px-2 py-1 bg-[#393e46] text-white text-xs rounded-md cursor-pointer transition duration-300">
                         View
                       </span>
                     </div>
@@ -108,9 +119,28 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
               </td>
             ) : null}
           </tr>
+          
         ))}
+       
       </tbody>
+      
     </table>
+    <div className="py-6">
+    {data.length > itemsPerPage && (
+       <Pagination
+       defaultCurrent={currentPage}
+       total={5}
+       pageSize={itemsPerPage}
+       
+       onChange={(page) => setCurrentPage(page)}
+        color="default"
+        loop showControls
+      />
+    )}
+    </div>
+    
+    
+       </>
   );
 };
 
