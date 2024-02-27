@@ -91,7 +91,7 @@ const Admin = () => {
 
               <button
                 onClick={formik.handleSubmit}
-                className="bg-green-900 mt-8 h-12 rounded-lg text-white font-medium w-full"
+                className="bg-[#1e2022] mt-8 h-12 rounded-lg text-white font-medium w-full"
               >
                 Login
               </button>
@@ -99,13 +99,13 @@ const Admin = () => {
           </div>
         </div>
 
-        <div className="block lg:h-screen lg:w-1/2 relative">
+        <div className="block lg:h-screen w-full relative">
           <Image
-            src="/images/superAdminLogin.jpg"
+            src="/images/super-admin-bg.png"
             alt="Description of the image"
             layout="fill"
             objectFit="cover"
-            className="w-full h-full"
+            className="w-1/2 h-full"
           />
         </div>
       </div>

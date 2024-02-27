@@ -39,7 +39,7 @@ const Category = () => {
         <LeftNavbarSuperAdmin />
       </div>
       <div className="flex flex-col w-full">
-        <div className="flex-grow bg-[#f0f5f9] ">
+        <div className=" bg-[#f0f5f9] px-10 pb-4 pt-20">
           <AddCategory fetchData={fetchData} />
         </div>
         {loading ? (
@@ -51,7 +51,9 @@ const Category = () => {
           </div>
         </div>
       ) : categoryData && categoryData.length > 0 ? (
-        <div className="flex-grow bg-[#f0f5f9] pl-10 pr-10">
+
+        
+        <div className="flex-grow bg-[#f0f5f9] px-4">
           <CategoryList categoryData={categoryData} fetchData={fetchData} />
         </div>
       ) : (

@@ -56,7 +56,7 @@ export default function CategoryList({categoryData , fetchData}) {
   
 
   return (
-    <div className="p-5 rounded-lg ">
+    <div className="px-6 rounded-lg ">
     <div className=" rounded">
       <table className="w-full text-sm bg-white border border-gray-300 divide-y divide-gray-200">
         <thead>

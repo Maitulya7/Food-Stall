@@ -11,6 +11,11 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
+  const getOldSerialNumber = (index) => {
+    return index + 1 + indexOfFirstItem;
+  };
+
+
   const getStatusColor = (status) => {
     switch (status.toLowerCase()) {
       case "pending":
@@ -60,7 +65,7 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
       <tbody >
       {currentItems.map((request, index) => (
           <tr key={request.id} className="hover:bg-gray-100 transition-colors">
-            <td className="py-2 px-4 border-b">{index + 1}</td>
+            <td className="py-2 px-4 border-b">{getOldSerialNumber(index)}</td>
             <td className="py-2 px-4 border-b">{request.email}</td>
             <td className="py-2 px-4 border-b">
               {request.first_name} {request.last_name}

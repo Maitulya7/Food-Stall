@@ -10,6 +10,7 @@ const Requests = () => {
   const [approvedRequests, setApprovedRequests] = useState([]);
   const [loading, setLoading] = useState(true); // Add loading state
 
+
   const categorizeRequests = (requests) => {
     const approved = requests.filter((request) => request.status.toLowerCase() === 'approved');
     setApprovedRequests(approved);
