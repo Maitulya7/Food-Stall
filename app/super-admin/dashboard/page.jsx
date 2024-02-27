@@ -1,15 +1,12 @@
-
 import LeftNavbarSuperAdmin from "@/app/components/Navbar/LeftNavbarSuperAdmin";
 import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import React from "react";
 function Dashboard() {
 
-
-
   return (
     <div className="h-screen flex bg-green-100">
       <div>
-        <LeftNavbarSuperAdmin />
+        <LeftNavbarSuperAdmin/>
       </div>
       <div className="flex flex-col w-full">
         <TopNavbar pageTitle="Home" pageEmoji="🏠" />
