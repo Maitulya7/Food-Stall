@@ -43,28 +43,28 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
     <table className="lg:w-full  bg-white border border-gray-300 divide-y divide-gray-200 text-xs">
       <thead>
         <tr>
-          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">Email</th>
-          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">Name</th>
-          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">No</th>
-          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">Phone</th>
-          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">Status</th>
-          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">
+          <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">Email</th>
+          <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">Name</th>
+          <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">No</th>
+          <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">Phone</th>
+          <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">Status</th>
+          <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">
             Categories
           </th>
-          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">
+          <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">
             Franchise
           </th>
-          <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">
+          <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">
             Franchise Details
           </th>
            {showActionHeader && (
-            <th className="py-2 px-4 text-left bg-[#393e46] text-white border-b">Action</th>
+            <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">Action</th>
           )}
         </tr>
       </thead>
       <tbody >
       {currentItems.map((request, index) => (
-          <tr key={request.id} className="hover:bg-gray-100 transition-colors">
+          <tr key={request.id} className="hover:bg-[#ADBC9F] transition-colors">
             <td className="py-2 px-4 border-b">{getOldSerialNumber(index)}</td>
             <td className="py-2 px-4 border-b">{request.email}</td>
             <td className="py-2 px-4 border-b">
@@ -83,7 +83,7 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
                 <Popover trigger="hover" placement="bottom">
                   <PopoverTrigger>
                     <div className="flex flex-wrap gap-1">
-                      <span className="px-2 py-1 bg-[#393e46] text-white text-xs rounded-md cursor-pointer transition duration-300">
+                      <span className="px-2 py-1 bg-[#12372A] font-medium  text-white text-xs rounded-md cursor-pointer transition duration-300">
                         View
                       </span>
                     </div>
@@ -136,7 +136,10 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
        defaultCurrent={currentPage}
        total={5}
        pageSize={itemsPerPage}
-       
+       classNames={{
+        cursor:
+          "bg-[#12372A] text-[#FBFADA]",
+      }}
        onChange={(page) => setCurrentPage(page)}
         color="default"
         loop showControls

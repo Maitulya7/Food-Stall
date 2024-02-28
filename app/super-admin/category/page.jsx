@@ -34,16 +34,16 @@ const Category = () => {
   }, []);
 
   return (
-    <div className="h-screen  flex bg-[#f0f5f9]">
+    <div className="h-screen  flex bg-white">
       <div>
         <LeftNavbarSuperAdmin />
       </div>
       <div className="flex flex-col w-full">
-        <div className=" bg-[#f0f5f9] px-10 pb-4 pt-20">
+        <div className=" bg-[#FBFADA] px-10 pb-4 pt-20">
           <AddCategory fetchData={fetchData} />
         </div>
         {loading ? (
-        <div className="flex items-center justify-center bg-[#f0f5f9] h-screen">
+        <div className="flex items-center justify-center bg-[#FBFADA] h-screen">
           <div className="flex flex-row gap-2">
             <div className="w-4 h-4 rounded-full bg-[#1e2022] animate-bounce" style={{ animationDelay: ".7s" }}></div>
             <div className="w-4 h-4 rounded-full bg-[#1e2022] animate-bounce" style={{ animationDelay: ".3s" }}></div>
@@ -53,12 +53,12 @@ const Category = () => {
       ) : categoryData && categoryData.length > 0 ? (
 
         
-        <div className="flex-grow bg-[#f0f5f9] px-4">
+        <div className="flex-grow bg-[#FBFADA] px-4">
           <CategoryList categoryData={categoryData} fetchData={fetchData} />
         </div>
       ) : (
-        <div className="flex items-center justify-center bg-[#f0f5f9] h-screen">
-          <Image src="/images/no-data.png" alt="no-image" height={640} width={640} />
+        <div className="flex items-center justify-center bg-[#FBFADA] h-screen">
+          <Image src="/images/no-data.png" alt="no-image" height={500} width={500} />
         </div>
       )}
       </div>

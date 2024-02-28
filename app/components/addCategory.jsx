@@ -54,16 +54,16 @@ export default function AddCategory({fetchData}) {
   return (
     <>
        <button   onClick={onOpen}
-  class="rounded-lg relative w-36 h-10 cursor-pointer flex items-center border border-[#52616b] bg-[#1e2022] group hover:bg-[#52616b] active:bg-[#52616b] active:border-[#52616b]"
+  class="rounded-lg relative w-36 h-10 cursor-pointer flex items-center border border-[#52616b] bg-[#12372A] group hover:bg-[#12372A] active:bg-[#12372A] active:border-[#12372A]"
 >
   <span
-    class="text-gray-200 font-semibold ml-8 transform group-hover:block transition-all duration-300"
+    class="text-[#FBFADA] font-semibold ml-8 transform group-hover:block transition-all duration-300"
     >Add Item</span>
   <span
-    class="absolute right-0 h-full w-10 rounded-lg bg-[#1e2022] flex items-center justify-center transform group-hover:translate-x-0 group-hover:w-full transition-all duration-300"
+    class="absolute right-0 h-full w-10 rounded-lg bg-[#12372A] flex items-center justify-center transform group-hover:translate-x-0 group-hover:w-full transition-all duration-300"
   >
     <svg
-      class="svg w-8 text-white"
+      class="svg w-8 text-[#FBFADA]"
       fill="none"
       height="24"
       stroke="currentColor"

@@ -61,14 +61,14 @@ export default function CategoryList({categoryData , fetchData}) {
       <table className="w-full text-sm bg-white border border-gray-300 divide-y divide-gray-200">
         <thead>
           <tr>
-            <th className="py-3 px-6 text-left bg-[#1e2022] text-white border-b">ID</th>
-            <th className="py-3 px-6 text-left bg-[#1e2022] text-white border-b">Category</th>
-            <th className="py-3 px-6 text-left bg-[#1e2022] text-white border-b">Actions</th>
+            <th className="py-3 px-6 text-left bg-[#436850] text-white border-b">ID</th>
+            <th className="py-3 px-6 text-left bg-[#436850] text-white border-b">Category</th>
+            <th className="py-3 px-6 text-left bg-[#436850] text-white border-b">Actions</th>
           </tr>
         </thead>
         <tbody>
         {currentItems.map((item, index) => (
-            <tr key={item.id} className="hover:bg-gray-100 transition-colors">
+            <tr key={item.id} className="hover:bg-[#FBFADA] transition-colors">
            <td className="py-4 px-6 border-b">{getOldSerialNumber(index)}</td>
               <td className="py-4 px-6 border-b">{item.name}</td>
               <td className="py-4 px-6 border-b">
@@ -88,10 +88,13 @@ export default function CategoryList({categoryData , fetchData}) {
        <Pagination
        defaultCurrent={currentPage}
        total={5}
+       color="success"
+       classNames={{
+        cursor:
+          "bg-[#12372A] text-[#FBFADA]",
+      }}
        pageSize={itemsPerPage}
-       
        onChange={(page) => setCurrentPage(page)}
-        color="default"
         loop showControls
       />
     )}

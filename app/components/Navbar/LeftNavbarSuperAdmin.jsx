@@ -32,19 +32,19 @@ const LeftNavbarSuperAdmin = () => {
 
   const linkStyles = (path) => ({
     color: pathname.startsWith(path) ? "blue" : "white",
-    backgroundColor: pathname.startsWith(path) ? "black" : "transparent",
+    backgroundColor: pathname.startsWith(path) ? "#12372A" : "transparent",
     textDecoration: "none",
     padding: "0.5rem",
     borderRadius: "0.5rem",
   });
 
   return (
-    <div className="bg-[#393e46] h-full">
+    <div className="bg-[#436850] h-screen">
       <div className="flex items-center justify-between px-4 py-2">
         <div className="flex items-center gap-2">
           <button onClick={handleToggleMenu} style={buttonStyles}>
             <svg
-              className="w-6 h-6"
+              className="w-6 h-6 text-[#FBFADA]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -64,14 +64,14 @@ const LeftNavbarSuperAdmin = () => {
       <div className={`${isMenuOpen ? 'block' : 'hidden'} lg:flex-col gap-4 px-4`}>
         <div className="mt-6 flex gap-4 flex-col px-4 py-2">
           <div className="flex items-center" style={linkStyles("/super-admin/dashboard")}>
-            <FaHome className="text-white" />
-            <Link href="/super-admin/dashboard" className="ml-4 text-white font-medium">
+            <FaHome className="text-[#FBFADA]" />
+            <Link href="/super-admin/dashboard" className="ml-4 text-[#FBFADA] font-medium">
               Home
             </Link>
           </div>
           <div className="flex items-center" style={linkStyles("/super-admin/category")}>
-            <FaThList className="text-white" />
-            <Link href="/super-admin/category" className="ml-4 text-white font-medium">
+            <FaThList className="text-[#FBFADA]" />
+            <Link href="/super-admin/category" className="ml-4 text-[#FBFADA] font-medium">
               Category
             </Link>
           </div>

@@ -11,7 +11,7 @@ const DropDownRequest = () => {
     <Dropdown  >
       <DropdownTrigger>
       
-        <Button variant="light" className="text-white text-base font-medium bg-[#393e46]  hover:text-white">
+        <Button variant="light" className="text-[#FBFADA] text-base font-medium bg-[#436850]  hover:text-white">
       <FontAwesomeIcon size="1x" icon={faBell}  className="mr-3" />
        Request</Button>
       </DropdownTrigger>

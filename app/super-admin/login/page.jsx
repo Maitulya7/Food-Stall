@@ -10,6 +10,8 @@ import * as Yup from 'yup';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DEFAULT_URL from "@/config";
+import Lottie from 'lottie-react';
+import animationData from '@/public/images/super-admin-animation-2.json'
 
 const Admin = () => {
   const router = useRouter();
@@ -59,7 +61,7 @@ const Admin = () => {
   return (
     <>
       <div className="flex  lg:flex-row justify-between h-screen">
-        <div className="md:h-screen w-full lg:mt-0  mt-32 lg:w-1/2">
+        <div className="md:h-screen w-full lg:mt-0  mt-32 ">
           <div className="flex justify-center mt-12  w-full">
             <div className="flex flex-col w-full p-20">
               <h1 className="text-3xl font-semibold mb-1 ml-2">Admin Login!</h1>
@@ -91,7 +93,7 @@ const Admin = () => {
 
               <button
                 onClick={formik.handleSubmit}
-                className="bg-[#1e2022] mt-8 h-12 rounded-lg text-white font-medium w-full"
+                className="bg-[#12372A] mt-8 h-12 rounded-lg text-white font-medium w-full"
               >
                 Login
               </button>
@@ -99,13 +101,12 @@ const Admin = () => {
           </div>
         </div>
 
-        <div className="block lg:h-screen w-full relative">
-          <Image
-            src="/images/super-admin-bg.png"
-            alt="Description of the image"
-            layout="fill"
-            objectFit="cover"
-            className="w-1/2 h-full"
+        <div className="block lg:h-screen pr-16 items-center w-full relative">
+        <Lottie
+            animationData={animationData}
+            loop
+            autoplay
+            className="w-full h-full"
           />
         </div>
       </div>

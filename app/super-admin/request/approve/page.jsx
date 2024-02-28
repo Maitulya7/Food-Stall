@@ -55,9 +55,9 @@ const Requests = () => {
       {loading && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
           <div class="flex flex-row gap-2">
-            <div class="w-4 h-4 rounded-full bg-[#1e2022] animate-bounce [animation-delay:.7s]"></div>
-            <div class="w-4 h-4 rounded-full bg-[#1e2022] animate-bounce [animation-delay:.3s]"></div>
-            <div class="w-4 h-4 rounded-full bg-[#1e2022] animate-bounce [animation-delay:.7s]"></div>
+            <div class="w-4 h-4 rounded-full bg-[#12372A] animate-bounce [animation-delay:.7s]"></div>
+            <div class="w-4 h-4 rounded-full bg-[#12372A] animate-bounce [animation-delay:.3s]"></div>
+            <div class="w-4 h-4 rounded-full bg-[#12372A] animate-bounce [animation-delay:.7s]"></div>
           </div>
         </div>
       )}
@@ -65,7 +65,7 @@ const Requests = () => {
         <LeftNavbarSuperAdmin />
       </div>
       <div className="flex flex-col w-full h-full">
-        <div className="flex-grow bg-[#f7f7f7] px-6 py-6">
+        <div className="flex-grow bg-[#FBFADA] px-6 py-6">
           <h2 className="text-lg font-semibold mb-4">Approved Requests</h2>
           <div className="lg:w-full w-1/4">
             {loading ? (
