@@ -15,7 +15,12 @@ export default function CategoryList({categoryData , fetchData}) {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = categoryData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const sortedCategoryData = categoryData.slice().sort((a, b) => {
+    return new Date(b.created_at) - new Date(a.created_at);
+  });
+
+  const currentItems = sortedCategoryData.slice(indexOfFirstItem, indexOfLastItem);
 
   const getOldSerialNumber = (index) => {
     return index + 1 + indexOfFirstItem;
@@ -110,7 +115,7 @@ export default function CategoryList({categoryData , fetchData}) {
           <Button color="light" variant="outline" onPress={onClose}>
             Cancel
           </Button>
-          <Button color="danger" onPress={handleDeleteConfirmation}>
+          <Button className="bg-red-800 text-white" onPress={handleDeleteConfirmation}>
             Delete
           </Button>
         </ModalFooter>

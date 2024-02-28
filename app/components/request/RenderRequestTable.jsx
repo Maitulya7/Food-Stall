@@ -80,7 +80,7 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
             </td>
             <td className="py-2 px-4 border-b">
               {request.type_of_categories.length > 0 && (
-                <Popover trigger="hover" placement="bottom">
+                <Popover backdrop="opaque" trigger="hover" placement="bottom">
                   <PopoverTrigger>
                     <div className="flex flex-wrap gap-1">
                       <span className="px-2 py-1 bg-[#12372A] font-medium  text-white text-xs rounded-md cursor-pointer transition duration-300">
@@ -88,11 +88,13 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
                       </span>
                     </div>
                   </PopoverTrigger>
-                  <PopoverContent>
+                  <PopoverContent
+                  
+                  >
                     <div className="p-2">
                       {request.type_of_categories.map(
                         (category, categoryIndex) => (
-                          <div key={categoryIndex} className="mb-2">
+                          <div key={categoryIndex} className="mb-2 text-center  bg-[#12372A] p-2  text-white rounded font-medium">
                             {category}
                           </div>
                         )

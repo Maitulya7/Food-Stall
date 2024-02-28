@@ -7,8 +7,6 @@ import AddMenuItemForm from "./AddMenuItemForm";
 
 const AdminMenuCard = () => {
   const [isFormOpen, setFormOpen] = useState(false)
-  const [menu, setMenu] = useState("");
-
   const [apiData, setApiData] = useState([]);
 
   const fetchApiData = () => {
@@ -33,20 +31,7 @@ const AdminMenuCard = () => {
     }
   };
 
-  useEffect(()=>{
-    axios.get(`${DEFAULT_URL}/api/v1/admin/categories`, {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("access-token"),
-        "ngrok-skip-browser-warning": true,
-      },
-    })
-    .then((res) => {
-      console.log("all categories",res.data)
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-  },[])
+
 
   useEffect(() => {
     if (!isFormOpen) {
@@ -54,21 +39,7 @@ const AdminMenuCard = () => {
     }
   }, [isFormOpen]);
 
-  const [foodCategoryData, setFoodCategoryData] = useState([]);
-  console.log(foodCategoryData)
-  useEffect(() => {
-    const storedFoodCategoryData = localStorage.getItem("categoriesData");
-    if (storedFoodCategoryData) {
-      try {
-        const parsedData = JSON.parse(storedFoodCategoryData);
-        setFoodCategoryData(parsedData);
-      } catch (error) {
-        console.error("Error parsing stored data:", error.message);
-      }
-    } else {
-      console.error("No data found in localStorage for categoriesData");
-    }
-  }, []);
+
 
   useEffect(() => {
     console.log("isFormOpen value after setFormOpen:", isFormOpen);
@@ -93,7 +64,6 @@ const AdminMenuCard = () => {
       <MenuTable menu={apiData} fetchApiData={fetchApiData} />
       {isFormOpen && (
         <AddMenuItemForm
-        foodCategoryData={foodCategoryData}
         setFormOpen={setFormOpen}
         fetchApiData={fetchApiData}
       />

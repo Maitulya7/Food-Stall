@@ -81,7 +81,7 @@ const LeftNavbarSuperAdmin = () => {
         </div>
 
 
-        <div className="w-full flex items-center justify-center mt-72" style={linkStyles("/super-admin/logout")}>
+        <div className="w-full flex items-center justify-center mt-52" style={linkStyles("/super-admin/logout")}>
           <button onClick={handleLogout}
             class="group flex items-center justify-start w-11 h-11 bg-red-400 rounded-full cursor-pointer relative overflow-hidden transition-all duration-200 shadow-lg hover:w-32 hover:rounded-lg active:translate-x-1 active:translate-y-1"
           >

@@ -33,10 +33,8 @@ const Register = () => {
       confirmPassword: Yup.string()
         .oneOf([Yup.ref("password"), null], "Passwords must match")
         .required("Confirm password is  Required"),
-      franchiseDetails: Yup.string().when("franchise", {
-        is: true,
-        then: Yup.string().required("Detial is Required"),
-      }),
+      franchise: Yup.bool(),
+      franchiseDetails: Yup.string().required("Franchise Detial is Require") 
     }),
     onSubmit: (values) => {
       axios
@@ -73,8 +71,15 @@ const Register = () => {
   });
 
   const handleFranchiseChange = (value) => {
-    formik.setFieldValue("franchise", value === "Yes");
+    const event = {
+      target: {
+        name: "franchise",
+        value: value === "Yes",
+      },
+    };
+    formik.handleChange(event);
   };
+
 
   const handleCategoryChange = (e) => {
     const selectedCategories = e.target.value
@@ -116,7 +121,7 @@ const Register = () => {
                 className="w-full mb-3"
                 value={formik.values.firstName}
                 onChange={formik.handleChange("firstName")}
-                
+
               />
               {formik.touched.firstName && formik.errors.firstName && (
                 <p className="text-red-500 text-sm ml-2">{formik.errors.firstName}</p>
@@ -132,7 +137,7 @@ const Register = () => {
                 value={formik.values.lastName}
                 onChange={formik.handleChange("lastName")}
               />
-               {formik.touched.lastName && formik.errors.lastName && (
+              {formik.touched.lastName && formik.errors.lastName && (
                 <p className="text-red-500 text-sm ml-2">{formik.errors.lastName}</p>
               )}
             </div>
@@ -146,7 +151,7 @@ const Register = () => {
                 value={formik.values.email}
                 onChange={formik.handleChange("email")}
               />
-               {formik.touched.email && formik.errors.email && (
+              {formik.touched.email && formik.errors.email && (
                 <p className="text-red-500 text-sm ml-2">{formik.errors.email}</p>
               )}
             </div>
@@ -160,7 +165,7 @@ const Register = () => {
                 value={formik.values.phoneNumber}
                 onChange={formik.handleChange("phoneNumber")}
               />
-               {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+              {formik.touched.phoneNumber && formik.errors.phoneNumber && (
                 <p className="text-red-500 text-sm ml-2">{formik.errors.phoneNumber}</p>
               )}
             </div>
@@ -172,7 +177,7 @@ const Register = () => {
                   formik.handleChange("password")(e.target.value)
                 }
               />
-               {formik.touched.password && formik.errors.password && (
+              {formik.touched.password && formik.errors.password && (
                 <p className="text-red-500 text-sm ml-2">{formik.errors.password}</p>
               )}
             </div>
@@ -184,7 +189,7 @@ const Register = () => {
                   formik.handleChange("confirmPassword")(e.target.value)
                 }
               />
-               {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+              {formik.touched.confirmPassword && formik.errors.confirmPassword && (
                 <p className="text-red-500 text-sm ml-2">{formik.errors.confirmPassword}</p>
               )}
             </div>
@@ -198,21 +203,19 @@ const Register = () => {
               <div className="flex gap-3">
                 <button
                   onClick={() => handleFranchiseChange("Yes")}
-                  className={`w-auto pl-4 pr-4 pt-1 pb-1 rounded ${
-                    formik.values.franchise
+                  className={`w-auto pl-4 pr-4 pt-1 pb-1 rounded ${formik.values.franchise
                       ? "bg-green-800"
                       : "bg-gray-500"
-                  } text-white font-medium`}
+                    } text-white font-medium`}
                 >
                   Yes
                 </button>
                 <button
                   onClick={() => handleFranchiseChange("No")}
-                  className={`w-auto pl-4 pr-4 pt-1 pb-1 rounded ${
-                    !formik.values.franchise
+                  className={`w-auto pl-4 pr-4 pt-1 pb-1 rounded ${!formik.values.franchise
                       ? "bg-green-800"
                       : "bg-gray-500"
-                  } text-white font-medium`}
+                    } text-white font-medium`}
                 >
                   No
                 </button>
@@ -230,7 +233,7 @@ const Register = () => {
                 value={formik.values.franchiseDetails}
                 onChange={formik.handleChange("franchiseDetails")}
               />
-               {formik.touched.franchiseDetails && formik.errors.franchiseDetails && (
+              {formik.touched.franchiseDetails && formik.errors.franchiseDetails && (
                 <p className="text-red-500 text-sm ml-2">{formik.errors.franchiseDetails}</p>
               )}
             </div>

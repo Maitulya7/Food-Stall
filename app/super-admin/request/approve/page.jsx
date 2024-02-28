@@ -18,7 +18,7 @@ const Requests = () => {
 
   const fetchRequestsData = () => {
     try {
-      setLoading(true); // Set loading to true when starting data fetching
+      setLoading(true); 
       axios
         .get(`${DEFAULT_URL}/api/v1/admin/requests`, {
           headers: {
@@ -35,7 +35,7 @@ const Requests = () => {
           console.log(err);
         })
         .finally(() => {
-          setLoading(false); // Set loading to false after data fetching is complete
+          setLoading(false); 
         });
     } catch (error) {
       console.error("Error fetching requests data:", error);
@@ -44,6 +44,7 @@ const Requests = () => {
 
   useEffect(() => {
     fetchRequestsData();
+    console.log(fetchRequestsData())
   }, []);
 
   useEffect(() => {

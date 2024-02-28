@@ -8,10 +8,10 @@ const DropDownRequest = () => {
   return (
     <div className="bg-transparent text-center">
 
-    <Dropdown  >
+    <Dropdown >
       <DropdownTrigger>
       
-        <Button variant="light" className="text-[#FBFADA] text-base font-medium bg-[#436850]  hover:text-white">
+        <Button variant="light" className="text-[#FBFADA] text-base font-medium bg-[#436850]  hover:text-[#FBFADA]">
       <FontAwesomeIcon size="1x" icon={faBell}  className="mr-3" />
        Request</Button>
       </DropdownTrigger>
