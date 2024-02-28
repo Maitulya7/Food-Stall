@@ -52,7 +52,7 @@ const Requests = () => {
   }, [requestsData]);
 
   return (
-    <div className="h-screen flex bg-[#f7f7f7] font-sans">
+    <div className="h-screen flex font-sans">
       {loading && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
           <div class="flex flex-row gap-2">
@@ -66,7 +66,7 @@ const Requests = () => {
         <LeftNavbarSuperAdmin />
       </div>
       <div className="flex flex-col w-full h-full">
-        <div className="flex-grow bg-[#FBFADA] px-6 py-6">
+        <div className="flex-grow  px-6 py-6">
           <h2 className="text-lg font-semibold mb-4">Approved Requests</h2>
           <div className="lg:w-full w-1/4">
             {loading ? (

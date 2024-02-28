@@ -108,7 +108,7 @@ const Requests = () => {
   }, [requestsData]);
 
   return (
-    <div className="h-screen flex bg-[#f7f7f7] font-sans">
+    <div className="h-screen flex font-sans">
     {loading && (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">
         <div class="flex flex-row gap-2">

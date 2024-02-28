@@ -6,6 +6,8 @@ import CategoryList from "@/app/components/categoryList";
 import axios from "axios";
 import DEFAULT_URL from "@/config";
 import Image from "next/image";
+import Lottie from 'lottie-react';
+import animationData from '@/public/images/no-data-animation.json'
 
 const Category = () => {
   const [categoryData, setCategoryData] = useState([]);
@@ -39,11 +41,11 @@ const Category = () => {
         <LeftNavbarSuperAdmin />
       </div>
       <div className="flex flex-col w-full">
-        <div className=" bg-[#FBFADA] px-10 pb-4 pt-20">
+        <div className=" px-10 pb-4 pt-20">
           <AddCategory fetchData={fetchData} />
         </div>
         {loading ? (
-        <div className="flex items-center justify-center bg-[#FBFADA] h-screen">
+        <div className="flex items-center justify-center  h-screen">
           <div className="flex flex-row gap-2">
             <div className="w-4 h-4 rounded-full bg-[#1e2022] animate-bounce" style={{ animationDelay: ".7s" }}></div>
             <div className="w-4 h-4 rounded-full bg-[#1e2022] animate-bounce" style={{ animationDelay: ".3s" }}></div>
@@ -53,12 +55,17 @@ const Category = () => {
       ) : categoryData && categoryData.length > 0 ? (
 
         
-        <div className="flex-grow bg-[#FBFADA] px-4">
+        <div className="flex-grow  px-4">
           <CategoryList categoryData={categoryData} fetchData={fetchData} />
         </div>
       ) : (
-        <div className="flex items-center justify-center bg-[#FBFADA] h-screen">
-          <Image src="/images/no-data.png" alt="no-image" height={500} width={500} />
+        <div className="flex items-center justify-center  h-screen">
+         <Lottie
+            animationData={animationData}
+            loop
+            autoplay
+            className="w-1/3 h-1/2"
+          />
         </div>
       )}
       </div>
