@@ -7,8 +7,12 @@ import * as Yup from 'yup';
 import InputPassword from '../../components/password/InputPassword';
 import axios from 'axios';
 import DEFAULT_URL from '@/config';
+import { useRouter } from "next/navigation";
+import Lottie from 'lottie-react';
+import animationData from '@/public/images/super-admin-signUp.json'
 
 const Admin = () => {
+  const router = useRouter();
   const [error, setError] = useState('');
   const [emailExistsError, setEmailExistsError] = useState(false);
 
@@ -51,6 +55,10 @@ const Admin = () => {
     },
   });
 
+  const loginPage = () => {
+    router.push("/super-admin/login");
+  }
+
   return (
     <>
       <div className="flex lg:flex-row justify-between h-screen">
@@ -89,21 +97,30 @@ const Admin = () => {
 
               <button
                 onClick={formik.handleSubmit}
-                className="bg-green-900 h-12 mt-10 rounded-lg text-white font-medium w-full"
+                className="bg-[#12372A] h-12 mt-8 rounded-lg text-white font-medium w-full"
               >
-                Login
+                Sign Up
               </button>
+
+              <div className="flex justify-start mt-8">
+
+                <button
+                  onClick={loginPage}
+                  className="text-[#12372A] hover:underline cursor-pointer"
+                >
+                  Already have an account? Login 
+                </button> 
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="block lg:h-screen lg:w-1/2 relative">
-          <Image
-            src="/images/superAdminLogin.jpg"
-            alt="Description of the image"
-            layout="fill"
-            objectFit="cover"
-            className="w-full h-full"
+        <div className="block lg:h-full pr-16 items-center w-1/2 relative">
+          <Lottie
+            animationData={animationData}
+            loop
+            autoplay
+            className="w-full h-full "
           />
         </div>
       </div>

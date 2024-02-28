@@ -58,6 +58,14 @@ const Admin = () => {
     },
   });
 
+  const forgotPassword = () => {
+    router.push("/super-admin/login/forgotPassword");
+  }
+
+  const signUpPage = () => {
+    router.push("/super-admin/signUp");
+  }
+
   return (
     <>
       <div className="flex  lg:flex-row justify-between h-screen">
@@ -79,9 +87,9 @@ const Admin = () => {
                 className="w-full mb-6"
                 {...formik.getFieldProps('email')}
               />
-               
 
-               {formik.touched.password && formik.errors.password && (
+
+              {formik.touched.password && formik.errors.password && (
                 <p className="text-red-500 ml-2 mt-2">{formik.errors.password}</p>
               )}
               <InputPassword
@@ -89,7 +97,7 @@ const Admin = () => {
                 onChangeFunction={(e) => formik.setFieldValue('password', e.target.value)}
               />
 
-         
+
 
               <button
                 onClick={formik.handleSubmit}
@@ -97,12 +105,30 @@ const Admin = () => {
               >
                 Login
               </button>
+
+              <div className="flex justify-between mt-8">
+                <button
+                  onClick={forgotPassword}
+                  className="text-[#12372A] hover:underline cursor-pointer"
+                >
+                  Forgot Password?
+                </button>
+
+                <button
+                  onClick={signUpPage}
+                  className="text-[#12372A] hover:underline cursor-pointer"
+                >
+                  Don't have an account? Signup 
+                </button> 
+              </div>
+              
             </div>
+
           </div>
         </div>
 
         <div className="block lg:h-screen pr-16 items-center w-full relative">
-        <Lottie
+          <Lottie
             animationData={animationData}
             loop
             autoplay

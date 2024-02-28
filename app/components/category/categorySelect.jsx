@@ -44,6 +44,7 @@ export default function CategorySelect({ handleSelectionChange }) {
           <SelectItem key={category.name}>{category.name}</SelectItem>
         ))}
       </Select>
+      
     </div>
   );
 }
