@@ -43,9 +43,11 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
     <table className="lg:w-full  bg-white border border-gray-300 divide-y divide-gray-200 text-xs">
       <thead>
         <tr>
+          <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">No</th>
           <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">Email</th>
           <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">Name</th>
-          <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">No</th>
+          <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">Stall Name</th>
+          <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">Stall Logo</th>
           <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">Phone</th>
           <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">Status</th>
           <th className="py-2 px-4 text-left bg-[#12372A]  text-white border-b">
@@ -69,6 +71,12 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
             <td className="py-2 px-4 border-b">{request.email}</td>
             <td className="py-2 px-4 border-b">
               {request.first_name} {request.last_name}
+            </td>
+            <td className="py-2 px-4 border-b">
+              {request.stall_name} 
+            </td>
+            <td className="py-2 px-4 border-b">
+              {request.stall_logo}
             </td>
             <td className="py-2 px-4 border-b">{request.phone_number}</td>
             <td

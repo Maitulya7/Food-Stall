@@ -138,6 +138,7 @@ console.log("all category", fetchCategoryData())
             placeholder="Enter item name"
             className="w-full"
           />
+          
           <div className="flex gap-5">
             <Select
               items={itemTypeOptions}

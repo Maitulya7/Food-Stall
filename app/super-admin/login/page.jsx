@@ -13,6 +13,8 @@ import DEFAULT_URL from "@/config";
 import Lottie from 'lottie-react';
 import animationData from '@/public/images/super-admin-animation-2.json'
 
+
+
 const Admin = () => {
   const router = useRouter();
 

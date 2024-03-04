@@ -1,4 +1,4 @@
 // config.js
-const DEFAULT_URL = "https://0cc0-2401-4900-1c80-9405-40b1-6008-1055-d1cd.ngrok-free.app";
+const DEFAULT_URL = "https://a368-182-64-131-233.ngrok-free.app";
 
 export default DEFAULT_URL;
