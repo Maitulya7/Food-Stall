@@ -63,7 +63,7 @@ const Register = () => {
       formData.append("vendor[stall_logo]", pic) 
       formData.append("client_id","egp44hMIRaN2k3e6zLlo0svH2HXi944QxHIqLc50CYI")
 
-      // console.log(pic)
+      
       console.log(values);
       
       axios
