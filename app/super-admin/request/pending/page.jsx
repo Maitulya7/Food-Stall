@@ -35,7 +35,7 @@ const Requests = () => {
         .catch((err) => {
           console.log(err);
         }).finally(() => {
-          setLoading(false); // Set loading to false after data fetching is complete
+          setLoading(false); 
         });;
     } catch (error) {
       console.error("Error fetching requests data:", error);

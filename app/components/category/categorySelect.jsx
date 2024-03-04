@@ -3,7 +3,7 @@ import { Select, SelectItem } from "@nextui-org/react";
 import axios from "axios";
 import DEFAULT_URL from "@/config";
 
-export default function CategorySelect({ handleSelectionChange }) {
+export default function CategorySelect({ handleSelectionChange, newValue }) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -38,6 +38,7 @@ export default function CategorySelect({ handleSelectionChange }) {
         selectionMode="multiple"
         variant="bordered"
         placeholder="Select a category"
+        value={newValue}
         onChange={handleSelectionChange}
       >
         {categories.map((category) => (

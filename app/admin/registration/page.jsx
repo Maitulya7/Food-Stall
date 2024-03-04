@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Input } from "@nextui-org/react";
@@ -19,6 +19,7 @@ import DEFAULT_URL from "@/config";
 const Register = () => {
   const [pic , setPic] = useState()
   const [imgUrl , setImgUrl] = useState("")
+  const [cat, setCat] = useState([]);
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -27,49 +28,48 @@ const Register = () => {
       phoneNumber: "",
       password: "",
       confirmPassword: "",
-      categories: [],
+      categories: cat,
       franchise: false,
       franchiseDetails: "",
       stallName: "",
-      stallLogo: "",
+      stallLogo: imgUrl,
     },
-    validationSchema: Yup.object({
-      firstName: Yup.string().required("First name is Required"),
-      lastName: Yup.string().required("Last name is Required"),
-      email: Yup.string().email("Invalid email address").required("Email is Required"),
-      phoneNumber: Yup.number().required("Number is Required"),
-      password: Yup.string().required("Password is Required"),
-      confirmPassword: Yup.string()
-        .oneOf([Yup.ref("password"), null], "Passwords must match")
-        .required("Confirm password is  Required"),
-      franchise: Yup.bool(),
-      franchiseDetails: Yup.string(),
-      stallName: Yup.string().required("Stall name is Required"),
-      // stallLogo: Yup
-      // .mixed()
-      // .required("Required")
-    }),
+    // validationSchema: Yup.object({
+    //   firstName: Yup.string().required("First name is Required"),
+    //   lastName: Yup.string().required("Last name is Required"),
+    //   email: Yup.string().email("Invalid email address").required("Email is Required"),
+    //   phoneNumber: Yup.number().required("Number is Required"),
+    //   password: Yup.string().required("Password is Required"),
+    //   confirmPassword: Yup.string()
+    //     .oneOf([Yup.ref("password"), null], "Passwords must match")
+    //     .required("Confirm password is  Required"),
+    //   franchise: Yup.bool(),
+    //   franchiseDetails: Yup.string(),
+    //   stallName: Yup.string().required("Stall name is Required"),
+    // }),
     onSubmit: (values) => {
+      formik.values.categories = cat;
+      const formData = new FormData()
+      formData.append("vendor[first_name]", values.firstName) 
+      formData.append("vendor[last_name]", values.lastName) 
+      formData.append("vendor[email]", values.email) 
+      formData.append("vendor[phone_number]", values.phoneNumber) 
+      formData.append("vendor[password]", values.password) 
+      formData.append("vendor[confirm_password]", values.confirmPassword) 
+      formData.append("vendor[type_of_categories]", JSON.stringify(values.categories));
+      formData.append("vendor[franchise]", values.franchise) 
+      formData.append("vendor[franchise_details]", values.franchiseDetails) 
+      formData.append("vendor[stall_name]", values.stallName) 
+      formData.append("vendor[stall_logo]", pic) 
+      formData.append("client_id","egp44hMIRaN2k3e6zLlo0svH2HXi944QxHIqLc50CYI")
+
+      // console.log(pic)
+      console.log(values);
       
       axios
         .post(
           `${DEFAULT_URL}/api/v1/vendor/sign_up`,
-          {
-            vendor: {
-              first_name: values.firstName,
-              last_name: values.lastName,
-              email: values.email,
-              phone_number: values.phoneNumber,
-              password: values.password,
-              confirm_password: values.confirmPassword,
-              type_of_categories: values.categories,
-              franchise: values.franchise,
-              franchise_details: values.franchiseDetails,
-              stall_name: values.stallName,
-              stall_logo:pic,
-            },
-            client_id: "egp44hMIRaN2k3e6zLlo0svH2HXi944QxHIqLc50CYI",
-          },
+          formData,
           {
             headers: {
               "ngrok-skip-browser-warning": true,
@@ -77,6 +77,7 @@ const Register = () => {
           }
         )
         .then((res) => {
+          console.log(formData);
           console.log(res);
         })
         .catch((err) => {
@@ -96,21 +97,25 @@ const Register = () => {
   };
 
 
+
   const handleCategoryChange = (e) => {
     const selectedCategories = e.target.value
       .split(",")
       .map((category) => category.trim())
       .filter((category) => category !== "");
-
-    formik.setFieldValue("categories", [
-      ...new Set([...formik.values.categories, ...selectedCategories]),
-    ]);
-
+  
+    const uniqueCategoriesSet = new Set(selectedCategories);
+    const uniqueCategories = [...uniqueCategoriesSet];
+    console.log(uniqueCategories);
+    setCat(uniqueCategories)
+    
     formik.setFieldTouched("categories", true);
     formik.setFieldError("type_of_categories", null);
   };
+  
+  
 
-  const uploadAadhar = async () => {
+  const uploadImage = async () => {
     const { value: file } = await Swal.fire({
         title: "Select image",
         input: "file",
@@ -120,17 +125,17 @@ const Register = () => {
         }
     });
     if (file) {
-      console.log(file)
-     
         setPic(file);
         const reader = new FileReader();
         reader.onload = (e) => {
           console.log(e.target.result)
           setImgUrl(e.target.result)
             Swal.fire({
-                title: "Your uploaded aadhar card",
+                title: "Your Stall Logo",
                 imageUrl: e.target.result,
-                imageAlt: "The uploaded picture"
+                imageAlt: "The uploaded picture",
+                imageWidth: 300,  
+                imageHeight: 300  
             });
         };
         reader.readAsDataURL(file);
@@ -142,7 +147,7 @@ const Register = () => {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 h-screen w-full lg:p-0  px-10">
-        {/* left part (image) for larger screens */}
+     
         <div className="hidden md:block md:col-span-1">
           <Image
             src="/images/bg-admin.jpg"
@@ -153,18 +158,19 @@ const Register = () => {
           />
         </div>
 
+
         <div className="md:col-span-1 lg:col-span-2 p-4 lg:p-4  w-full m-auto">
           <h1 className="text-xl font-medium ml-4 md:ml-14">
             Vendor Registration
           </h1>
-          <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
+          <form onSubmit={formik.handleSubmit} >
 
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pl-4 md:pl-12 pr-4 md:pr-12 pt-5 ">
 
               <div className="w-full">
                 <Input
-                  isRequired
+                  
                   variant="bordered"
                   type="text"
                   label="First Name"
@@ -179,7 +185,7 @@ const Register = () => {
               </div>
               <div className="w-full">
                 <Input
-                  isRequired
+                  
                   variant="bordered"
                   type="text"
                   label="Last Name"
@@ -193,7 +199,7 @@ const Register = () => {
               </div>
               <div className="w-full">
                 <Input
-                  isRequired
+                  
                   variant="bordered"
                   type="email"
                   label="Email"
@@ -207,7 +213,7 @@ const Register = () => {
               </div>
               <div className="w-full">
                 <Input
-                  isRequired
+                  
                   variant="bordered"
                   type="number"
                   label="Phone Number"
@@ -245,14 +251,14 @@ const Register = () => {
               </div>
 
               <div className="w-full">
-                <CategorySelect handleSelectionChange={handleCategoryChange} />
+                <CategorySelect newValue={formik.values.categories} handleSelectionChange={handleCategoryChange} />
                 {formik.touched.categories && formik.errors.type_of_categories && (
                   <p className="text-red-500 text-sm ml-2">{formik.errors.type_of_categories}</p>
                 )}
               </div>
               <div className="w-full">
                 <Input
-                  isRequired
+                  
                   variant="bordered"
                   type="text"
                   label="Stall Name"
@@ -268,27 +274,17 @@ const Register = () => {
 
               <div className="w-full">
 
-                <div className="relative border-dashed border-2 border-gray-300 p-3 rounded-lg">
-                  {/* <Input
-                    type="file"
-                    accept="image/*"
-                    className="absolute top-0 left-0 w-full h-full opacity-0"
-                    onChange={(e) => formik.handleChange("stallLogo")(e)}
-                  /> */}
-                  <button onClick={uploadAadhar}>FILE UPLOAD</button>
-                  <p className="text-gray-600 text-center">
-                    {formik.values.stallLogo ? 'File selected' : 'Upload Stall logo'}
-                  </p>
-                </div>
-                {formik.touched.stallLogo && formik.errors.stallLogo && (
-                  <p className="text-red-500 text-sm ml-2 mt-2">{formik.errors.stallLogo}</p>
-                )}
+
+              <button type="button" className="w-full bg-green-800 p-2 cursor-pointer text-white font-bold rounded-lg"  onClick={uploadImage}>Upload Logo</button>
+            
               </div>
 
+               
               <div className="w-full flex items-center ml-2 gap-6">
                 <p>Franchise :</p>
                 <div className="flex gap-3">
                   <button
+                   type="button"
                     onClick={() => handleFranchiseChange("Yes")}
                     className={`w-auto pl-4 pr-4 pt-1 pb-1 rounded ${formik.values.franchise
                       ? "bg-green-800"
@@ -298,6 +294,7 @@ const Register = () => {
                     Yes
                   </button>
                   <button
+                   type="button"
                     onClick={() => handleFranchiseChange("No")}
                     className={`w-auto pl-4 pr-4 pt-1 pb-1 rounded ${!formik.values.franchise
                       ? "bg-green-800"
@@ -313,7 +310,7 @@ const Register = () => {
             {formik.values.franchise && (
               <div className="w-full mt-4 pl-4 md:pl-12 pr-4 md:pr-12">
                 <Input
-                  isRequired
+                  
                   variant="bordered"
                   type="text"
                   label="Franchise Details"
