@@ -64,7 +64,7 @@ const AddMenuItemForm = ({ setFormOpen, fetchApiData }) => {
       taste: formInputs.taste,
       tags: formInputs.tags,
       price: formInputs.price,
-      food_category: categoryId,
+      food_category: formInputs.food_category,
     };
 
     try {

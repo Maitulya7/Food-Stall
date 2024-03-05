@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import TopNavbar from "@/app/components/Navbar/TopNavbar";
 import LeftNavbarSuperAdmin from "@/app/components/Navbar/LeftNavbarSuperAdmin";
 import RequestsTable from "@/app/components/request/RenderRequestTable";
 import DEFAULT_URL from "@/config";

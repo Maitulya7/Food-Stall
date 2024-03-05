@@ -144,7 +144,7 @@ const RequestsTable = ({ data, handleApprove, handleReject }) => {
     {data.length > itemsPerPage && (
        <Pagination
        defaultCurrent={currentPage}
-       total={5}
+       total={data.length}
        pageSize={itemsPerPage}
        classNames={{
         cursor:

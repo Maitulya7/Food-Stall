@@ -44,7 +44,7 @@ const Admin = () => {
         );
 
         if (response.status === 200) {
-          localStorage.setItem("access-token", response.data.vendor.access_token);
+          localStorage.setItem("access-token", response.data.access_token);
           toast.success("Login successful!", {
             position: "top-right",
           });
@@ -61,11 +61,11 @@ const Admin = () => {
   });
 
   const forgotPassword = () => {
-    router.push("/admin/forgotPassword");
+    router.push("/vendor/forgotPassword");
   }
 
   const signUpPage = () => {
-    router.push("/admin/registration");
+    router.push("/vendor/registration");
   }
 
   return (

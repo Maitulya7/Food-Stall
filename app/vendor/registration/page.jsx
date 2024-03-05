@@ -10,7 +10,8 @@ import ConfirmPassword from "@/app/components/password/confirmPassword";
 import CategorySelect from "@/app/components/category/categorySelect";
 import axios from "axios";
 import Swal from 'sweetalert2'
-
+import Lottie from 'lottie-react';
+import animationData from '@/public/images/vendor-animation-registration.json'
 import DEFAULT_URL from "@/config";
 
 
@@ -148,15 +149,14 @@ const Register = () => {
     <>
       <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 h-screen w-full lg:p-0  px-10">
      
-        <div className="hidden md:block md:col-span-1">
-          <Image
-            src="/images/bg-admin.jpg"
-            alt="Description of the image"
-            width={1040}
-            height={2040}
-            className="w-full h-full"
-          />
-        </div>
+      <div className="hidden pl-10 sm:inline-block">
+        <Lottie
+          animationData={animationData}
+          loop
+          autoplay
+          className="w-full h-full"
+        />
+      </div>
 
 
         <div className="md:col-span-1 lg:col-span-2 p-4 lg:p-4  w-full m-auto">

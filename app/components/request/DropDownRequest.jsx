@@ -17,13 +17,13 @@ const DropDownRequest = () => {
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
         <DropdownItem key="approve">
-          <Link href="/super-admin/request/approve">Approve</Link>
+          <Link href="/admin/request/approve">Approve</Link>
         </DropdownItem>
         <DropdownItem key="reject">
-        <Link href="/super-admin/request/reject">Reject</Link>
+        <Link href="/admin/request/reject">Reject</Link>
         </DropdownItem>
         <DropdownItem key="pending">
-        <Link href="/super-admin/request/pending">Pending</Link>
+        <Link href="/admin/request/pending">Pending</Link>
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>
