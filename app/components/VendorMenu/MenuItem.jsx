@@ -184,7 +184,7 @@ const handleEditInputChange = (name, value) => {
 
   return (
     <>
-      <tr className="hover:bg-gray-100 transition-colors">
+      <tr className="hover:bg-[#ADBC9F]  transition-colors">
         <td className="py-2 px-4 border-b">{index + 1}</td>
         <td className="py-2 px-4 border-b">{name}</td>
         <td className="py-2 px-4 border-b">{itemType}</td>

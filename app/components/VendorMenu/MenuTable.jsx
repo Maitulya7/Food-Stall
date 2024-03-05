@@ -13,14 +13,14 @@ const MenuTable = ({ menu  , fetchApiData }) => {
     <table className="min-w-full bg-white border border-gray-300 divide-y divide-gray-200 text-sm">
       <thead>
         <tr className="bg-green-800 text-white ">
-          <th className="py-2 px-4 text-xs text-left border-b">Index</th>
-          <th className="py-2 px-4 text-xs text-left border-b">Name</th>
-          <th className="py-2 px-4 text-xs text-left border-b">Item Type</th>
-          <th className="py-2 px-4 text-xs text-left border-b">Sub Type</th>
-          <th className="py-2 px-4 text-xs text-left border-b">Taste</th>
-          <th className="py-2 px-4 text-xs text-left border-b">Tags</th>
-          <th className="py-2 px-4 text-xs text-left border-b">Price</th>
-          <th className="py-2 px-4 text-xs text-left border-b">Actions</th>
+          <th className="py-2 px-4 text-xs bg-[#12372A]   text-left border-b">Index</th>
+          <th className="py-2 px-4 text-xs bg-[#12372A]  text-left border-b">Name</th>
+          <th className="py-2 px-4 text-xs bg-[#12372A]  text-left border-b">Item Type</th>
+          <th className="py-2 px-4 text-xs bg-[#12372A]  text-left border-b">Sub Type</th>
+          <th className="py-2 px-4 text-xs bg-[#12372A]  text-left border-b">Taste</th>
+          <th className="py-2 px-4 text-xs bg-[#12372A]  text-left border-b">Tags</th>
+          <th className="py-2 px-4 text-xs bg-[#12372A]  text-left border-b">Price</th>
+          <th className="py-2 px-4 text-xs bg-[#12372A]  text-left border-b">Actions</th>
         </tr>
       </thead>
       <tbody>
