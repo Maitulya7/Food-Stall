@@ -55,7 +55,7 @@ const AddMenuItemForm = ({ setFormOpen, fetchApiData }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const categoryId = Number(formInputs.food_category);
+    // const categoryId = Number(formInputs.food_category);
 
     const newItemData = {
       name: formInputs.name,

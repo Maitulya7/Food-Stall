@@ -12,11 +12,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import DEFAULT_URL from "@/config";
 import Lottie from 'lottie-react';
 import animationData from '@/public/images/super-admin-animation-2.json'
-
+import EditProfile from "./editProfile/page";
 
 
 const Admin = () => {
   const router = useRouter();
+  const [vendorData , setVendorData ] = useState(null);
+
 
   const formik = useFormik({
     initialValues: {
@@ -44,6 +46,15 @@ const Admin = () => {
         );
 
         if (response.status === 200) {
+           axios.get(
+            `${DEFAULT_URL}/api/v1/vendor/${response.data.vendor.id}`, 
+            {
+              headers: {
+                Authorization: `Bearer ${response.data.access_token}`,
+              },
+            }
+          );
+          setVendorData(response.data.vendor);
           localStorage.setItem("access-token", response.data.access_token);
           toast.success("Login successful!", {
             position: "top-right",
@@ -54,7 +65,7 @@ const Admin = () => {
         console.error("Error logging in:", error);
         toast.error("Login failed. Please check your credentials.", {
           position: "top-right",
-          autoClose: 5000, // Close the toast after 5 seconds
+          autoClose: 5000, 
         });
       }
     },
@@ -138,6 +149,7 @@ const Admin = () => {
           />
         </div>
       </div>
+      <EditProfile vendorData={vendorData} />
       <ToastContainer />
     </>
   );
