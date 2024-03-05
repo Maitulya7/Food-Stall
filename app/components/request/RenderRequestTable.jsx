@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const RequestsTable = ({ data, handleApprove, handleReject }) => {
 
-  const itemsPerPage = 10;
+  const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
 
   const getOldSerialNumber = (index) => {

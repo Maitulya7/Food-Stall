@@ -4,7 +4,7 @@ import TopNavbar from "@/app/components/Navbar/TopNavbar";
 const Bills = () => {
   return (
     <div className="h-screen flex bg-green-100">
-      <div className="w-64">
+      <div>
         <LeftNavbar />
       </div>
       <div className="flex flex-col w-full">

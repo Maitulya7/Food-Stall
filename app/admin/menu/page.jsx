@@ -4,7 +4,7 @@ import AdminMenuCard from "@/app/components/VendorMenu/VendorMenu";
 const Menu = () => {
   return (
     <div className="h-screen flex bg-green-100">
-      <div className="w-64">
+      <div>
         <LeftNavbar />
       </div>
       <div className="flex flex-col w-full">
