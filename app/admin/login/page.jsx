@@ -48,7 +48,7 @@ const Admin = () => {
           toast.success("Login successful!", {
             position: "top-right",
           });
-          router.push("/super-admin/dashboard");
+          router.push("/admin/dashboard");
         }
       } catch (error) {
         console.error("Error logging in:", error);

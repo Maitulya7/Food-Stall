@@ -1,25 +1,19 @@
-import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
-import TopNavbar from "@/app/components/Navbar/TopNavbar";
-import CustomerItemTable from "@/app/components/customerOrders/orderTable";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import LeftNavbarSuperAdmin from "@/app/components/Navbar/LeftNavbarSuperAdmin";
 import React from "react";
 
 function Dashboard() {
-  
+
   return (
-    <div className="h-screen flex bg-green-100">
-      <div >
-        <LeftNavbar />
+    <div className="h-screen flex bg-[#f0f5f9]">
+      <div>
+        <LeftNavbarSuperAdmin/>
       </div>
       <div className="flex flex-col w-full">
-        
-        <div className="flex-grow bg-green-100 pl-10 pr-10">
-          <CustomerItemTable/>
+        <div className="flex-grow bg-[#f0f5f9] pl-10 pr-10">
+         home
         </div>
       </div>
-  
+   
     </div>
   );
 }

@@ -19,7 +19,7 @@ const LeftNavbarSuperAdmin = () => {
   const handleLogout = () => {
 
     localStorage.removeItem("access-token");
-    router.push("/super-admin/login");
+    router.push("/admin/login");
   };
 
 
@@ -63,15 +63,15 @@ const LeftNavbarSuperAdmin = () => {
 
       <div className={`${isMenuOpen ? 'block' : 'hidden'} lg:flex-col gap-4 px-4`}>
         <div className="mt-6 flex gap-4 flex-col px-4 py-2">
-          <div className="flex items-center" style={linkStyles("/super-admin/dashboard")}>
+          <div className="flex items-center" style={linkStyles("admin/dashboard")}>
             <FaHome className="text-[#FBFADA]" />
-            <Link href="/super-admin/dashboard" className="ml-4 text-[#FBFADA] font-medium">
+            <Link href="admin/dashboard" className="ml-4 text-[#FBFADA] font-medium">
               Home
             </Link>
           </div>
-          <div className="flex items-center" style={linkStyles("/super-admin/category")}>
+          <div className="flex items-center" style={linkStyles("admin/category")}>
             <FaThList className="text-[#FBFADA]" />
-            <Link href="/super-admin/category" className="ml-4 text-[#FBFADA] font-medium">
+            <Link href="admin/category" className="ml-4 text-[#FBFADA] font-medium">
               Category
             </Link>
           </div>
@@ -81,7 +81,7 @@ const LeftNavbarSuperAdmin = () => {
         </div>
 
 
-        <div className="w-full flex items-center justify-center mt-52" style={linkStyles("/super-admin/logout")}>
+        <div className="w-full flex items-center justify-center mt-52" style={linkStyles("/admin/logout")}>
           <button onClick={handleLogout}
             class="group flex items-center justify-start w-11 h-11 bg-red-400 rounded-full cursor-pointer relative overflow-hidden transition-all duration-200 shadow-lg hover:w-32 hover:rounded-lg active:translate-x-1 active:translate-y-1"
           >

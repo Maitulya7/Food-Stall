@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { IoFastFood } from "react-icons/io5";
 import { BiSolidFoodMenu } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
+import { FaMoneyBill1 } from "react-icons/fa6";
 
 
 const LeftNavbar = () => {
@@ -22,7 +23,7 @@ const LeftNavbar = () => {
   const handleLogout = () => {
 
     localStorage.removeItem("access-token");
-    router.push("/admin");
+    router.push("/vendor");
   };
 
 
@@ -66,27 +67,33 @@ const LeftNavbar = () => {
 
       <div className={`${isMenuOpen ? 'block' : 'hidden'} lg:flex-col gap-4 px-6`}>
         <div className="mt-6 flex gap-4 flex-col px-4 py-2">
-          <div className="flex items-center" style={linkStyles("/admin/dashboard")}>
+          <div className="flex items-center" style={linkStyles("/vendor/dashboard")}>
             <FaHome className="text-[#FBFADA]" />
-            <Link href="/admin/dashboard" className="ml-4 text-[#FBFADA] font-medium">
+            <Link href="/vendor/dashboard" className="ml-4 text-[#FBFADA] font-medium">
               Home
             </Link>
           </div>
-          <div className="flex items-center" style={linkStyles("/admin/foodOrder")}>
+          <div className="flex items-center" style={linkStyles("/vendor/foodOrder")}>
             <IoFastFood className="text-[#FBFADA]" />
-            <Link href="/admin/foodOrder" className="ml-4 text-sm text-[#FBFADA] font-medium">
+            <Link href="/vendor/foodOrder" className="ml-4 text-sm text-[#FBFADA] font-medium">
              Orders
             </Link>
           </div>
-          <div className="flex items-center" style={linkStyles("/admin/menu")}>
+          <div className="flex items-center" style={linkStyles("/vendor/menu")}>
             <BiSolidFoodMenu className="text-[#FBFADA]" />
-            <Link href="/admin/menu" className="ml-4 text-[#FBFADA] font-medium">
+            <Link href="/vendor/menu" className="ml-4 text-[#FBFADA] font-medium">
               Menu
             </Link>
           </div>
-          <div className="flex items-center" style={linkStyles("/admin/editProfile")}>
+          <div className="flex items-center" style={linkStyles("/vendor/bills")}>
+            <FaMoneyBill1 className="text-[#FBFADA]" />
+            <Link href="/vendor/bills" className="ml-4 text-[#FBFADA] font-medium">
+              Bill
+            </Link>
+          </div>
+          <div className="flex items-center" style={linkStyles("/vendor/editProfile")}>
             <CgProfile className="text-[#FBFADA]" />
-            <Link href="/admin/editProfile" className="ml-4 text-[#FBFADA] font-medium">
+            <Link href="/vendor/editProfile" className="ml-4 text-[#FBFADA] font-medium">
               Profile
             </Link>
           </div>
