@@ -1,5 +1,5 @@
 import React from "react";
-import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
+import LeftNavbar from "@/app/components/VendorComponents/Navbar/LeftNavbarVendor";
 import AdminMenuCard from "@/app/components/VendorMenu/VendorMenu";
 const Menu = () => {
   return (

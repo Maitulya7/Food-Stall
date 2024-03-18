@@ -1,4 +1,4 @@
-import LeftNavbarSuperAdmin from "@/app/components/Navbar/LeftNavbarSuperAdmin";
+import LeftNavbarSuperAdmin from "@/app/components/AdminComponents/Navbar/LeftNavbarAdmin";
 import React from "react";
 
 function Dashboard() {

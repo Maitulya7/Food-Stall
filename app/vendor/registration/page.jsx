@@ -1,12 +1,12 @@
 "use client"
 import { useState, useEffect } from "react";
-import { useFormik } from "formik";
+import { useFormik, FieldArray } from "formik";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import Lottie from 'lottie-react';
 import animationData from '@/public/images/vendor-animation-registration.json';
 import DEFAULT_URL from "@/config";
-import { Input , Select , SelectItem} from "@nextui-org/react";
+import { Input, Select, SelectItem } from "@nextui-org/react";
 import InputPassword from "@/app/components/password/InputPassword";
 import ConfirmPassword from "@/app/components/password/confirmPassword";
 import * as Yup from 'yup';
@@ -30,6 +30,7 @@ const Register = () => {
   });
   const [pic, setPic] = useState();
   const [imgUrl, setImgUrl] = useState("");
+
   const [categories, setCategories] = useState([]);
 
 
@@ -179,6 +180,7 @@ const Register = () => {
           <form onSubmit={formik.handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pl-4 md:pl-12 pr-4 md:pr-12 pt-5 ">
               <Input
+                variant="bordered"
                 type="text"
                 name="firstName"
                 value={formik.values.firstName}
@@ -191,6 +193,7 @@ const Register = () => {
               )}
               <div className="w-full">
                 <Input
+                  variant="bordered"
                   type="text"
                   name="lastName"
                   value={formik.values.lastName}
@@ -203,6 +206,7 @@ const Register = () => {
               </div>
               <div className="w-full">
                 <Input
+                  variant="bordered"
                   type="email"
                   name="email"
                   value={formik.values.email}
@@ -215,6 +219,7 @@ const Register = () => {
               </div>
               <div className="w-full">
                 <Input
+                  variant="bordered"
                   type="number"
                   name="phoneNumber"
                   value={formik.values.phoneNumber}
@@ -249,36 +254,47 @@ const Register = () => {
                 )}
               </div>
               <div className="w-full">
-              <Select
-              items={categories}
-              label="Category"
-              placeholder="Select Category"
-              className="max-w-xs"
-              selectionMode="multiple"
-              onChange={(selectedOption) => {
-                const selectedCategory = selectedOption.target.value
-                  .split(",")
-                  .map((category) => category.trim())
-                  .filter((category) => category !== "");
-
-                  const updatedCategories = Array.from(
-                    new Set([...formik.values.categories, ...selectedCategory])
-                  );
-
-                formik.handleChange("type_of_categories", updatedCategories);
-              }}
-            >
-              {categories.map((category) => (
-                <SelectItem key={category.value} value={category.value}>
-                  {category.name}
-                </SelectItem>
-              ))}
-            </Select>
+                <FieldArray
+                  name="categories"
+                  render={(arrayHelpers) => (
+                    <>
+                      {formik.values.categories.map((_, index) => (
+                        <div key={index} className="w-full">
+                          <Field
+                            as={Select}
+                            name={`categories.${index}`}
+                            items={categories}
+                            label={`Category ${index + 1}`}
+                            placeholder="Select Category"
+                            className="max-w-xs"
+                          />
+                          {index > 0 && (
+                            <button
+                              type="button"
+                              onClick={() => arrayHelpers.remove(index)}
+                              className="bg-red-500 text-white p-2 rounded-md ml-2"
+                            >
+                              Remove
+                            </button>
+                          )}
+                        </div>
+                      ))}
+                      <button
+                        type="button"
+                        onClick={() => arrayHelpers.push('')}
+                        className="bg-green-800 text-white p-2 w-full font-medium rounded-md mt-2"
+                      >
+                        Add Category
+                      </button>
+                    </>
+                  )}
+                />
               </div>
 
 
               <div className="w-full">
                 <Input
+                variant="bordered"
                   type="text"
                   name="stallName"
                   value={formik.values.stallName}

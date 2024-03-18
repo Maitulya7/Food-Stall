@@ -1,4 +1,4 @@
-import LeftNavbar from "@/app/components/Navbar/LeftNavbar";
+import LeftNavbar from "@/app/components/VendorComponents/Navbar/LeftNavbarVendor";
 import CustomerItemTable from "@/app/components/customerOrders/orderTable";
 
 

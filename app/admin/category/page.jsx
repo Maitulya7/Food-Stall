@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import LeftNavbarSuperAdmin from "@/app/components/Navbar/LeftNavbarSuperAdmin";
+import LeftNavbarSuperAdmin from "@/app/components/AdminComponents/Navbar/LeftNavbarAdmin";
 import AddCategory from "@/app/components/addCategory";
 import CategoryList from "@/app/components/categoryList";
 import axios from "axios";
